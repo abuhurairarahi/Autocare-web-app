@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Vehicle Owner Approvals</title>
+    <link rel="stylesheet" href="/Styles/Admin/Admin-04.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span style="color: #f97316;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Admin/Admin-01.html" class="nav-item"><i class="fa-solid fa-border-all"></i> Dashboard</a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Managers</a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Mechanics</a>
+                <a href="/HTML/Admin/Admin-04.html" class="nav-item active"><i class="fa-solid fa-car-side"></i> Vehicle Owners</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service Categories</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Inventory</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue Reports</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><span style="font-size: 18px;">⏻</span> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navigation Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search managers, workshops...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">A</div>
+                </div>
+            </header>
+
+            <!-- Page Body -->
+            <div class="page-content">
+                <h1 class="page-title">Vehicle Owner Approvals</h1>
+
+                <!-- Toolbar -->
+                <div class="toolbar">
+                    <div class="toolbar-left">
+                        <button class="btn-outline"><i class="fa-solid fa-filter"></i> Filter</button>
+                        <button class="btn-outline"><i class="fa-solid fa-arrow-down-wide-short"></i> Sort</button>
+                    </div>
+                    <div class="toolbar-right">
+                        <span class="results-count">Showing 1-2 of 5 pending approvals</span>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>PHONE</th>
+                                <th>VEHICLE NUMBER</th>
+                                <th>VEHICLE TYPE</th>
+                                <th>REGISTRATION DATE</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-info">
+                                        <div class="avatar blue-bg">JW</div>
+                                        <div class="user-details">
+                                            <span class="user-name">Talha Rehan</span>
+                                            <span class="user-email">trehan@gmail.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>+880 2312314234</td>
+                                <td>ABC-1234</td>
+                                <td>M. Benz G Class</td>
+                                <td>Jul 28, 2026</td>
+                                <td>
+                                    <button class="status-btn">Pending <i class="fa-solid fa-chevron-down"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-info">
+                                        <div class="avatar blue-light-bg">SM</div>
+                                        <div class="user-details">
+                                            <span class="user-name">Ahmad Ayaz</span>
+                                            <span class="user-email">ahdayaz@gmail.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>+880 342342552</td>
+                                <td>XYZ-7890</td>
+                                <td>Toyota Supra MK-5</td>
+                                <td>Jul 31, 2026</td>
+                                <td>
+                                    <button class="status-btn">Pending <i class="fa-solid fa-chevron-down"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-nav" disabled>Previous</button>
+                    <div class="page-numbers">
+                        <button class="page-num active">1</button>
+                        <button class="page-num">2</button>
+                        <button class="page-num">3</button>
+                    </div>
+                    <button class="page-nav">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
