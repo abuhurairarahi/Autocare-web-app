@@ -5,86 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoCare - Mechanic Approvals</title>
     <link rel="stylesheet" href="/Styles/Admin/Admin-03.css">
+    <link rel="stylesheet" href="/Styles/Admin/Admin-04.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <div class="dashboard-container">
         <aside class="sidebar">
-            <div class="logo">
-                <a class="logo-link" href="#top">
-                    <span class="logo-mark">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4 16.5V11l2.2-4.4A2 2 0 0 1 8 5.5h8a2 2 0 0 1 1.8 1.1L20 11v5.5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V16H7v.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"
-                                stroke="white" stroke-width="1.6" stroke-linejoin="round" />
-                            <circle cx="7.5" cy="14" r="1.3" fill="white" />
-                            <circle cx="16.5" cy="14" r="1.3" fill="white" />
-                            <path d="M4 11h16" stroke="white" stroke-width="1.6" />
-                        </svg>
-                    </span>
-                    <span class="logo-text">Auto<span class="accent">Care</span></span>
-                </a>
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span style="color: #f97316;">Care</span></span>
             </div>
-
-            <nav class="nav">
-                <a href="/HTML/Admin/Admin-01.html" class="nav-item">
-                    <span class="nav-icon">▦</span> Dashboard
-                </a>
-                <a href="/HTML/Admin/Admin-02.html" class="nav-item">
-                    <span class="nav-icon">👤</span> Workshop Managers
-                </a>
-                <a href="#" class="nav-item active">
-                    <span class="nav-icon">🔧</span> Workshop Mechanics
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">🧑</span> Vehicle Owners
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📁</span> Service Categories
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📦</span> Spare Parts Inventory
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📊</span> Analytics
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">💵</span> Revenue Reports
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">🏷️</span> Service Offers
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">🔔</span> Service Broadcast
-                </a>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Admin/Admin-01.html" class="nav-item"><i class="fa-solid fa-border-all"></i> Dashboard</a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Managers</a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item active"><i class="fa-solid fa-user-gear"></i> Workshop Mechanics</a>
+                <a href="/HTML/Admin/Admin-04.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle Owners</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service Categories</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Inventory</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue Reports</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
             </nav>
-
-            <a href="/HTML/login.html" class="logout">
-                <span class="nav-icon">⏻</span> Logout
-            </a>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><span style="font-size: 18px;">⏻</span> Logout</a>
+            </div>
         </aside>
 
-        <!-- Main Content Area -->
         <main class="main-content">
-            <!-- Top Header -->
             <header class="top-header">
                 <div class="search-bar">
-                    <span class="search-icon">🔍</span>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Search managers, workshops...">
                 </div>
                 <div class="header-actions">
-                    <button class="icon-btn" aria-label="Notifications">🔔</button>
-                    <button class="icon-btn" aria-label="Messages">✉</button>
-                    <div class="admin-avatar">A</div>
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">A</div>
                 </div>
             </header>
 
-            <!-- Page Body -->
             <div class="content-body">
                 <h1 class="page-title">Mechanic Approvals</h1>
 
                 <div class="card">
-                    <!-- Table Actions Bar -->
                     <div class="table-actions">
                         <div class="action-buttons">
                             <button class="btn-outline">⚙️ Filter</button>
@@ -95,7 +60,6 @@
                         </div>
                     </div>
 
-                    <!-- Data Table -->
                     <div class="table-responsive">
                         <table>
                             <thead>
@@ -121,7 +85,7 @@
                                     <td>8 Years</td>
                                     <td>Apex Auto Center</td>
                                     <td>Aug 01, 2026</td>
-                                    <td><span class="status-badge pending">Pending ▾</span></td>
+                                    <td><button class="status-btn pending">Pending <i class="fa-solid fa-chevron-down"></i></button></td>
                                 </tr>
                                 <tr>
                                     <td class="applicant-cell">
@@ -135,7 +99,7 @@
                                     <td>12 Years</td>
                                     <td>Elite Gearworks</td>
                                     <td>Aug 01, 2026</td>
-                                    <td><span class="status-badge pending">Pending ▾</span></td>
+                                    <td><button class="status-btn pending">Pending <i class="fa-solid fa-chevron-down"></i></button></td>
                                 </tr>
                                 <tr>
                                     <td class="applicant-cell">
@@ -149,7 +113,7 @@
                                     <td>4 Years</td>
                                     <td>Future Fleet Services</td>
                                     <td>Jul 31, 2026</td>
-                                    <td><span class="status-badge approved">Approved ▾</span></td>
+                                    <td><button class="status-btn approved">Approved <i class="fa-solid fa-chevron-down"></i></button></td>
                                 </tr>
                                 <tr>
                                     <td class="applicant-cell">
@@ -163,13 +127,12 @@
                                     <td>15 Years</td>
                                     <td>Independent</td>
                                     <td>Jan 01, 2025</td>
-                                    <td><span class="status-badge suspended">Suspended ▾</span></td>
+                                    <td><button class="status-btn suspended">Suspended <i class="fa-solid fa-chevron-down"></i></button></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- Pagination Footer -->
                     <div class="pagination-footer">
                         <button class="page-nav" disabled>Previous</button>
                         <div class="page-numbers">

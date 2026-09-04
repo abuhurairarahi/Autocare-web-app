@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoCare Admin - Dashboard Overview</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Styles/Admin/Admin-04.css">
     <link rel="stylesheet" href="/Styles/Admin/Admin-01.css">
 </head>
 
@@ -13,75 +15,38 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">
-                <a class="logo-link" href="#top">
-                    <span class="logo-mark">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4 16.5V11l2.2-4.4A2 2 0 0 1 8 5.5h8a2 2 0 0 1 1.8 1.1L20 11v5.5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V16H7v.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"
-                                stroke="white" stroke-width="1.6" stroke-linejoin="round" />
-                            <circle cx="7.5" cy="14" r="1.3" fill="white" />
-                            <circle cx="16.5" cy="14" r="1.3" fill="white" />
-                            <path d="M4 11h16" stroke="white" stroke-width="1.6" />
-                        </svg>
-                    </span>
-                    <span class="logo-text">Auto<span class="accent">Care</span></span>
-                </a>
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span
+                        style="color: #f97316;">Care</span></span>
             </div>
-
-            <nav class="nav">
-                <a href="#" class="nav-item active">
-                    <span class="nav-icon">▦</span> Dashboard
-                </a>
-                <a href="/HTML/Admin/Admin-02.html" class="nav-item">
-                    <span class="nav-icon">👤</span> Workshop Managers
-                </a>
-                <a href="/HTML/Admin/Admin-03.html" class="nav-item">
-                    <span class="nav-icon">🔧</span> Workshop Mechanics
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">🧑</span> Vehicle Owners
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📁</span> Service Categories
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📦</span> Spare Parts Inventory
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📊</span> Analytics
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">💵</span> Revenue Reports
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">🏷️</span> Service Offers
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">🔔</span> Service Broadcast
-                </a>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Admin/Admin-01.html" class="nav-item active"><i class="fa-solid fa-border-all"></i> Dashboard</a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Managers</a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Mechanics</a>
+                <a href="/HTML/Admin/Admin-04.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle Owners</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service Categories</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Inventory</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue Reports</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
             </nav>
-
-            <a href="/HTML/login.html" class="logout">
-                <span class="nav-icon">⏻</span> Logout
-            </a>
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn"><span style="font-size: 18px;">⏻</span> Logout</a>
+            </div>
         </aside>
 
-        <!-- Main -->
-        <div class="main">
-
-            <!-- Topbar -->
-            <header class="topbar">
-                <div class="search-box">
-                    <span class="search-icon">🔍</span>
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Search managers, workshops...">
                 </div>
-                <div class="topbar-actions">
-                    <button class="icon-btn" aria-label="Notifications">
-                        🔔<span class="badge"></span>
-                    </button>
-                    <button class="icon-btn" aria-label="Messages">✉</button>
-                    <div class="avatar">A</div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">A</div>
                 </div>
             </header>
 
@@ -262,7 +227,7 @@
                     </section>
                 </div>
             </main>
-        </div>
+    </div>
     </div>
 </body>
 
