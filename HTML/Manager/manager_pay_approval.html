@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Spare Parts Approval</title>
+  <link rel="stylesheet" href="/AutoCare/Styles/Manager/manager_pay_approval.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H7c-.6 0-1.1.2-1.5.6L3.3 9.8C2.5 10.1 2 10.8 2 11.7V16c0 .6.4 1 1 1h2"  stroke="darkblue"></path>
+            <circle cx="7" cy="17" r="2" stroke="darkblue"></circle>
+            <circle cx="17" cy="17" r="2" stroke="darkblue"></circle>
+          </svg>
+        </div>
+        <div class="brand-name">Auto<strong>Care</strong></div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          </span>Dashboard
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </span>Booking Requests
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </span>Job Cards
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </span>Mechanics
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          </span>Job Tracking
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+          </span>Cost Estimates
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+          </span>Invoices
+        </a>
+
+        <a class="nav-item active" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </span>Spare Parts Approval
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </span>Chats
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </span>Report
+        </a>
+      </nav>
+
+      <a class="logout" href="#">
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        </span>Logout
+      </a>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+      <!-- Top Bar -->
+      <header class="topbar">
+        <div class="search">
+          <div class="search-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <input type="text" placeholder="Search managers, workshops...">
+        </div>
+
+        <div class="top-actions">
+          <div class="notification">
+            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <b></b>
+          </div>
+
+          <div class="mail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+
+          <div class="avatar">A</div>
+        </div>
+      </header>
+
+      <!-- ================= CONTENT ================= -->
+      <section class="content">
+
+        <!-- ================= STATS CARDS ================= -->
+        <div class="stats-grid">
+
+          <!-- Card 1 -->
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon icon-grey">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </div>
+              <span class="badge-tag tag-grey">Total</span>
+            </div>
+            <div class="stat-sub-label">Available Parts</div>
+            <div class="stat-value">14,285</div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon icon-red">
+                <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              </div>
+              <span class="badge-tag tag-red">Action Required</span>
+            </div>
+            <div class="stat-sub-label">Low Stock Alerts</div>
+            <div class="stat-value-group">
+              <span class="stat-value">24</span>
+              <span class="stat-trend-sub">↑ +3 today</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon icon-grey">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+              </div>
+              <span class="badge-tag tag-blue">Value: ৳4,250</span>
+            </div>
+            <div class="stat-sub-label">Today's Requests</div>
+            <div class="stat-value-group">
+              <span class="stat-value">12</span>
+              <span class="stat-value-sub">Value: ৳4,250</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= APPROVAL TABLE CARD ================= -->
+        <div class="table-card">
+
+          <div class="table-header">
+            <div>
+              <h2>Pending Approvals</h2>
+              <p>Review and authorize mechanic part requests.</p>
+            </div>
+
+            <div class="header-actions">
+              <button class="btn-secondary">
+                <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                Filter
+              </button>
+
+              <button class="btn-approve-all">
+                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                Approve All
+              </button>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>PART DETAILS</th>
+                  <th>QUANTITY</th>
+                  <th>UNIT PRICE</th>
+                  <th>TOTAL</th>
+                  <th>MECHANIC / JOB</th>
+                  <th class="actions-th">ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <!-- Row 1 -->
+                <tr>
+                  <td>
+                    <div class="part-cell">
+                      <div class="part-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                      </div>
+                      <div>
+                        <div class="part-name">Brake Pad Set - Front</div>
+                        <div class="part-pn">PN: BP-2049-F</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="qty-badge">2 Sets</span></td>
+                  <td class="dim-text">৳85.00</td>
+                  <td class="bold">৳170.00</td>
+                  <td>
+                    <div class="mechanic-cell">
+                      <div class="avatar-sm navy">JD</div>
+                      <div>
+                        <div class="mechanic-name">John Doe</div>
+                        <div class="job-id">Job: #WO-9921</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="actions-td">
+                    <button class="btn-action approve">✓ Approve</button>
+                    <button class="btn-action reject">✕ Reject</button>
+                  </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr>
+                  <td>
+                    <div class="part-cell">
+                      <div class="part-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                      </div>
+                      <div>
+                        <div class="part-name">Synthetic Motor Oil 5W-30</div>
+                        <div class="part-pn">PN: MO-5W30-SYN</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="qty-badge">6 Quarts</span></td>
+                  <td class="dim-text">৳9.50</td>
+                  <td class="bold">৳57.00</td>
+                  <td>
+                    <div class="mechanic-cell">
+                      <div class="avatar-sm dark-navy">SM</div>
+                      <div>
+                        <div class="mechanic-name">Sarah Miller</div>
+                        <div class="job-id">Job: #WO-9924</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="actions-td">
+                    <button class="btn-action approve">✓ Approve</button>
+                    <button class="btn-action reject">✕ Reject</button>
+                  </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr>
+                  <td>
+                    <div class="part-cell">
+                      <div class="part-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                      </div>
+                      <div>
+                        <div class="part-name">Alternator Assembly - 130A</div>
+                        <div class="part-pn">PN: ALT-130-OEM</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="qty-badge">1 Unit</span></td>
+                  <td class="dim-text">৳345.00</td>
+                  <td class="bold">৳345.00</td>
+                  <td>
+                    <div class="mechanic-cell">
+                      <div class="avatar-sm navy">JD</div>
+                      <div>
+                        <div class="mechanic-name">John Doe</div>
+                        <div class="job-id">Job: #WO-9918</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="actions-td">
+                    <button class="btn-action approve">✓ Approve</button>
+                    <button class="btn-action reject">✕ Reject</button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-footer">
+            <span class="showing-text">Showing 1-3 of 12 requests</span>
+            <div class="pagination-arrows">
+              <button class="arrow-btn disabled">&lt;</button>
+              <button class="arrow-btn">&gt;</button>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+    </main>
+
+  </div>
+
+</body>
+</html>
