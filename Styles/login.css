@@ -145,6 +145,14 @@ button { font-family: inherit; cursor: pointer; }
   transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
 }
 
+.role-tag {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
 .role-card:hover {
   border-color: var(--orange);
   box-shadow: 0 6px 16px rgba(251, 124, 0, 0.12);

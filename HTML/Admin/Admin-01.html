@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare Admin - Dashboard Overview</title>
+    <link rel="stylesheet" href="/Styles/Admin/Admin-01.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <a class="logo-link" href="#top">
+                    <span class="logo-mark">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4 16.5V11l2.2-4.4A2 2 0 0 1 8 5.5h8a2 2 0 0 1 1.8 1.1L20 11v5.5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V16H7v.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"
+                                stroke="white" stroke-width="1.6" stroke-linejoin="round" />
+                            <circle cx="7.5" cy="14" r="1.3" fill="white" />
+                            <circle cx="16.5" cy="14" r="1.3" fill="white" />
+                            <path d="M4 11h16" stroke="white" stroke-width="1.6" />
+                        </svg>
+                    </span>
+                    <span class="logo-text">Auto<span class="accent">Care</span></span>
+                </a>
+            </div>
+
+            <nav class="nav">
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">▦</span> Dashboard
+                </a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item">
+                    <span class="nav-icon">👤</span> Workshop Managers
+                </a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item">
+                    <span class="nav-icon">🔧</span> Workshop Mechanics
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🧑</span> Vehicle Owners
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📁</span> Service Categories
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📦</span> Spare Parts Inventory
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📊</span> Analytics
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">💵</span> Revenue Reports
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🏷️</span> Service Offers
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🔔</span> Service Broadcast
+                </a>
+            </nav>
+
+            <a href="/HTML/login.html" class="logout">
+                <span class="nav-icon">⏻</span> Logout
+            </a>
+        </aside>
+
+        <!-- Main -->
+        <div class="main">
+
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search managers, workshops...">
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-btn" aria-label="Notifications">
+                        🔔<span class="badge"></span>
+                    </button>
+                    <button class="icon-btn" aria-label="Messages">✉</button>
+                    <div class="avatar">A</div>
+                </div>
+            </header>
+
+            <!-- Page content -->
+            <main class="content">
+                <div class="page-header">
+                    <div>
+                        <h1>Dashboard Overview</h1>
+                        <p class="subtitle">System-wide metrics and current operational status.</p>
+                    </div>
+                    <div class="select-input date-select">
+                        <span class="select-icon">📅</span>
+                        <span>Last 30 Days</span>
+                        <span class="chevron">⌄</span>
+                    </div>
+                </div>
+
+                <!-- Stat cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon icon-purple">👥</span>
+                            <span class="stat-badge badge-green">↗ 12%</span>
+                        </div>
+                        <p class="stat-label">Total Workshop Managers</p>
+                        <p class="stat-value">142</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon icon-orange">🕑</span>
+                            <span class="stat-badge badge-red">↗ 5%</span>
+                        </div>
+                        <p class="stat-label">Pending Mech. Approvals</p>
+                        <p class="stat-value">28</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon icon-slate">🏭</span>
+                            <span class="stat-badge badge-green">↗ 3%</span>
+                        </div>
+                        <p class="stat-label">Active Workshops</p>
+                        <p class="stat-value">115</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon icon-blue">💰</span>
+                            <span class="stat-badge badge-green">↗ 18%</span>
+                        </div>
+                        <p class="stat-label">Monthly Revenue</p>
+                        <p class="stat-value">৳15,08,953</p>
+                    </div>
+                </div>
+
+                <!-- Revenue trend + Recent activity -->
+                <div class="row-2col">
+                    <section class="card panel">
+                        <div class="panel-header">
+                            <h2>Revenue Trend (Jan - Jun)</h2>
+                            <button class="dots-btn" aria-label="More options">⋯</button>
+                        </div>
+                        <div class="chart-placeholder">
+                            <span class="chart-placeholder-icon">📈</span>
+                            <span>Revenue Line Chart Visualization Area</span>
+                        </div>
+                    </section>
+
+                    <section class="card panel activity-panel">
+                        <div class="panel-header">
+                            <h2>Recent Activity</h2>
+                            <a href="#" class="link">View All</a>
+                        </div>
+                        <ul class="activity-list">
+                            <li>
+                                <span class="activity-icon icon-purple-soft">👤</span>
+                                <div>
+                                    <p class="activity-title">New mechanic registration: John Doe</p>
+                                    <p class="activity-time">10 mins ago</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="activity-icon icon-orange-soft">⚠</span>
+                                <div>
+                                    <p class="activity-title">Inventory Update: Brake Pads (Low Stock)</p>
+                                    <p class="activity-time">2 hours ago</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="activity-icon icon-blue-soft">📄</span>
+                                <div>
+                                    <p class="activity-title">Report Generated: Q2 Revenue Summary</p>
+                                    <p class="activity-time">Yesterday, 4:30 PM</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="activity-icon icon-blue-soft">✓</span>
+                                <div>
+                                    <p class="activity-title">Workshop Approved: Elite Auto Care</p>
+                                    <p class="activity-time">Yesterday, 2:15 PM</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+
+                <!-- Bottom row: bar chart, top workshops, distribution -->
+                <div class="row-3col">
+                    <section class="card panel">
+                        <div class="panel-header">
+                            <h2>Services by Category</h2>
+                        </div>
+                        <div class="bar-chart">
+                            <div class="bar" style="height:60%; background:#3D4F91;"></div>
+                            <div class="bar" style="height:42%; background:#6E7FBE;"></div>
+                            <div class="bar" style="height:75%; background:#8C9AD3;"></div>
+                            <div class="bar" style="height:34%; background:#A9B5E5;"></div>
+                        </div>
+                    </section>
+
+                    <section class="card panel">
+                        <div class="panel-header">
+                            <h2>Top 5 Workshops</h2>
+                        </div>
+                        <ul class="workshop-list">
+                            <li>
+                                <div class="workshop-row">
+                                    <span>Dhaka Branch</span>
+                                    <span>342 jobs</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width:95%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="workshop-row">
+                                    <span>Rajshahi Branch</span>
+                                    <span>289 jobs</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width:80%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="workshop-row">
+                                    <span>Chittagong Branch</span>
+                                    <span>210 jobs</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width:58%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="workshop-row">
+                                    <span>Khulna Branch</span>
+                                    <span>195 jobs</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width:54%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="card panel">
+                        <div class="panel-header">
+                            <h2>Service Distribution</h2>
+                        </div>
+                        <div class="donut-wrap">
+                            <div class="donut"
+                                style="background: conic-gradient(#00288E 0% 45%, #4C63B6 45% 75%, #A9B5E5 75% 100%);">
+                                <div class="donut-hole"></div>
+                            </div>
+                        </div>
+                        <div class="legend">
+                            <span class="legend-item"><i style="background:#00288E"></i> Maint.</span>
+                            <span class="legend-item"><i style="background:#4C63B6"></i> Engine</span>
+                            <span class="legend-item"><i style="background:#A9B5E5"></i> Elec.</span>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
