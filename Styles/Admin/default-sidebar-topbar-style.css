@@ -1,0 +1,212 @@
+:root {
+    --primary: #00288E;
+    --primary-hover: #001f6e;
+    --sidebar-active: #A9B5E5;
+    --logout-bg: #D62132;
+    --bg-app: #FBF8FF;
+    --bg-content: #F4F2FC;
+    --border: #C4C5D5;
+    --text-dark: #0B1220;
+    --text-body: #545E6F;
+    --text-muted: #757684;
+    --green-bg: #D1FAE5;
+    --green-text: #065F46;
+    --blue-pill-bg: #D0E1FB;
+    --blue-pill-text: #54647A;
+    --avatar-bg: #D0E1FB;
+    --avatar-text: #54647A;
+    --navy-950: #070B14;
+    --navy-900: #0B1B3A;
+    --navy-800: #152650;
+    --navy-700: #152145;
+    --orange: #FB7C00;
+    --orange-deep: #FF5100;
+    --orange-mid: #FF6A24;
+    --orange-light: #FF8D1D;
+    --line: #D8DFE8;
+    --bg-services: #F3F4F6;
+    --bg-locations: #F7FBFA;
+    --bg-contact: #FAFAFA;
+    --white: #FEFEFE;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 8px;
+    --sidebar-bg: #091a45;
+    --brand-orange: #f97316;
+    --bg-color: #f8fafc;
+    --text-main: #1e293b;
+    --border-color: #e2e8f0;
+    --primary-blue: #0A2277;
+    --sidebar-blue: #071952;
+    --accent-red: #E63946;
+    --bg-light: #F4F6F9;
+    --status-pending-bg: #FEF3C7;
+    --status-pending-text: #D97706;
+    --status-approved-bg: #DCFCE7;
+    --status-approved-text: #16A34A;
+    --status-suspended-bg: #FEE2E2;
+    --status-suspended-text: #DC2626;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--primary);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 24px;
+}
+
+.brand-icon {
+    background-color: var(--brand-orange);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-item i {
+    font-size: 16px;
+    width: 20px;
+}
+
+.nav-item:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    color: rgb(255, 255, 255);
+    padding-left: 23px;
+    background: rgb(12, 57, 159);
+    border-left: 4px solid rgb(255, 255, 255);
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    color: #ffffff;
+    background-color: #dc2626;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #b91c1c;
+}
+
+/* Main Content Layout */
+.main-content {
+    margin-left: 260px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.top-header {
+    height: 70px;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f1f5f9;
+    border-radius: 20px;
+    padding: 8px 16px;
+    width: 380px;
+    gap: 10px;
+    color: var(--text-muted);
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-btn {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    font-size: 16px;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}

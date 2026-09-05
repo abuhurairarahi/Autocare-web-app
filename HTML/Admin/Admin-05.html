@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Service Categories</title>
+    <link rel="stylesheet" href="/Styles/Admin/default-sidebar-topbar-style.css">
+    <link rel="stylesheet" href="/Styles/Admin/Admin-05.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span
+                        style="color: #f97316;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Admin/Admin-01.html" class="nav-item"><i class="fa-solid fa-border-all"></i> Dashboard</a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Managers</a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Mechanics</a>
+                <a href="/HTML/Admin/Admin-04.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle Owners</a>
+                <a href="/HTML/Admin/Admin-05.html" class="nav-item active"><i class="fa-solid fa-layer-group"></i> Service Categories</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Inventory</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue Reports</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><span style="font-size: 18px;">⏻</span> Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search managers, workshops...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">A</div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Dashboard Container -->
+            <div class="content-body">
+                <div class="page-header-row">
+                    <div class="page-title-container">
+                        <h1>Service Categories</h1>
+                        <p>Manage and organize workshop service offerings.</p>
+                    </div>
+                    <div class="page-controls">
+                        <button class="btn btn-secondary">
+                            <i class="fa-solid fa-filter"></i> Filter
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa-solid fa-plus"></i> Add Category
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Cards Grid -->
+                <div class="cards-grid">
+                    <!-- Card 1: Engine Diagnostics -->
+                    <div class="service-card">
+                        <div class="card-top">
+                            <div class="service-icon-box blue-tint">
+                                <i class="fa-solid fa-car-battery"></i>
+                            </div>
+                            <button class="badge active">ACTIVE</button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Engine Diagnostics & Repair</h3>
+                            <p>Comprehensive engine health checks, overhauls, timing belt...</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-info">
+                                <span class="price-label">BASE PRICE</span>
+                                <span class="price-value">&#2547;16,500</span>
+                            </div>
+                            <span class="item-count">24</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Electrical Systems -->
+                    <div class="service-card">
+                        <div class="card-top">
+                            <div class="service-icon-box blue-tint">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <button class="badge active">ACTIVE</button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Electrical Systems</h3>
+                            <p>Battery replacement, alternator repairs, wiring loom diagnostics, and electronic control unit (ECU)</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-info">
+                                <span class="price-label">BASE PRICE</span>
+                                <span class="price-value">&#2547;9,800</span>
+                            </div>
+                            <span class="item-count">18</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Denting & Painting -->
+                    <div class="service-card">
+                        <div class="card-top">
+                            <div class="service-icon-box red-tint">
+                                <i class="fa-solid fa-paint-roller"></i>
+                            </div>
+                            <button class="badge review">IN REVIEW</button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Denting & Painting</h3>
+                            <p>Panel beating, scratch removal, full body resprays, and ceramic coating applications.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-info">
+                                <span class="price-label">BASE PRICE</span>
+                                <span class="price-value">&#2547;33,000</span>
+                            </div>
+                            <span class="item-count">12</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Create New Category Placeholder -->
+                    <div class="service-card dashed-card">
+                        <div class="dashed-content">
+                            <div class="add-circle-icon">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <h3>Create New Category</h3>
+                            <p>Define a new service grouping for your workshop.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
