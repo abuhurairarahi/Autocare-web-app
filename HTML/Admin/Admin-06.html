@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Spare Parts Inventory</title>
+    <link rel="stylesheet" href="/Styles/Admin/Admin-06.css">
+    <link rel="stylesheet" href="/Styles/Admin/default-sidebar-topbar-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span
+                        style="color: #f97316;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Admin/Admin-01.html" class="nav-item"><i class="fa-solid fa-border-all"></i> Dashboard</a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Managers</a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Mechanics</a>
+                <a href="/HTML/Admin/Admin-04.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle Owners</a>
+                <a href="/HTML/Admin/Admin-05.html" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service Categories</a>
+                <a href="/HTML/Admin/Admin-06.html" class="nav-item active"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Inventory</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue Reports</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><span style="font-size: 18px;">⏻</span> Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header-admin-6">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search managers, workshops...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">A</div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="content-area">
+                <div class="page-header">
+                    <div>
+                        <h1>Spare Parts Inventory</h1>
+                        <p>Manage workshop stock levels, track values, and initiate restocks.</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn btn-outline"><i class="fa-solid fa-arrow-up-from-bracket"></i> Export</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Restock</button>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">TOTAL PARTS</span>
+                            <div class="stat-value-row">
+                                <h2>12,450</h2>
+                                <span class="badge badge-success"><i class="fa-solid fa-arrow-trend-up"></i> +2.4%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">LOW STOCK ITEMS</span>
+                            <div class="stat-value-row">
+                                <h2>42</h2>
+                                <span class="badge badge-danger"><i class="fa-solid fa-arrow-down"></i> 14 Critical</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple"><i class="fa-solid fa-wallet"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">INVENTORY VALUE</span>
+                            <h2>৳845,200</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table Filters -->
+                <div class="table-filter-bar">
+                    <div class="filter-dropdowns">
+                        <div class="dropdown">All Categories <i class="fa-solid fa-chevron-down"></i></div>
+                        <div class="dropdown">All Brands <i class="fa-solid fa-chevron-down"></i></div>
+                        <div class="dropdown">Status: All <i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="filter-tools">
+                        <button class="tool-btn"><i class="fa-solid fa-bars"></i></button>
+                        <button class="tool-btn"><i class="fa-solid fa-rotate-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PART ID</th>
+                                <th>NAME</th>
+                                <th>CATEGORY</th>
+                                <th>BRAND</th>
+                                <th>QUANTITY</th>
+                                <th>UNIT PRICE</th>
+                                <th>SUPPLIER</th>
+                                <th>STATUS</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="part-id">BRK-092-B</td>
+                                <td><strong>Ceramic Brake Pads - Front</strong></td>
+                                <td>Brakes & Suspension</td>
+                                <td>Brembo</td>
+                                <td>145</td>
+                                <td>৳4500</td>
+                                <td>AutoParts Direct</td>
+                                <td><span class="status-badge status-in-stock">IN STOCK</span></td>
+                                <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="part-id">FLT-OIL-01</td>
+                                <td><strong>Synthetic Oil Filter Premium</strong></td>
+                                <td>Fluids & Filters</td>
+                                <td>Bosch</td>
+                                <td>12</td>
+                                <td>৳8450</td>
+                                <td>EuroSpares Ltd</td>
+                                <td><span class="status-badge status-low-stock">LOW STOCK</span></td>
+                                <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="part-id">SPK-NGK-IR</td>
+                                <td><strong>Iridium Spark Plug Set (x4)</strong></td>
+                                <td>Engine Components</td>
+                                <td>NGK</td>
+                                <td>88</td>
+                                <td>৳3200</td>
+                                <td>AutoParts Direct</td>
+                                <td><span class="status-badge status-in-stock">IN STOCK</span></td>
+                                <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="part-id">ALT-120A-V8</td>
+                                <td><strong>Alternator 120A Heavy Duty</strong></td>
+                                <td>Electrical</td>
+                                <td>Denso</td>
+                                <td>0</td>
+                                <td>৳18500</td>
+                                <td>Global Auto</td>
+                                <td><span class="status-badge status-out-of-stock">OUT OF STOCK</span></td>
+                                <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="part-id">OIL-SYN-5W30</td>
+                                <td><strong>Fully Synthetic Motor Oil 5W-30 (5L)</strong></td>
+                                <td>Fluids & Filters</td>
+                                <td>Castrol</td>
+                                <td>210</td>
+                                <td>৳4850</td>
+                                <td>Lube Wholesalers</td>
+                                <td><span class="status-badge status-in-stock">IN STOCK</span></td>
+                                <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination Footer -->
+                <div class="pagination-footer">
+                    <span>Showing 1 to 5 of 2,845 entries</span>
+                    <div class="pagination-controls">
+                        <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <span class="page-dots">...</span>
+                        <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
