@@ -32,7 +32,7 @@ button {
   display: flex;
 }
 
-/* ================= SIDEBAR ================= */
+/* SIDEBAR */
 .sidebar {
   position: fixed;
   left: 0;
@@ -145,7 +145,6 @@ button {
 .logout {
     height: 48px;
     margin-top: auto;
-    margin-bottom: 20px;
     padding-left: 32px;
     display: flex;
     align-items: center;
@@ -178,7 +177,7 @@ button {
     stroke-linejoin: round;
 }
 
-/* ================= MAIN ================= */
+/* MAIN */
 .main {
   margin-left: 250px;
   width: calc(100% - 250px);
@@ -297,7 +296,7 @@ button {
   margin-left: 8px;
 }
 
-/* ================= CONTENT ================= */
+/* CONTENT */
 .content {
   padding: 28px 32px 40px;
 }
@@ -376,7 +375,7 @@ button {
   stroke-linecap: round;
 }
 
-/* ================= STAT CARDS ================= */
+/* STAT CARDS */
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -461,7 +460,7 @@ button {
   color: #6b7280;
 }
 
-/* ================= TABLE ================= */
+/* TABLE */
 .job-table-container {
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -627,7 +626,7 @@ button {
   fill: currentColor;
 }
 
-/* ================= FOOTER / PAGINATION ================= */
+/* FOOTER */
 .table-footer {
   display: flex;
   align-items: center;
