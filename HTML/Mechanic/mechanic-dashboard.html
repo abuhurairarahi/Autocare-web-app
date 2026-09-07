@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare Mechanic - Dashboard</title>
+    <link rel="stylesheet" href="/Styles/Mechanic/mechanic-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Styles/Shared/default-sidebar-topbar-style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span
+                        style="color: #f97316;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Mechanic/mechanic-dashboard.html" class="nav-item active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/HTML/Mechanic/mechanic-assigned-jobs.html" class="nav-item"><i class="fa-solid fa-clipboard-list"></i> Assigned Jobs</a>
+                <a href="/HTML/Mechanic/mechanic-workflow.html" class="nav-item"><i class="fa-solid fa-diagram-project"></i> Progress</a>
+                <a href="/HTML/Mechanic/mechanic-parts-labor.html" class="nav-item"><i class="fa-solid fa-toolbox"></i> Parts &amp; Labor</a>
+                <a href="/HTML/Mechanic/mechanic-repair-photos.html" class="nav-item"><i class="fa-solid fa-camera"></i> Update Photos</a>
+                <a href="/HTML/Mechanic/mechanic-fault-report.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i> Report Faults</a>
+                <a href="/HTML/Mechanic/mechanic-chat.html" class="nav-item"><i class="fa-solid fa-comments"></i> Chats</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <!-- Top bar -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search jobs, parts...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">M</div>
+                </div>
+            </header>
+
+            <!-- Dashboard content -->
+            <section class="content">
+
+                <!-- Page heading -->
+                <div class="page-head">
+                    <div>
+                        <h1>Mechanic Dashboard</h1>
+                        <p>Overview of your current workload and performance metrics.</p>
+                    </div>
+                </div>
+
+                <!-- KPI cards - row 1 -->
+                <div class="kpi-row">
+
+                    <article class="kpi-card">
+                        <div class="kpi-card__top">
+                            <span class="kpi-icon indigo"><i class="fa-solid fa-briefcase"></i></span>
+                            <span class="kpi-badge up"><i class="fa-solid fa-arrow-trend-up"></i> +2%</span>
+                        </div>
+                        <div class="kpi-card__body">
+                            <p class="kpi-card__label">Assigned Jobs</p>
+                            <p class="kpi-card__value">12</p>
+                        </div>
+                    </article>
+
+                    <article class="kpi-card">
+                        <div class="kpi-card__top">
+                            <span class="kpi-icon coral"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                            <span class="kpi-badge down"><i class="fa-solid fa-arrow-trend-down"></i> -1%</span>
+                        </div>
+                        <div class="kpi-card__body">
+                            <p class="kpi-card__label">Jobs In Progress</p>
+                            <p class="kpi-card__value">5</p>
+                        </div>
+                    </article>
+
+                    <article class="kpi-card">
+                        <div class="kpi-card__top">
+                            <span class="kpi-icon slate"><i class="fa-solid fa-clipboard-check"></i></span>
+                        </div>
+                        <div class="kpi-card__body">
+                            <p class="kpi-card__label">Ready For Testing</p>
+                            <p class="kpi-card__value">3</p>
+                        </div>
+                    </article>
+
+                    <article class="kpi-card">
+                        <div class="kpi-card__top">
+                            <span class="kpi-icon teal"><i class="fa-solid fa-circle-check"></i></span>
+                            <span class="kpi-badge pos"><i class="fa-solid fa-arrow-trend-up"></i> +15%</span>
+                        </div>
+                        <div class="kpi-card__body">
+                            <p class="kpi-card__label">Completed Today</p>
+                            <p class="kpi-card__value">8</p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- KPI cards - bento row -->
+                <div class="bento-row">
+
+                    <article class="bento-card bento-card--dark">
+                        <span class="bento-card__glow"></span>
+                        <div class="bento-card__head">
+                            <p class="bento-card__label">Total Labor Hours</p>
+                            <p class="bento-card__value">142h</p>
+                        </div>
+                        <div class="bento-card__foot">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>This week</span>
+                        </div>
+                    </article>
+
+                    <article class="bento-card bento-card--light">
+                        <div class="bento-card__head">
+                            <p class="bento-card__label">Parts Used Today</p>
+                            <p class="bento-card__value">24</p>
+                        </div>
+                        <div class="bento-card__foot">
+                            <i class="fa-solid fa-box-archive"></i>
+                            <span>Across 8 jobs</span>
+                        </div>
+                    </article>
+
+                    <article class="bento-card bento-card--light">
+                        <div class="bento-card__head">
+                            <p class="bento-card__label">Productivity Score</p>
+                            <div class="score-row">
+                                <p class="bento-card__value accent">94%</p>
+                                <span class="score-note">Excellent</span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress__fill"></div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-row">
+
+                    <article class="chart-card chart-card--wide">
+                        <div class="chart-card__head">
+                            <h3 class="chart-card__title">Weekly Repair Performance</h3>
+                            <button class="chart-menu"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <div class="chart-placeholder">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span>Line/Area Chart Visualization</span>
+                        </div>
+                    </article>
+
+                    <article class="chart-card chart-card--narrow">
+                        <div class="chart-card__head">
+                            <h3 class="chart-card__title">Job Status Distribution</h3>
+                            <button class="chart-menu"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <div class="donut-wrap">
+                            <div class="donut"><span>20</span></div>
+                        </div>
+                        <div class="legend">
+                            <div class="legend__row">
+                                <span class="legend__left"><span class="legend__dot dot-assigned"></span><span class="legend__label">Assigned</span></span>
+                                <span class="legend__value">12</span>
+                            </div>
+                            <div class="legend__row">
+                                <span class="legend__left"><span class="legend__dot dot-progress"></span><span class="legend__label">In Progress</span></span>
+                                <span class="legend__value">5</span>
+                            </div>
+                            <div class="legend__row">
+                                <span class="legend__left"><span class="legend__dot dot-testing"></span><span class="legend__label">Testing</span></span>
+                                <span class="legend__value">3</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>
