@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Service Offers</title>
+    <link rel="stylesheet" href="/Styles/Admin/Admin-09.css">
+    <link rel="stylesheet" href="/Styles/Admin/default-sidebar-topbar-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+    <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span style="color: #f97316;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Admin/Admin-01.html" class="nav-item"><i class="fa-solid fa-border-all"></i> Dashboard</a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Managers</a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Mechanics</a>
+                <a href="/HTML/Admin/Admin-04.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle Owners</a>
+                <a href="/HTML/Admin/Admin-05.html" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service Categories</a>
+                <a href="/HTML/Admin/Admin-06.html" class="nav-item"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Inventory</a>
+                <a href="/HTML/Admin/Admin-07.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+                <a href="/HTML/Admin/Admin-08.html" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue Reports</a>
+                <a href="/HTML/Admin/Admin-09.html" class="nav-item active"><i class="fa-solid fa-tags"></i> Service Offers</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><span style="font-size: 18px;">⏻</span> Logout</a>                
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search managers, workshops...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">A</div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="dashboard-body">
+                <!-- Page Title Section -->
+                <div class="page-title-row">
+                    <div>
+                        <h1>Service Offers</h1>
+                        <p class="subtitle">Manage promotional discounts and campaigns.</p>
+                    </div>
+                    <div class="action-filters">
+                        <button class="primary-btn"><i class="fa-solid fa-plus"></i> Create New Offer</button>
+                    </div>
+                </div>
+
+                <!-- Offers Card Container -->
+                <div class="card offers-card">
+                    <!-- Tab and Sort Header -->
+                    <div class="offers-header-row">
+                        <div class="tabs-group">
+                            <button class="tab-btn active">All Offers</button>
+                            <button class="tab-btn">Active</button>
+                            <button class="tab-btn">Scheduled</button>
+                            <button class="tab-btn">Expired</button>
+                        </div>
+                        <div class="sort-group">
+                            <span class="sort-label">Sort by:</span>
+                            <div class="select-wrapper mini">
+                                <select>
+                                    <option value="newest" selected>Newest First</option>
+                                    <option value="oldest">Oldest First</option>
+                                    <option value="title">Offer Title</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Offers Table -->
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>OFFER TITLE</th>
+                                    <th>TARGET AUDIENCE</th>
+                                    <th>START DATE</th>
+                                    <th>EXPIRY DATE</th>
+                                    <th>STATUS</th>
+                                    <th class="text-right">ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-semibold">Summer Tire Swap - 20% Off</td>
+                                    <td>All Customers</td>
+                                    <td>Aug 01, 2026</td>
+                                    <td>Aug 15, 2026</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td class="text-right">
+                                        <div class="action-icons">
+                                            <button class="action-icon-btn"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="action-icon-btn delete"><i class="fa-regular fa-trash-can"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Fleet Maintenance Special</td>
+                                    <td>Fleet Accounts</td>
+                                    <td>Jan 01, 2024</td>
+                                    <td>Mar 31, 2024</td>
+                                    <td><span class="status-badge scheduled">Scheduled</span></td>
+                                    <td class="text-right">
+                                        <div class="action-icons">
+                                            <button class="action-icon-btn"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="action-icon-btn delete"><i class="fa-regular fa-trash-can"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Summer AC Recharge</td>
+                                    <td>New Customers</td>
+                                    <td>Jun 01, 2023</td>
+                                    <td>Aug 31, 2023</td>
+                                    <td><span class="status-badge expired">Expired</span></td>
+                                    <td class="text-right">
+                                        <div class="action-icons">
+                                            <button class="action-icon-btn"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="action-icon-btn delete"><i class="fa-regular fa-trash-can"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Revenue Reports</title>
+    <link rel="stylesheet" href="/Styles/Admin/Admin-08.css">
+    <link rel="stylesheet" href="/Styles/Admin/default-sidebar-topbar-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+    <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span style="color: #f97316;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Admin/Admin-01.html" class="nav-item"><i class="fa-solid fa-border-all"></i> Dashboard</a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Managers</a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Mechanics</a>
+                <a href="/HTML/Admin/Admin-04.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle Owners</a>
+                <a href="/HTML/Admin/Admin-05.html" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service Categories</a>
+                <a href="/HTML/Admin/Admin-06.html" class="nav-item"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Inventory</a>
+                <a href="/HTML/Admin/Admin-07.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+                <a href="/HTML/Admin/Admin-08.html" class="nav-item active"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue Reports</a>
+                <a href="/HTML/Admin/Admin-09.html" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><span style="font-size: 18px;">⏻</span> Logout</a>                
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search managers, workshops...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">A</div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="dashboard-body">
+                <!-- Page Title Section -->
+                <div class="page-title-row">
+                    <div>
+                        <h1>Revenue Reports</h1>
+                        <p class="subtitle">Monthly financial overview and transaction details.</p>
+                    </div>
+                    <div class="action-filters">
+                        <button class="secondary-btn"><i class="fa-regular fa-file-pdf"></i> Generate PDF</button>
+                        <button class="primary-btn"><i class="fa-solid fa-download"></i> Download CSV</button>
+                    </div>
+                </div>
+
+                <!-- Filter Card Section -->
+                <div class="card filter-card">
+                    <div class="filter-grid">
+                        <div class="filter-group">
+                            <label for="month-select">MONTH</label>
+                            <div class="select-wrapper">
+                                <select id="month-select">
+                                    <option value="July" selected>July</option>
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="year-select">YEAR</label>
+                            <div class="select-wrapper">
+                                <select id="year-select">
+                                    <option value="2026" selected>2026</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="filter-group location-group">
+                            <label for="location-select">WORKSHOP LOCATION</label>
+                            <div class="select-wrapper">
+                                <select id="location-select">
+                                    <option value="All Workshops" selected>All Workshops (Global)</option>
+                                    <option value="Dhaka">Dhaka Branch</option>
+                                    <option value="Rajshahi">Rajshahi Branch</option>
+                                    <option value="Chittagong">Chittagong Branch</option>
+                                    <option value="Khulna">Khulna Branch</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="filter-action">
+                            <button class="apply-btn">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>
