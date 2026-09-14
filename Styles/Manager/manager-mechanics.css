@@ -21,16 +21,12 @@ a {
     text-decoration: none;
 }
 
-/* =========================
-   MAIN APP LAYOUT
-========================= */
+/* MAIN LAYOUT */
 
 .app {
     min-height: 100vh;
     display: flex;
 }
-
-/* MAIN*/
 
 .main {
     margin-left: 280px;
@@ -92,7 +88,7 @@ a {
     border-color: #2563eb;
 }
 
-/* MECHANIC CARDS GRID*/
+/* MECHANIC CARDS GRID */
 
 .mechanic-grid {
     display: grid;
@@ -288,7 +284,7 @@ a {
     cursor: not-allowed;
 }
 
-/* RESPONSIVE*/
+/* RESPONSIVE */
 
 @media (max-width: 1200px) {
     .mechanic-grid {
@@ -297,27 +293,13 @@ a {
 }
 
 @media (max-width: 850px) {
-    .sidebar {
-        width: 220px;
-    }
-
     .main {
         margin-left: 220px;
         width: calc(100% - 220px);
     }
-
-    .search {
-        width: 300px;
-    }
 }
 
 @media (max-width: 700px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
     .app {
         flex-direction: column;
     }
@@ -325,11 +307,6 @@ a {
     .main {
         margin-left: 0;
         width: 100%;
-    }
-
-    .nav,
-    .logout {
-        display: none;
     }
 
     .mechanic-grid {

@@ -347,27 +347,13 @@ a {
 }
 
 @media (max-width: 850px) {
-    .sidebar {
-        width: 220px;
-    }
-
     .main {
         margin-left: 220px;
         width: calc(100% - 220px);
     }
-
-    .search {
-        width: 300px;
-    }
 }
 
 @media (max-width: 700px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
     .app {
         flex-direction: column;
     }
@@ -375,10 +361,5 @@ a {
     .main {
         margin-left: 0;
         width: 100%;
-    }
-
-    .nav,
-    .logout {
-        display: none;
     }
 }

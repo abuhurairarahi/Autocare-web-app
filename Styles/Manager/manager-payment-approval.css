@@ -22,7 +22,7 @@ a {
 }
 
 /* =========================
-   MAIN APP
+   MAIN APP LAYOUT
 ========================= */
 
 .app {
@@ -30,15 +30,12 @@ a {
     display: flex;
 }
 
-/* MAIN*/
-
 .main {
     margin-left: 280px;
     width: calc(100% - 280px);
     min-height: 100vh;
     background: #f4f5f9;
 }
-
 
 /* CONTENT AREA */
 
@@ -465,27 +462,13 @@ td.dim-text {
 }
 
 @media (max-width: 850px) {
-    .sidebar {
-        width: 220px;
-    }
-
     .main {
         margin-left: 220px;
         width: calc(100% - 220px);
     }
-
-    .search {
-        width: 300px;
-    }
 }
 
 @media (max-width: 700px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
     .app {
         flex-direction: column;
     }
@@ -493,11 +476,6 @@ td.dim-text {
     .main {
         margin-left: 0;
         width: 100%;
-    }
-
-    .nav,
-    .logout {
-        display: none;
     }
 
     .table-header {

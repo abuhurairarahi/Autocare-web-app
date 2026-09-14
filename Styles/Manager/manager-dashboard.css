@@ -495,11 +495,6 @@ p.one {
     color: #777f90;
 }
 
-.activity-text a {
-    color: #2861d2;
-    font-weight: 600;
-}
-
 /* RESPONSIVE */
 
 @media (max-width: 1200px) {
