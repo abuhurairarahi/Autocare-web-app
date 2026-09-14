@@ -31,17 +31,10 @@ a {
 /* MAIN */
 
 .main {
-<<<<<<< HEAD
-  margin-left: 280px;
-  width: calc(100% - 280px);
-  min-height: 100vh;
-  background: #fbf8ff;
-=======
     margin-left: 260px;
     width: calc(100% - 260px);
     min-height: 100vh;
     background: #fbf8ff;
->>>>>>> 37db222f43eb8bea1cce41be0baf8b132e51735e
 }
 
 /* CONTENT */
