@@ -1,0 +1,242 @@
+/* =====================================================
+   AutoCare - Vehicle Owner
+   Shared sidebar + top bar chrome, reused across all
+   VehicleOwner pages. Page-specific content styles live
+   in each page's own stylesheet.
+   ===================================================== */
+
+:root {
+    --vo-sidebar-bg: #eeedf6;
+    --vo-border: #c5c5d4;
+    --vo-text-dark: #1a1b22;
+    --vo-text-body: #444652;
+    --vo-navy: #00175c;
+    --vo-navy-bright: #00288e;
+    --vo-input-bg: #e9e7f0;
+    --vo-badge-bg: #e3e1ea;
+    --vo-placeholder: #6b7280;
+    --vo-logout-bg: rgba(255, 32, 32, 0.84);
+    --vo-logout-bg-hover: rgba(220, 20, 20, 0.9);
+}
+
+a {
+    color: inherit;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    flex-shrink: 0;
+    min-height: 100vh;
+    background: var(--vo-sidebar-bg);
+    border-right: 1px solid var(--vo-border);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 24px;
+}
+
+.brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #f97316;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 12px 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-right: 4px solid transparent;
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--vo-text-body);
+}
+
+.nav-item i {
+    width: 18px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.nav-item:hover {
+    background: rgba(0, 23, 92, 0.05);
+}
+
+.nav-item.active {
+    border-right-color: var(--vo-navy);
+    color: var(--vo-navy);
+    font-weight: 600;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    margin: 12px 16px 16px;
+    padding: 0 24px;
+    border-radius: 6px;
+    background: var(--vo-logout-bg);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background: var(--vo-logout-bg-hover);
+}
+
+/* ---------- Main content layout ---------- */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Top bar ---------- */
+.top-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 16px;
+    background: rgba(251, 248, 255, 0.8);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--vo-border);
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 256px;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 16px;
+    font-size: 13.5px;
+    color: var(--vo-placeholder);
+    pointer-events: none;
+}
+
+.search-bar input {
+    width: 100%;
+    height: 40px;
+    padding: 0 17px 0 41px;
+    background: var(--vo-input-bg);
+    border: 1px solid var(--vo-border);
+    border-radius: 9999px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--vo-text-dark);
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: var(--vo-placeholder);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+    color: var(--vo-text-body);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.icon-btn:hover {
+    background: var(--vo-badge-bg);
+}
+
+.header-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--vo-border);
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.profile-btn:hover {
+    background: var(--vo-badge-bg);
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--vo-border);
+    border-radius: 9999px;
+    background: var(--vo-navy-bright);
+    color: #7e97fe;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.profile-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    color: var(--vo-text-dark);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 240px;
+    }
+}

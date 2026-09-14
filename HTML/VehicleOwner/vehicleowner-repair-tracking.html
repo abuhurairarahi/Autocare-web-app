@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Live Repair Tracking</title>
+    <link rel="stylesheet" href="/Styles/VehicleOwner/vehicleowner-repair-tracking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Styles/Shared/vehicleowner-sidebar-topbar-style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #00175c;">Auto</span><span
+                        style="color: #fc4204;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/VehicleOwner/vehicleowner-dashboard.html" class="nav-item"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-my-vehicles.html" class="nav-item"><i class="fa-solid fa-car"></i> My Vehicles</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-service-appointments.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i> Service Appointments</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-repair-estimates.html" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Repair Estimates</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-repair-tracking.html" class="nav-item active"><i class="fa-solid fa-wrench"></i> Live Repair Tracking</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-service-history.html" class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i> Service History</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-invoices.html" class="nav-item"><i class="fa-solid fa-receipt"></i> Invoices</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-chat.html" class="nav-item"><i class="fa-solid fa-comment"></i> Chat</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-notifications.html" class="nav-item"><i class="fa-solid fa-bell"></i> Notifications</a>
+            </nav>
+            <a href="/HTML/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <!-- Top bar -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" aria-label="Notifications"><i class="fa-solid fa-bell"></i></button>
+                    <button class="icon-btn" aria-label="Help"><i class="fa-solid fa-circle-question"></i></button>
+                    <span class="header-divider"></span>
+                    <button class="profile-btn">
+                        <span class="user-avatar">JD</span>
+                        <span class="profile-label">Profile</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page content -->
+            <section class="content">
+                <div class="vo-wrap">
+
+                    <!-- Page header -->
+                    <div class="vo-header">
+                        <div class="vo-header__text">
+                            <h1>Live Repair Tracking</h1>
+                            <p>Real-time updates for your vehicle service.</p>
+                        </div>
+                        <div class="vo-header__actions">
+                            <button type="button" class="vo-btn vo-btn--soft"><i class="fa-solid fa-file-lines"></i> View Estimate</button>
+                            <button type="button" class="vo-btn vo-btn--primary"><i class="fa-solid fa-paper-plane"></i> Message Manager</button>
+                        </div>
+                    </div>
+
+                    <!-- Bento grid -->
+                    <div class="vo-grid">
+
+                        <!-- Left: vehicle status card -->
+                        <section class="vo-vehicle-card">
+                            <div class="vo-vehicle-card__head">
+                                <div class="vo-vehicle-card__id">
+                                    <span class="vo-vehicle-icon"><i class="fa-solid fa-car"></i></span>
+                                    <div>
+                                        <h2>BMW X5</h2>
+                                        <div class="vo-vehicle-card__meta">
+                                            <span class="vo-plate">B-XX-789</span>
+                                            <span class="vo-vehicle-card__desc">2021 &bull; Black Sapphire</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="vo-status-pill"><span class="vo-status-pill__dot"></span> Repairing - Active</span>
+                            </div>
+
+                            <div class="vo-timeline">
+                                <h3>Repair Progress</h3>
+                                <div class="vo-stages">
+                                    <div class="vo-stages__line"></div>
+                                    <div class="vo-stages__line vo-stages__line--active"></div>
+
+                                    <div class="vo-stage vo-stage--done">
+                                        <span class="vo-stage__icon"><i class="fa-solid fa-check"></i></span>
+                                        <div class="vo-stage__label">
+                                            <p class="vo-stage__name">Diagnosis</p>
+                                            <p class="vo-stage__status vo-stage__status--done">Completed</p>
+                                            <p class="vo-stage__time">Oct 23, 10:00 AM</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="vo-stage vo-stage--active">
+                                        <span class="vo-stage__icon">
+                                            <i class="fa-solid fa-wrench"></i>
+                                            <span class="vo-stage__ping"></span>
+                                        </span>
+                                        <div class="vo-stage__label">
+                                            <p class="vo-stage__name vo-stage__name--active">Repairing</p>
+                                            <p class="vo-stage__status vo-stage__status--active">Active Now</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="vo-stage">
+                                        <span class="vo-stage__icon"><i class="fa-solid fa-vial"></i></span>
+                                        <div class="vo-stage__label">
+                                            <p class="vo-stage__name">Testing</p>
+                                            <p class="vo-stage__status">Pending</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="vo-stage">
+                                        <span class="vo-stage__icon"><i class="fa-solid fa-key"></i></span>
+                                        <div class="vo-stage__label">
+                                            <p class="vo-stage__name">Ready for Pickup</p>
+                                            <p class="vo-stage__status">Pending</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vo-mechanic-banner">
+                                <div class="vo-mechanic-banner__who">
+                                    <img src="assets/mechanic-alex-carter.jpg" alt="Alex Carter, assigned mechanic" class="vo-mechanic-avatar">
+                                    <div>
+                                        <p class="vo-mechanic-banner__label">Assigned Mechanic</p>
+                                        <p class="vo-mechanic-banner__name">Alex Carter (Master Tech)</p>
+                                    </div>
+                                </div>
+                                <div class="vo-mechanic-banner__eta">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <div>
+                                        <p class="vo-mechanic-banner__label">Est. Completion</p>
+                                        <p class="vo-mechanic-banner__name">Oct 24, 4:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Right: gallery + service details -->
+                        <aside class="vo-col-right">
+                            <section class="vo-card">
+                                <div class="vo-card__head">
+                                    <h3>Live Gallery</h3>
+                                    <span class="vo-badge">3 New</span>
+                                </div>
+                                <p class="vo-card__desc">Photos uploaded directly from the service bay.</p>
+                                <div class="vo-gallery">
+                                    <figure class="vo-gallery__item">
+                                        <img src="assets/repair-gallery-1.jpg" alt="Car raised on a lift during inspection">
+                                        <span class="vo-gallery__overlay"><i class="fa-solid fa-expand"></i></span>
+                                        <span class="vo-gallery__time">10:15 AM</span>
+                                    </figure>
+                                    <figure class="vo-gallery__item">
+                                        <img src="assets/repair-gallery-2.jpg" alt="Mechanic servicing a brake rotor">
+                                        <span class="vo-gallery__overlay"><i class="fa-solid fa-expand"></i></span>
+                                        <span class="vo-gallery__time">11:30 AM</span>
+                                    </figure>
+                                    <figure class="vo-gallery__item">
+                                        <img src="assets/repair-gallery-3.jpg" alt="BMW engine bay during service">
+                                        <span class="vo-gallery__overlay"><i class="fa-solid fa-expand"></i></span>
+                                        <span class="vo-gallery__time">1:45 PM</span>
+                                    </figure>
+                                    <button type="button" class="vo-gallery__more">
+                                        <i class="fa-solid fa-images"></i>
+                                        <span>View All (8)</span>
+                                    </button>
+                                </div>
+                            </section>
+
+                            <section class="vo-card">
+                                <h3>Service Details</h3>
+                                <dl class="vo-details">
+                                    <div class="vo-details__row">
+                                        <dt>Service Type</dt>
+                                        <dd>Major 60k Mile</dd>
+                                    </div>
+                                    <div class="vo-details__row">
+                                        <dt>RO Number</dt>
+                                        <dd>#RO-2023-8942</dd>
+                                    </div>
+                                    <div class="vo-details__row vo-details__row--last">
+                                        <dt>Approved Total</dt>
+                                        <dd>$1,245.00</dd>
+                                    </div>
+                                </dl>
+                            </section>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>
