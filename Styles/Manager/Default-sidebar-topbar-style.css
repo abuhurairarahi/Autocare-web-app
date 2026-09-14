@@ -54,12 +54,12 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: 280px;
+    width: 260px;
     height: 100vh;
     background: #00288e;
     display: flex;
     flex-direction: column;
-    z-index: 100;
+    z-index: 1200;
 }
 
 .brand {

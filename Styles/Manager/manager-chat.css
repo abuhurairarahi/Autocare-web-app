@@ -27,8 +27,8 @@ body {
 /* MAIN AREA */
 
 .main {
-    margin-left: 280px;
-    width: calc(100% - 280px);
+    margin-left: 260px;
+    width: calc(100% - 260px);
     height: 100vh;
     display: flex;
     flex-direction: column;

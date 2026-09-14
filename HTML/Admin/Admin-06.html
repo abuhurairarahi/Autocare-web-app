@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,55 +9,95 @@
     <link rel="stylesheet" href="/Styles/Admin/default-sidebar-topbar-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-    <div class="app-container">
-        <!-- Sidebar -->
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
         <aside class="sidebar">
-            <div class="sidebar-brand">
+
+            <div class="brand">
                 <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
-                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span
-                        style="color: #f97316;">Care</span></span>
+                <span class="brand-name">
+                    <span style="color: #ffffff;">Auto</span><span style="color: #f97316;">Care</span>
+                </span>
             </div>
-            <nav class="sidebar-nav">
-                <a href="/HTML/Admin/Admin-01.html" class="nav-item"><i class="fa-solid fa-border-all"></i> Dashboard</a>
-                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Managers</a>
-                <a href="/HTML/Admin/Admin-03.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop Mechanics</a>
-                <a href="/HTML/Admin/Admin-04.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle Owners</a>
-                <a href="/HTML/Admin/Admin-05.html" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service Categories</a>
-                <a href="/HTML/Admin/Admin-06.html" class="nav-item active"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Inventory</a>
+
+            <!-- Nav Bar -->
+            <nav class="nav">
+                <a href="/HTML/Admin/Admin-01.html" class="nav-item"><i class="fa-solid fa-border-all"></i>
+                    Dashboard</a>
+                <a href="/HTML/Admin/Admin-02.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop
+                    Managers</a>
+                <a href="/HTML/Admin/Admin-03.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop
+                    Mechanics</a>
+                <a href="/HTML/Admin/Admin-04.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle
+                    Owners</a>
+                <a href="/HTML/Admin/Admin-05.html" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service
+                    Categories</a>
+                <a href="/HTML/Admin/Admin-06.html" class="nav-item active"><i class="fa-solid fa-boxes-stacked"></i> Spare
+                    Parts Inventory</a>
                 <a href="/HTML/Admin/Admin-07.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
-                <a href="/HTML/Admin/Admin-08.html" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue Reports</a>
+                <a href="/HTML/Admin/Admin-08.html" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i>
+                    Revenue Reports</a>
                 <a href="/HTML/Admin/Admin-09.html" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
-                <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
+                <a href="/HTML/Admin/Admin-10.html" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
             </nav>
-            <div class="sidebar-footer">
-                <a href="/HTML/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-            </div>
+
+            <a class="logout" href="/HTML/login.html">
+                <span><i class="fa-solid fa-right-from-bracket"></i></span>Logout
+            </a>
+
         </aside>
 
-        <main class="main-content">
-            <header class="top-header-admin-6">
-                <div class="search-bar">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+
+        <!-- MAIN -->
+        <main class="main">
+
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="search">
+                    <div class="search-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
                     <input type="text" placeholder="Search managers, workshops...">
                 </div>
-                <div class="header-actions">
-                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
-                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
-                    <div class="user-avatar">A</div>
+
+                <div class="top-actions">
+                    <div class="notification">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <b></b>
+                    </div>
+
+                    <div class="mail">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="avatar">A</div>
                 </div>
             </header>
 
             <!-- Dashboard Content -->
-            <main class="content-area">
+            <div class="content-body">
                 <div class="page-header">
                     <div>
                         <h1>Spare Parts Inventory</h1>
                         <p>Manage workshop stock levels, track values, and initiate restocks.</p>
                     </div>
                     <div class="page-actions">
-                        <button class="btn btn-outline"><i class="fa-solid fa-arrow-up-from-bracket"></i> Export</button>
+                        <button class="btn btn-outline"><i class="fa-solid fa-arrow-up-from-bracket"></i>
+                            Export</button>
                         <button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Restock</button>
                     </div>
                 </div>
@@ -69,7 +110,8 @@
                             <span class="stat-label">TOTAL PARTS</span>
                             <div class="stat-value-row">
                                 <h2>12,450</h2>
-                                <span class="badge badge-success"><i class="fa-solid fa-arrow-trend-up"></i> +2.4%</span>
+                                <span class="badge badge-success"><i class="fa-solid fa-arrow-trend-up"></i>
+                                    +2.4%</span>
                             </div>
                         </div>
                     </div>
@@ -80,7 +122,8 @@
                             <span class="stat-label">LOW STOCK ITEMS</span>
                             <div class="stat-value-row">
                                 <h2>42</h2>
-                                <span class="badge badge-danger"><i class="fa-solid fa-arrow-down"></i> 14 Critical</span>
+                                <span class="badge badge-danger"><i class="fa-solid fa-arrow-down"></i> 14
+                                    Critical</span>
                             </div>
                         </div>
                     </div>
@@ -89,7 +132,7 @@
                         <div class="stat-icon purple"><i class="fa-solid fa-wallet"></i></div>
                         <div class="stat-info">
                             <span class="stat-label">INVENTORY VALUE</span>
-                            <h2>৳845,200</h2>
+                            <h2>$845,200</h2>
                         </div>
                     </div>
                 </div>
@@ -97,9 +140,28 @@
                 <!-- Table Filters -->
                 <div class="table-filter-bar">
                     <div class="filter-dropdowns">
-                        <div class="dropdown">All Categories <i class="fa-solid fa-chevron-down"></i></div>
-                        <div class="dropdown">All Brands <i class="fa-solid fa-chevron-down"></i></div>
-                        <div class="dropdown">Status: All <i class="fa-solid fa-chevron-down"></i></div>
+                        <div class="dropdown">
+                        <select name="Categories" id="dropdown" class="indi-drop">
+                            <option value="all-cat">All Categories</option>
+                            <option value="Brakes & Suspension">Brakes & Suspension</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Fluids & Filters">Fluids & Filters</option>
+                        </select></div>
+                        <div class="dropdown">
+                        <select name="Brands" id="All-Brands" class="indi-drop">
+                            <option value="all-cat">All Brands</option>
+                            <option value="Brembo">Brembo</option>
+                            <option value="Bosch">Bosch</option>
+                            <option value="Denso">Denso</option>
+                            <option value="Castrol">Castrol</option>
+                        </select></div>
+                        <span class="dropdown dropdown-span"> Status: 
+                        <select name="Status" id="Status" class="stat-drop">
+                            <option value="all">All</option>
+                            <option value="instock">In Stock</option>
+                            <option value="out-stock">Out of Stock</option>
+                        </select>
+                        </span>
                     </div>
                     <div class="filter-tools">
                         <button class="tool-btn"><i class="fa-solid fa-bars"></i></button>
@@ -130,7 +192,7 @@
                                 <td>Brakes & Suspension</td>
                                 <td>Brembo</td>
                                 <td>145</td>
-                                <td>৳4500</td>
+                                <td>$4,500</td>
                                 <td>AutoParts Direct</td>
                                 <td><span class="status-badge status-in-stock">IN STOCK</span></td>
                                 <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
@@ -141,7 +203,7 @@
                                 <td>Fluids & Filters</td>
                                 <td>Bosch</td>
                                 <td>12</td>
-                                <td>৳8450</td>
+                                <td>$8,450</td>
                                 <td>EuroSpares Ltd</td>
                                 <td><span class="status-badge status-low-stock">LOW STOCK</span></td>
                                 <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
@@ -152,7 +214,7 @@
                                 <td>Engine Components</td>
                                 <td>NGK</td>
                                 <td>88</td>
-                                <td>৳3200</td>
+                                <td>$3,200</td>
                                 <td>AutoParts Direct</td>
                                 <td><span class="status-badge status-in-stock">IN STOCK</span></td>
                                 <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
@@ -163,7 +225,7 @@
                                 <td>Electrical</td>
                                 <td>Denso</td>
                                 <td>0</td>
-                                <td>৳18500</td>
+                                <td>$18,500</td>
                                 <td>Global Auto</td>
                                 <td><span class="status-badge status-out-of-stock">OUT OF STOCK</span></td>
                                 <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
@@ -174,7 +236,7 @@
                                 <td>Fluids & Filters</td>
                                 <td>Castrol</td>
                                 <td>210</td>
-                                <td>৳4850</td>
+                                <td>$4,850</td>
                                 <td>Lube Wholesalers</td>
                                 <td><span class="status-badge status-in-stock">IN STOCK</span></td>
                                 <td><button class="action-icon"><i class="fa-solid fa-cart-shopping"></i></button></td>
@@ -195,9 +257,10 @@
                         <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
                     </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
 
 </body>
+
 </html>

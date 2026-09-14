@@ -1,44 +1,9 @@
 :root {
-    --sidebar-bg: #091a45;
-    --brand-orange: #f97316;
-    --bg-color: #f8fafc;
-    --text-main: #1e293b;
     --text-muted: #757684;
     --border-color: #e2e8f0;
     --primary-blue: #0A2277;
-    --primary: #00288E;
-    --primary-hover: #001f6e;
-    --sidebar-active: #A9B5E5;
-    --logout-bg: #D62132;
-    --bg-app: #FBF8FF;
-    --bg-content: #F4F2FC;
-    --border: #C4C5D5;
     --text-dark: #0B1220;
-    --text-body: #545E6F;
-    --green-bg: #D1FAE5;
-    --green-text: #065F46;
-    --blue-pill-bg: #D0E1FB;
-    --blue-pill-text: #54647A;
-    --avatar-bg: #D0E1FB;
-    --avatar-text: #54647A;
-    --navy-950: #070B14;
-    --navy-900: #0B1B3A;
-    --navy-800: #152650;
-    --navy-700: #152145;
-    --orange: #FB7C00;
-    --orange-deep: #FF5100;
-    --orange-mid: #FF6A24;
-    --orange-light: #FF8D1D;
-    --line: #D8DFE8;
-    --bg-services: #F3F4F6;
-    --bg-locations: #F7FBFA;
-    --bg-contact: #FAFAFA;
     --white: #FEFEFE;
-    --radius-lg: 24px;
-    --radius-md: 16px;
-    --radius-sm: 8px;
-    --sidebar-blue: #071952;
-    --accent-red: #E63946;
     --bg-light: #F4F6F9;
     --status-pending-bg: #FEF3C7;
     --status-pending-text: #D97706;
@@ -47,36 +12,39 @@
     --status-suspended-bg: #FEE2E2;
     --status-suspended-text: #DC2626;
 }
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
+
 body {
     background-color: var(--bg-light);
     color: var(--text-dark);
 }
+
 .dashboard-container {
     display: flex;
     min-height: 100vh;
 }
+
 /* Page Body */
-.content-body {
-    padding: 32px;
-}
 .page-title {
     font-size: 24px;
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 24px;
 }
+
 .card {
     background-color: var(--white);
     border-radius: 8px;
     border: 1px solid var(--border-color);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
+
 /* Table Actions Bar */
 .table-actions {
     padding: 20px 24px;
@@ -85,10 +53,12 @@ body {
     justify-content: space-between;
     border-bottom: 1px solid var(--border-color);
 }
+
 .action-buttons {
     display: flex;
     gap: 10px;
 }
+
 .btn-outline {
     background-color: var(--white);
     border: 1px solid var(--border-color);
@@ -102,22 +72,27 @@ body {
     align-items: center;
     gap: 6px;
 }
+
 .btn-outline:hover {
     background-color: var(--bg-light);
 }
+
 .table-info {
     font-size: 13px;
     color: var(--text-muted);
 }
+
 /* Table Design */
 .table-responsive {
     overflow-x: auto;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
 }
+
 th {
     background-color: #FAFAFB;
     padding: 12px 24px;
@@ -127,26 +102,31 @@ th {
     color: var(--text-muted);
     border-bottom: 1px solid var(--border-color);
 }
+
 td {
     padding: 16px 24px;
     font-size: 14px;
     color: var(--text-dark);
     border-bottom: 1px solid var(--border-color);
 }
+
 tr:last-child td {
     border-bottom: none;
 }
+
 .applicant-cell {
     display: flex;
     align-items: center;
     gap: 12px;
 }
+
 .avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
 }
+
 .avatar-placeholder {
     width: 36px;
     height: 36px;
@@ -158,53 +138,85 @@ tr:last-child td {
     font-weight: 600;
     color: var(--white);
 }
+
 .avatar-placeholder.sj {
     background-color: #3B82F6;
 }
+
 .avatar-placeholder.dp {
     background-color: #8B5CF6;
 }
+
 .applicant-cell .name {
     display: block;
     font-weight: 600;
     color: var(--text-dark);
 }
+
 .applicant-cell .email {
     display: block;
     font-size: 12px;
     color: var(--text-muted);
 }
+
 /* Status Badges */
 .status-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
     border: none;
-    padding: 6px 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    width: 130px;
     border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
     cursor: pointer;
     transition: filter 0.2s;
 }
+
+.status {
+    background-color: transparent;
+    border: none;
+    width: 100px;
+}
+
+/* status: Pending */
+.status:has(option[value="pending"]:checked) {
+    font-weight: 500;
+    color: var(--status-pending-text);
+}
+
+.status-btn:has(option[value="pending"]:checked) {
+    background-color: var(--status-pending-bg);
+}
+
+/* status: Approved */
+.status:has(option[value="approved"]:checked) {
+    font-weight: 500;
+    color: var(--status-approved-text);
+}
+
+.status-btn:has(option[value="approved"]:checked) {
+    background-color: var(--status-approved-bg);
+}
+
+/* status: Suspended */
+.status:has(option[value="suspended"]:checked) {
+    font-weight: 500;
+    color: var(--status-suspended-text);
+}
+
+.status-btn:has(option[value="suspended"]:checked) {
+    background-color: var(--status-suspended-bg);
+}
+
+
 .status-btn:hover {
     filter: brightness(0.95);
 }
+
 .status-btn i {
     font-size: 10px;
 }
-.status-btn.pending {
-    background-color: var(--status-pending-bg);
-    color: var(--status-pending-text);
-}
-.status-btn.approved {
-    background-color: var(--status-approved-bg);
-    color: var(--status-approved-text);
-}
-.status-btn.suspended {
-    background-color: var(--status-suspended-bg);
-    color: var(--status-suspended-text);
-}
+
 /* Pagination Footer */
 .pagination-footer {
     padding: 16px 24px;
@@ -213,6 +225,7 @@ tr:last-child td {
     justify-content: space-between;
     border-top: 1px solid var(--border-color);
 }
+
 .page-nav {
     background: none;
     border: none;
@@ -220,14 +233,17 @@ tr:last-child td {
     color: var(--text-muted);
     cursor: pointer;
 }
+
 .page-nav:disabled {
     opacity: 0.5;
     cursor: default;
 }
+
 .page-numbers {
     display: flex;
     gap: 6px;
 }
+
 .page-num {
     width: 28px;
     height: 28px;
@@ -240,7 +256,27 @@ tr:last-child td {
     cursor: pointer;
     color: var(--text-dark);
 }
+
 .page-num.active {
     background-color: var(--primary-blue);
     color: var(--white);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    .table-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .pagination-footer {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
 }
