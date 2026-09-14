@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Repair Estimates</title>
+    <link rel="stylesheet" href="/Styles/VehicleOwner/vehicleowner-repair-estimates.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Styles/Shared/vehicleowner-sidebar-topbar-style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #00175c;">Auto</span><span
+                        style="color: #fc4204;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/VehicleOwner/vehicleowner-dashboard.html" class="nav-item"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-vehicles.html" class="nav-item"><i class="fa-solid fa-car"></i> My Vehicles</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-book-appointment.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i> Service Appointments</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-repair-estimates.html" class="nav-item active"><i class="fa-solid fa-file-invoice-dollar"></i> Repair Estimates</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-repair-tracking.html" class="nav-item"><i class="fa-solid fa-wrench"></i> Live Repair Tracking</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-service-history.html" class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i> Service History</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-invoices.html" class="nav-item"><i class="fa-solid fa-receipt"></i> Invoices</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-chat.html" class="nav-item"><i class="fa-solid fa-comment"></i> Chat</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-notifications.html" class="nav-item"><i class="fa-solid fa-bell"></i> Notifications</a>
+            </nav>
+            <a href="/HTML/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <!-- Top bar -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search estimates...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" aria-label="Notifications"><i class="fa-solid fa-bell"></i></button>
+                    <button class="icon-btn" aria-label="Help"><i class="fa-solid fa-circle-question"></i></button>
+                    <span class="header-divider"></span>
+                    <button class="profile-btn">
+                        <span class="user-avatar">JD</span>
+                        <span class="profile-label">Profile</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page content -->
+            <section class="content">
+                <div class="vo-wrap">
+
+                    <!-- Page header -->
+                    <div class="vo-header">
+                        <nav class="vo-breadcrumb" aria-label="Breadcrumb">
+                            <a href="/HTML/VehicleOwner/vehicleowner-dashboard.html">Dashboard</a>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>Repair Estimates</span>
+                        </nav>
+                        <h1>Repair Estimates</h1>
+                    </div>
+
+                    <!-- KPI row -->
+                    <div class="vo-kpis">
+                        <div class="vo-kpi">
+                            <div>
+                                <p class="vo-kpi__label">Pending Approvals</p>
+                                <p class="vo-kpi__value">3</p>
+                            </div>
+                            <span class="vo-kpi__icon vo-kpi__icon--pending"><i class="fa-solid fa-hourglass-half"></i></span>
+                        </div>
+                        <div class="vo-kpi">
+                            <div>
+                                <p class="vo-kpi__label">Approved Estimates</p>
+                                <p class="vo-kpi__value">12</p>
+                            </div>
+                            <span class="vo-kpi__icon vo-kpi__icon--approved"><i class="fa-solid fa-circle-check"></i></span>
+                        </div>
+                        <div class="vo-kpi vo-kpi--total">
+                            <div>
+                                <p class="vo-kpi__label">Total Estimated Value</p>
+                                <p class="vo-kpi__value">$4,250.00</p>
+                            </div>
+                            <span class="vo-kpi__icon vo-kpi__icon--total"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Estimates list -->
+                    <div class="vo-estimates">
+
+                        <!-- Detailed estimate -->
+                        <article class="vo-estimate">
+                            <div class="vo-estimate__main">
+                                <div class="vo-estimate__header">
+                                    <div>
+                                        <div class="vo-estimate__title-row">
+                                            <h2>EST-2023-104</h2>
+                                            <span class="vo-badge vo-badge--awaiting">Awaiting Approval</span>
+                                        </div>
+                                        <p class="vo-estimate__meta">Vehicle: <strong>2019 Toyota Tacoma</strong> | Date: Oct 24, 2023</p>
+                                    </div>
+                                    <button type="button" class="vo-btn-outline"><i class="fa-regular fa-file-pdf"></i> View PDF</button>
+                                </div>
+
+                                <div class="vo-table-wrap">
+                                    <table class="vo-breakdown">
+                                        <thead>
+                                            <tr>
+                                                <th>Item/Service</th>
+                                                <th>Category</th>
+                                                <th class="vo-num">Quantity</th>
+                                                <th class="vo-num">Unit Price</th>
+                                                <th class="vo-num">Total</th>
+                                                <th class="vo-num">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Front Brake Pad Replacement</td>
+                                                <td><span class="vo-pill vo-pill--labor">Labor</span></td>
+                                                <td class="vo-num">2 hrs</td>
+                                                <td class="vo-num">$90.00</td>
+                                                <td class="vo-num vo-num--strong">$180.00</td>
+                                                <td class="vo-num"><button type="button" class="vo-icon-btn" aria-label="Remove Front Brake Pad Replacement"><i class="fa-regular fa-trash-can"></i></button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ceramic Brake Pads (Set)</td>
+                                                <td><span class="vo-pill vo-pill--parts">Parts</span></td>
+                                                <td class="vo-num">1</td>
+                                                <td class="vo-num">$145.00</td>
+                                                <td class="vo-num vo-num--strong">$145.00</td>
+                                                <td class="vo-num"><button type="button" class="vo-icon-btn" aria-label="Remove Ceramic Brake Pads"><i class="fa-regular fa-trash-can"></i></button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Brake Rotor Resurfacing</td>
+                                                <td><span class="vo-pill vo-pill--labor">Labor</span></td>
+                                                <td class="vo-num">2</td>
+                                                <td class="vo-num">$60.00</td>
+                                                <td class="vo-num vo-num--strong">$120.00</td>
+                                                <td class="vo-num"><button type="button" class="vo-icon-btn" aria-label="Remove Brake Rotor Resurfacing"><i class="fa-regular fa-trash-can"></i></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <button type="button" class="vo-btn-outline vo-btn-outline--muted"><i class="fa-solid fa-square-plus"></i> Add Service/Part</button>
+
+                                <div class="vo-estimate__footer">
+                                    <div class="vo-estimate__actions">
+                                        <button type="button" class="vo-btn vo-btn--primary">Approve Estimate</button>
+                                        <button type="button" class="vo-btn vo-btn--link">Request Clarification</button>
+                                    </div>
+                                    <dl class="vo-summary">
+                                        <div class="vo-summary__row">
+                                            <dt>Subtotal:</dt>
+                                            <dd>$445.00</dd>
+                                        </div>
+                                        <div class="vo-summary__row">
+                                            <dt>Taxes (8.5%):</dt>
+                                            <dd>$37.83</dd>
+                                        </div>
+                                        <div class="vo-summary__row vo-summary__row--total">
+                                            <dt>Total:</dt>
+                                            <dd>$482.83</dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <aside class="vo-estimate__notes">
+                                <h3><i class="fa-regular fa-note-sticky"></i> Technician Notes</h3>
+                                <div class="vo-notes__body">
+                                    <p>During the multi-point inspection, we found the front brake pads are worn down to 2mm (minimum safe thickness is 3mm). The rotors show slight glazing but are thick enough to be resurfaced rather than replaced.</p>
+                                    <p>Recommend immediate replacement to ensure safe braking distances and prevent damage to the calipers.</p>
+                                </div>
+                                <div class="vo-technician">
+                                    <img src="assets/technician-mike-henderson.jpg" alt="Mike Henderson, senior technician">
+                                    <div>
+                                        <p class="vo-technician__name">Mike Henderson</p>
+                                        <p class="vo-technician__role">Senior Technician</p>
+                                    </div>
+                                </div>
+                            </aside>
+                        </article>
+
+                        <!-- Collapsed estimate -->
+                        <article class="vo-collapsed-estimate">
+                            <div class="vo-collapsed-estimate__left">
+                                <span class="vo-collapsed-estimate__icon"><i class="fa-solid fa-wrench"></i></span>
+                                <div>
+                                    <div class="vo-estimate__title-row">
+                                        <h2>EST-2023-102</h2>
+                                        <span class="vo-badge vo-badge--approved">Approved</span>
+                                    </div>
+                                    <p class="vo-estimate__meta">2021 Honda Civic | Oil Change &amp; Tire Rotation</p>
+                                </div>
+                            </div>
+                            <div class="vo-collapsed-estimate__right">
+                                <span class="vo-estimate__amount">$125.50</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>
