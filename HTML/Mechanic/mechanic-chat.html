@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare Mechanic - Chats</title>
+    <link rel="stylesheet" href="/Styles/Mechanic/mechanic-chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Styles/Shared/default-sidebar-topbar-style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span
+                        style="color: #f97316;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Mechanic/mechanic-dashboard.html" class="nav-item"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/HTML/Mechanic/mechanic-assigned-jobs.html" class="nav-item"><i class="fa-solid fa-clipboard-list"></i> Assigned Jobs</a>
+                <a href="/HTML/Mechanic/mechanic-workflow.html" class="nav-item"><i class="fa-solid fa-diagram-project"></i> Progress</a>
+                <a href="/HTML/Mechanic/mechanic-parts-labor.html" class="nav-item"><i class="fa-solid fa-toolbox"></i> Parts &amp; Labor</a>
+                <a href="/HTML/Mechanic/mechanic-repair-photos.html" class="nav-item"><i class="fa-solid fa-camera"></i> Update Photos</a>
+                <a href="/HTML/Mechanic/mechanic-fault-report.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i> Report Faults</a>
+                <a href="/HTML/Mechanic/mechanic-chat.html" class="nav-item active"><i class="fa-solid fa-comments"></i> Chats</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <!-- Top bar -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search jobs, parts...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">M</div>
+                </div>
+            </header>
+
+            <!-- Page content -->
+            <section class="content">
+                <div class="chat-layout">
+
+                    <!-- Conversations list -->
+                    <aside class="chat-list">
+                        <div class="chat-list__search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search chats...">
+                        </div>
+
+                        <nav class="chat-list__items">
+                            <a href="#" class="chat-item chat-item--active">
+                                <span class="chat-avatar chat-avatar--navy">
+                                    WM
+                                    <span class="chat-status chat-status--online"></span>
+                                </span>
+                                <div class="chat-item__body">
+                                    <div class="chat-item__top">
+                                        <h3 class="chat-item__name">Workshop Manager (Sarah)</h3>
+                                        <span class="chat-item__time">10:42 AM</span>
+                                    </div>
+                                    <p class="chat-item__preview">Are the parts for Bay 3 ready?</p>
+                                </div>
+                            </a>
+
+                            <a href="#" class="chat-item">
+                                <span class="chat-avatar chat-avatar--blue">
+                                    PD
+                                    <span class="chat-status chat-status--away"></span>
+                                </span>
+                                <div class="chat-item__body">
+                                    <div class="chat-item__top">
+                                        <h3 class="chat-item__name">Parts Department</h3>
+                                        <span class="chat-item__time chat-item__time--unread">09:15 AM</span>
+                                    </div>
+                                    <p class="chat-item__preview chat-item__preview--unread">Invoice #4421 attached.</p>
+                                </div>
+                                <span class="chat-item__dot" aria-label="Unread"></span>
+                            </a>
+
+                            <a href="#" class="chat-item">
+                                <span class="chat-avatar chat-avatar--gray">L2</span>
+                                <div class="chat-item__body">
+                                    <div class="chat-item__top">
+                                        <h3 class="chat-item__name">Logistics Team 2</h3>
+                                        <span class="chat-item__time">Yesterday</span>
+                                    </div>
+                                    <p class="chat-item__preview">Truck is on the way.</p>
+                                </div>
+                            </a>
+                        </nav>
+                    </aside>
+
+                    <!-- Chat thread -->
+                    <section class="chat-thread">
+                        <header class="chat-thread__header">
+                            <div class="chat-thread__who">
+                                <span class="chat-avatar chat-avatar--navy chat-avatar--lg">WM</span>
+                                <div class="chat-thread__info">
+                                    <h2>Workshop Manager (Sarah)</h2>
+                                    <p><span class="status-dot"></span> Online - Bay 3 Issue</p>
+                                </div>
+                            </div>
+                            <div class="chat-thread__actions">
+                                <button type="button" class="chat-icon-btn" aria-label="Call"><i class="fa-solid fa-phone"></i></button>
+                                <button type="button" class="chat-icon-btn" aria-label="More options"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                        </header>
+
+                        <div class="chat-thread__messages">
+                            <div class="chat-date-divider"><span>Today, Oct 24</span></div>
+
+                            <div class="msg msg--received">
+                                <span class="chat-avatar chat-avatar--navy chat-avatar--sm">WM</span>
+                                <div class="msg__body">
+                                    <div class="msg__meta">
+                                        <span class="msg__name">Sarah</span>
+                                        <span class="msg__time">10:30 AM</span>
+                                    </div>
+                                    <div class="msg__bubble">Hey, just checking on the status of Unit 402. The client is asking for an ETA.</div>
+                                </div>
+                            </div>
+
+                            <div class="msg msg--sent">
+                                <div class="msg__body">
+                                    <div class="msg__meta">
+                                        <span class="msg__time">10:35 AM</span>
+                                        <span class="msg__name">You</span>
+                                    </div>
+                                    <div class="msg__bubble msg__bubble--sent">Almost done. Just waiting on the replacement filters from Parts. Should be buttoned up in about an hour.</div>
+                                </div>
+                                <span class="chat-avatar chat-avatar--blue chat-avatar--sm">Me</span>
+                            </div>
+
+                            <div class="msg msg--received">
+                                <span class="chat-avatar chat-avatar--navy chat-avatar--sm">WM</span>
+                                <div class="msg__body">
+                                    <div class="msg__meta">
+                                        <span class="msg__name">Sarah</span>
+                                        <span class="msg__time">10:42 AM</span>
+                                    </div>
+                                    <div class="msg__bubble msg__bubble--attachment">
+                                        <p>Are the parts for Bay 3 ready? Here is the schematic for reference.</p>
+                                        <div class="msg-attachment">
+                                            <span class="msg-attachment__icon"><i class="fa-solid fa-file-pdf"></i></span>
+                                            <div class="msg-attachment__info">
+                                                <span class="msg-attachment__name">Schematic_Bay3_v2.pdf</span>
+                                                <span class="msg-attachment__size">2.4 MB</span>
+                                            </div>
+                                            <button type="button" class="msg-attachment__download" aria-label="Download attachment"><i class="fa-solid fa-download"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="msg msg--typing">
+                                <span class="chat-avatar chat-avatar--navy chat-avatar--sm">WM</span>
+                                <div class="typing-indicator" aria-label="Sarah is typing">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-area">
+                            <div class="chat-input-bar">
+                                <button type="button" class="chat-input-btn" aria-label="Attach file"><i class="fa-solid fa-paperclip"></i></button>
+                                <textarea placeholder="Type a message..." rows="1"></textarea>
+                                <button type="button" class="chat-input-btn" aria-label="Add emoji"><i class="fa-regular fa-face-smile"></i></button>
+                                <button type="button" class="chat-input-send" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <p class="chat-input-hint">Press Enter to send, Shift+Enter for new line</p>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>
