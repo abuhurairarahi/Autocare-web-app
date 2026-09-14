@@ -1,45 +1,12 @@
 :root {
-    --sidebar-bg: #091a45;
-    --brand-orange: #f97316;
-    --bg-color: #f8fafc;
-    --text-main: #1e293b;
+    --text-muted: #757684;
     --border-color: #e2e8f0;
     --primary-blue: #0A2277;
-    --primary: #00288E;
-    --primary-hover: #001f6e;
-    --sidebar-active: #A9B5E5;
-    --logout-bg: #D62132;
-    --bg-app: #FBF8FF;
-    --bg-content: #F4F2FC;
-    --border: #C4C5D5;
     --text-dark: #0B1220;
-    --text-body: #545E6F;
-    --text-muted: #757684;
-    --green-bg: #D1FAE5;
-    --green-text: #065F46;
-    --blue-pill-bg: #D0E1FB;
-    --blue-pill-text: #54647A;
-    --avatar-bg: #D0E1FB;
-    --avatar-text: #54647A;
-    --navy-950: #070B14;
-    --navy-900: #0B1B3A;
-    --navy-800: #152650;
-    --navy-700: #152145;
-    --orange: #FB7C00;
-    --orange-deep: #FF5100;
-    --orange-mid: #FF6A24;
-    --orange-light: #FF8D1D;
-    --line: #D8DFE8;
-    --bg-services: #F3F4F6;
-    --bg-locations: #F7FBFA;
-    --bg-contact: #FAFAFA;
     --white: #FEFEFE;
-    --radius-lg: 24px;
-    --radius-md: 16px;
-    --radius-sm: 8px;
-    --sidebar-blue: #071952;
-    --accent-red: #E63946;
     --bg-light: #F4F6F9;
+
+    /* Status Badges */
     --status-pending-bg: #FEF3C7;
     --status-pending-text: #D97706;
     --status-approved-bg: #DCFCE7;
@@ -66,18 +33,7 @@ body {
     min-height: 100vh;
 }
 
-.main-content {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-}
-
 /* Page Content Styles */
-.content-body {
-    padding: 32px;
-}
-
 .page-title {
     font-size: 24px;
     font-weight: 700;
@@ -132,6 +88,7 @@ body {
     border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .data-table {
@@ -201,27 +158,64 @@ body {
     color: var(--text-muted);
 }
 
+/* Status Badges */
 .status-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--status-pending-bg);
-    color: var(--status-pending-text);
     border: none;
-    padding: 6px 14px;
+    padding: 6px 12px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
     cursor: pointer;
-    transition: filter 0.2s;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    width: 120px;
 }
 
-.status-btn:hover {
-    filter: brightness(0.95);
+.status {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    color: inherit;
+    text-align: center;
+    width: 100px;
 }
 
-.status-btn i {
-    font-size: 10px;
+.status:has(option[value="pending"]:checked) {
+    color: var(--status-pending-text);
+}
+
+.status-btn:has(option[value="pending"]:checked) {
+    background-color: var(--status-pending-bg);
+}
+
+.status:has(option[value="approved"]:checked) {
+    color: var(--status-approved-text);
+}
+
+.status-btn:has(option[value="approved"]:checked) {
+    background-color: var(--status-approved-bg);
+}
+
+.status:has(option[value="suspended"]:checked) {
+    color: var(--status-suspended-text);
+}
+
+.status-btn:has(option[value="suspended"]:checked) {
+    background-color: var(--status-suspended-bg);
+}
+
+/* Options dropdown popup list styling */
+.status option {
+    background-color: var(--white);
+    color: var(--text-dark);
 }
 
 /* Pagination Styles */
@@ -277,4 +271,23 @@ body {
 
 .page-num:hover:not(.active) {
     background-color: var(--bg-light);
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .pagination {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
 }

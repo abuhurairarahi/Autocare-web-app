@@ -33,8 +33,8 @@ a {
 /* MAIN*/
 
 .main {
-    margin-left: 280px;
-    width: calc(100% - 280px);
+    margin-left: 260px;
+    width: calc(100% - 260px);
     min-height: 100vh;
     background: #f4f5f9;
 }

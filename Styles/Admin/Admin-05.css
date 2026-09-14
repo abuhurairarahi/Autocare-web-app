@@ -1,53 +1,33 @@
-/* Global Styles & Resets */
+:root {
+    --bg-light: #f4f6f9;
+    --text-dark: #0f172a;
+    --text-body: #333333;
+    --text-muted: #64748b;
+    --text-subtle: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-dashed: #cbd5e1;
+    --white: #ffffff;
+    --primary-blue: #2563eb;
+    --primary-hover: #1d4ed8;
+    --btn-secondary-color: #334155;
+    --btn-secondary-hover-bg: #f8fafc;
+    --blue-tint-bg: #eff6ff;
+    --blue-tint-text: #3b82f6;
+    --red-tint-bg: #fef2f2;
+    --red-tint-text: #ef4444;
+    --badge-active-bg: #f0fdf4;
+    --badge-active-text: #16a34a;
+    --badge-review-bg: #fffbeb;
+    --badge-review-text: #d97706;
+    --count-bg: #f1f5f9;
+    --count-text: #475569;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
-:root {
-    --sidebar-bg: #091a45;
-    --brand-orange: #f97316;
-    --bg-color: #f8fafc;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    --primary-blue: #2563eb;
-    --primary: #00288E;
-    --primary-hover: #001f6e;
-    --sidebar-active: #A9B5E5;
-    --logout-bg: #D62132;
-    --bg-app: #FBF8FF;
-    --bg-content: #F4F2FC;
-    --border: #C4C5D5;
-    --text-dark: #1A1B22;
-    --text-body: #444653;
-    --text-muted: #757684;
-    --green-bg: #D1FAE5;
-    --green-text: #065F46;
-    --blue-pill-bg: #D0E1FB;
-    --blue-pill-text: #54647A;
-    --avatar-bg: #D0E1FB;
-    --avatar-text: #54647A;
-    --navy-950: #070B14;
-    --navy-900: #0B1B3A;
-    --navy-800: #152650;
-    --navy-700: #152145;
-    --orange: #FB7C00;
-    --orange-deep: #FF5100;
-    --orange-mid: #FF6A24;
-    --orange-light: #FF8D1D;
-    --text-body: #545E6F;
-    --text-dark: #0B1220;
-    --line: #D8DFE8;
-    --bg-services: #F3F4F6;
-    --bg-locations: #F7FBFA;
-    --bg-contact: #FAFAFA;
-    --white: #FEFEFE;
-    --radius-lg: 24px;
-    --radius-md: 16px;
-    --radius-sm: 8px;
 }
 
 body {
@@ -56,25 +36,13 @@ body {
     font-size: 14px;
 }
 
-/* --- Layout Structure --- */
+/* Layout Structure */
 .app-container {
     display: flex;
     min-height: 100vh;
 }
 
-/* --- Main Content Layout --- */
-.main-content {
-    margin-left: 260px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* --- Content Body Container --- */
-.content-body {
-    padding: 32px;
-}
-
+/* Page Header Row */
 .page-header-row {
     display: flex;
     justify-content: space-between;
@@ -100,6 +68,7 @@ body {
     gap: 12px;
 }
 
+/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -147,13 +116,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
     transition: transform 0.2s, box-shadow 0.2s;
     min-height: 240px;
 }
 
 .service-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .card-top {
@@ -304,4 +273,21 @@ body {
     color: #64748b;
     max-width: 180px;
     line-height: 1.4;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    .page-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
 }
