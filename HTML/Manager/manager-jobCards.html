@@ -118,11 +118,14 @@
           </div>
 
           <div class="heading-actions">
-            <button class="status-filter">
-              <span>All Statuses</span>
-              <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-
+           <div class="status-filter">
+              <select name="status" class="dropdown">
+                <option value="all">All Statuses</option>
+                <option value="In-Progress">In Progress</option>
+                <option value="Awaiting-Parts">Awaiting Parts</option>
+                <option value="Quality-Control">Quality Control</option>
+              </select>
+           </div>
             <button class="create-btn">
               <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               Create New Job Card

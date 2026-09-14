@@ -191,17 +191,13 @@ button {
   font-weight: 500;
   color: #374151;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  justify-content: space-around;
 }
 
-.status-filter svg.chevron {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
+.dropdown {
+  border: none;
 }
+
 
 .create-btn {
   height: 40px;
