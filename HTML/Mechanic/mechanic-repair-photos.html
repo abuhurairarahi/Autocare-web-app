@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare Mechanic - Repair Photos</title>
+    <link rel="stylesheet" href="/Styles/Mechanic/mechanic-repair-photos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Styles/Shared/default-sidebar-topbar-style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #ffffff;">Auto</span><span
+                        style="color: #f97316;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/Mechanic/mechanic-dashboard.html" class="nav-item"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/HTML/Mechanic/mechanic-assigned-jobs.html" class="nav-item"><i class="fa-solid fa-clipboard-list"></i> Assigned Jobs</a>
+                <a href="/HTML/Mechanic/mechanic-workflow.html" class="nav-item"><i class="fa-solid fa-diagram-project"></i> Progress</a>
+                <a href="/HTML/Mechanic/mechanic-parts-labor.html" class="nav-item"><i class="fa-solid fa-toolbox"></i> Parts &amp; Labor</a>
+                <a href="/HTML/Mechanic/mechanic-repair-photos.html" class="nav-item active"><i class="fa-solid fa-camera"></i> Update Photos</a>
+                <a href="/HTML/Mechanic/mechanic-fault-report.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i> Report Faults</a>
+                <a href="/HTML/Mechanic/mechanic-chat.html" class="nav-item"><i class="fa-solid fa-comments"></i> Chats</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/HTML/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <!-- Top bar -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search jobs, parts...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-message"></i></button>
+                    <div class="user-avatar">M</div>
+                </div>
+            </header>
+
+            <!-- Page content -->
+            <section class="content">
+                <div class="rp-wrap">
+
+                    <!-- Page header -->
+                    <div class="rp-header">
+                        <div class="rp-header__text">
+                            <h1>Vehicle Repair Gallery</h1>
+                            <p>Job #VR-8842 &bull; 2019 Ford Transit</p>
+                        </div>
+                        <button type="button" class="rp-btn rp-btn--primary"><i class="fa-solid fa-upload"></i> Upload New</button>
+                    </div>
+
+                    <!-- Gallery grid -->
+                    <div class="rp-grid">
+
+                        <!-- Before -->
+                        <section class="rp-col">
+                            <h2 class="rp-col__title"><span class="rp-dot rp-dot--before"></span> Before</h2>
+
+                            <div class="rp-cards">
+                                <figure class="rp-card">
+                                    <div class="rp-card__image">
+                                        <img src="assets/repair-photo-front-bumper-damage.jpg" alt="Front bumper damage before repair">
+                                        <div class="rp-card__overlay">
+                                            <button type="button" class="rp-overlay-btn rp-overlay-btn--view" aria-label="View photo"><i class="fa-solid fa-eye"></i></button>
+                                            <button type="button" class="rp-overlay-btn rp-overlay-btn--delete" aria-label="Delete photo"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                    <figcaption class="rp-card__caption">
+                                        <span class="rp-card__name">Front Bumper Damage</span>
+                                        <span class="rp-card__date">Oct 12, 08:30</span>
+                                    </figcaption>
+                                </figure>
+
+                                <figure class="rp-card">
+                                    <div class="rp-card__image">
+                                        <img src="assets/repair-photo-side-panel-scuffs.jpg" alt="Scratched side panel before repair">
+                                        <div class="rp-card__overlay">
+                                            <button type="button" class="rp-overlay-btn rp-overlay-btn--view" aria-label="View photo"><i class="fa-solid fa-eye"></i></button>
+                                            <button type="button" class="rp-overlay-btn rp-overlay-btn--delete" aria-label="Delete photo"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                    <figcaption class="rp-card__caption">
+                                        <span class="rp-card__name">Side Panel Scuffs</span>
+                                        <span class="rp-card__date">Oct 12, 08:35</span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </section>
+
+                        <!-- After -->
+                        <section class="rp-col">
+                            <h2 class="rp-col__title"><span class="rp-dot rp-dot--after"></span> After</h2>
+
+                            <button type="button" class="rp-upload-placeholder">
+                                <i class="fa-solid fa-camera"></i>
+                                <span>Add Final Photo</span>
+                            </button>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>
