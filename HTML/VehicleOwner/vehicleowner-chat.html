@@ -13,14 +13,17 @@
 <body>
     <div class="app">
 
-        <!-- Sidebar -->
+        <!-- SIDEBAR -->
         <aside class="sidebar">
+
             <div class="sidebar-brand">
                 <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
                 <span class="brand-name"><span style="color: #00175c;">Auto</span><span
                         style="color: #fc4204;">Care</span></span>
             </div>
-            <nav class="sidebar-nav">
+
+            <!-- Nav Bar -->
+            <nav class="nav">
                 <a href="/HTML/VehicleOwner/vehicleowner-dashboard.html" class="nav-item"><i class="fa-solid fa-gauge"></i> Dashboard</a>
                 <a href="/HTML/VehicleOwner/vehicleowner-vehicles.html" class="nav-item"><i class="fa-solid fa-car"></i> My Vehicles</a>
                 <a href="/HTML/VehicleOwner/vehicleowner-book-appointment.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i> Service Appointments</a>
@@ -31,26 +34,47 @@
                 <a href="/HTML/VehicleOwner/vehicleowner-chat.html" class="nav-item active"><i class="fa-solid fa-comment"></i> Chat</a>
                 <a href="/HTML/VehicleOwner/vehicleowner-notifications.html" class="nav-item"><i class="fa-solid fa-bell"></i> Notifications</a>
             </nav>
-            <a href="/HTML/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+
+            <a class="logout" href="/HTML/login.html">
+                <span><i class="fa-solid fa-right-from-bracket"></i></span>Logout
+            </a>
+
         </aside>
 
-        <!-- Main -->
-        <main class="main-content">
 
-            <!-- Top bar -->
-            <header class="top-header">
-                <div class="search-bar">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search...">
+        <!-- MAIN -->
+        <main class="main">
+
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="search">
+                    <div class="search-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <input type="text" placeholder="Search managers, workshops...">
                 </div>
-                <div class="header-actions">
-                    <button class="icon-btn" aria-label="Notifications"><i class="fa-solid fa-bell"></i></button>
-                    <button class="icon-btn" aria-label="Help"><i class="fa-solid fa-circle-question"></i></button>
-                    <span class="header-divider"></span>
-                    <button class="profile-btn">
-                        <span class="user-avatar">JD</span>
-                        <span class="profile-label">Profile</span>
-                    </button>
+
+                <div class="top-actions">
+                    <div class="notification">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <b></b>
+                    </div>
+
+                    <div class="mail">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="avatar">A</div>
                 </div>
             </header>
 
