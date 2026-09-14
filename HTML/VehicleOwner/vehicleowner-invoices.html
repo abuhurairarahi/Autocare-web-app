@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Invoice Management</title>
+    <link rel="stylesheet" href="/Styles/VehicleOwner/vehicleowner-invoices.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Styles/Shared/vehicleowner-sidebar-topbar-style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
+                <span class="brand-name"><span style="color: #00175c;">Auto</span><span
+                        style="color: #fc4204;">Care</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/HTML/VehicleOwner/vehicleowner-dashboard.html" class="nav-item"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-vehicles.html" class="nav-item"><i class="fa-solid fa-car"></i> My Vehicles</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-book-appointment.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i> Service Appointments</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-repair-estimates.html" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i> Repair Estimates</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-repair-tracking.html" class="nav-item"><i class="fa-solid fa-wrench"></i> Live Repair Tracking</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-service-history.html" class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i> Service History</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-invoices.html" class="nav-item active"><i class="fa-solid fa-receipt"></i> Invoices</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-chat.html" class="nav-item"><i class="fa-solid fa-comment"></i> Chat</a>
+                <a href="/HTML/VehicleOwner/vehicleowner-notifications.html" class="nav-item"><i class="fa-solid fa-bell"></i> Notifications</a>
+            </nav>
+            <a href="/HTML/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <!-- Top bar -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search invoices, vehicles...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" aria-label="Notifications"><i class="fa-solid fa-bell"></i></button>
+                    <button class="icon-btn" aria-label="Help"><i class="fa-solid fa-circle-question"></i></button>
+                    <span class="header-divider"></span>
+                    <button class="profile-btn">
+                        <span class="user-avatar">JD</span>
+                        <span class="profile-label">Profile</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page content -->
+            <section class="content">
+                <div class="vo-wrap">
+
+                    <!-- Page header + filters -->
+                    <div class="vo-header">
+                        <div class="vo-header__text">
+                            <h1>Invoice Management</h1>
+                            <p>Review and manage your billing history and outstanding payments.</p>
+                        </div>
+                        <form class="vo-filters">
+                            <div class="vo-select-wrap">
+                                <select aria-label="Filter by vehicle">
+                                    <option>All Vehicles</option>
+                                    <option>Ford F-150 (2019)</option>
+                                    <option>Honda Civic (2021)</option>
+                                    <option>Toyota RAV4 (2020)</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down vo-select-chevron"></i>
+                            </div>
+                            <input class="vo-date-input" type="date" aria-label="Filter by service date">
+                            <button type="submit" class="vo-btn vo-btn--primary"><i class="fa-solid fa-filter"></i> Filter</button>
+                        </form>
+                    </div>
+
+                    <!-- KPI cards -->
+                    <div class="vo-kpis">
+                        <div class="vo-kpi">
+                            <div class="vo-kpi__top">
+                                <span class="vo-kpi__icon vo-kpi__icon--paid"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="vo-kpi__pill vo-kpi__pill--blue">+12% this month</span>
+                            </div>
+                            <p class="vo-kpi__label">Paid Invoices</p>
+                            <p class="vo-kpi__value">142</p>
+                        </div>
+                        <div class="vo-kpi">
+                            <div class="vo-kpi__top">
+                                <span class="vo-kpi__icon vo-kpi__icon--pending"><i class="fa-solid fa-hourglass-half"></i></span>
+                                <span class="vo-kpi__pill vo-kpi__pill--gray">3 Overdue</span>
+                            </div>
+                            <p class="vo-kpi__label">Pending Payments</p>
+                            <p class="vo-kpi__value">12</p>
+                        </div>
+                        <div class="vo-kpi">
+                            <div class="vo-kpi__top">
+                                <span class="vo-kpi__icon vo-kpi__icon--total"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                            </div>
+                            <p class="vo-kpi__label">Total Expenditure (YTD)</p>
+                            <p class="vo-kpi__value">$14,250.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Invoices table -->
+                    <div class="vo-table-card">
+                        <div class="vo-table-wrap">
+                            <table class="vo-invoices-table">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Vehicle</th>
+                                        <th>Service Date</th>
+                                        <th>Total Amount</th>
+                                        <th>Status</th>
+                                        <th class="vo-num">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#" class="vo-invoice-link">INV-2023-089</a></td>
+                                        <td>Ford F-150 (2019)</td>
+                                        <td>Oct 12, 2023</td>
+                                        <td class="vo-cell-amount">$450.00</td>
+                                        <td><span class="vo-status vo-status--paid"><span class="vo-status__dot"></span> Paid</span></td>
+                                        <td class="vo-num">
+                                            <div class="vo-row-actions">
+                                                <button type="button" class="vo-icon-btn" aria-label="View invoice INV-2023-089"><i class="fa-solid fa-eye"></i></button>
+                                                <button type="button" class="vo-icon-btn" aria-label="Download invoice INV-2023-089"><i class="fa-solid fa-download"></i></button>
+                                                <button type="button" class="vo-icon-btn" aria-label="Print invoice INV-2023-089"><i class="fa-solid fa-print"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" class="vo-invoice-link">INV-2023-094</a></td>
+                                        <td>Honda Civic (2021)</td>
+                                        <td>Oct 28, 2023</td>
+                                        <td class="vo-cell-amount">$1,200.50</td>
+                                        <td><span class="vo-status vo-status--pending"><span class="vo-status__dot"></span> Pending</span></td>
+                                        <td class="vo-num">
+                                            <div class="vo-row-actions">
+                                                <button type="button" class="vo-icon-btn" aria-label="View invoice INV-2023-094"><i class="fa-solid fa-eye"></i></button>
+                                                <button type="button" class="vo-icon-btn" aria-label="Download invoice INV-2023-094"><i class="fa-solid fa-download"></i></button>
+                                                <button type="button" class="vo-icon-btn" aria-label="Print invoice INV-2023-094"><i class="fa-solid fa-print"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" class="vo-invoice-link">INV-2023-095</a></td>
+                                        <td>Toyota RAV4 (2020)</td>
+                                        <td>Nov 02, 2023</td>
+                                        <td class="vo-cell-amount">$85.00</td>
+                                        <td><span class="vo-status vo-status--processing"><span class="vo-status__dot"></span> Processing</span></td>
+                                        <td class="vo-num">
+                                            <div class="vo-row-actions">
+                                                <button type="button" class="vo-icon-btn" aria-label="View invoice INV-2023-095"><i class="fa-solid fa-eye"></i></button>
+                                                <button type="button" class="vo-icon-btn" aria-label="Download invoice INV-2023-095"><i class="fa-solid fa-download"></i></button>
+                                                <button type="button" class="vo-icon-btn" aria-label="Print invoice INV-2023-095"><i class="fa-solid fa-print"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" class="vo-invoice-link">INV-2023-080</a></td>
+                                        <td>Ford F-150 (2019)</td>
+                                        <td>Sep 15, 2023</td>
+                                        <td class="vo-cell-amount">$125.00</td>
+                                        <td><span class="vo-status vo-status--paid"><span class="vo-status__dot"></span> Paid</span></td>
+                                        <td class="vo-num">
+                                            <div class="vo-row-actions">
+                                                <button type="button" class="vo-icon-btn" aria-label="View invoice INV-2023-080"><i class="fa-solid fa-eye"></i></button>
+                                                <button type="button" class="vo-icon-btn" aria-label="Download invoice INV-2023-080"><i class="fa-solid fa-download"></i></button>
+                                                <button type="button" class="vo-icon-btn" aria-label="Print invoice INV-2023-080"><i class="fa-solid fa-print"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="vo-table-card__footer">
+                            <p class="vo-showing">Showing 1 to 4 of 42 entries</p>
+                            <nav class="vo-pagination" aria-label="Invoice pages">
+                                <button type="button" class="vo-page-btn vo-page-btn--nav" disabled aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button type="button" class="vo-page-btn vo-page-btn--active" aria-current="page">1</button>
+                                <button type="button" class="vo-page-btn">2</button>
+                                <button type="button" class="vo-page-btn">3</button>
+                                <button type="button" class="vo-page-btn vo-page-btn--nav" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>
