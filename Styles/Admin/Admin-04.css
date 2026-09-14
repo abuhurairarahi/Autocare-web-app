@@ -1,19 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
 :root {
     --sidebar-bg: #091a45;
     --brand-orange: #f97316;
     --bg-color: #f8fafc;
     --text-main: #1e293b;
     --border-color: #e2e8f0;
-    --primary-blue: #2563eb;
+    --primary-blue: #0A2277;
     --primary: #00288E;
     --primary-hover: #001f6e;
     --sidebar-active: #A9B5E5;
@@ -57,26 +48,40 @@
     --status-suspended-text: #DC2626;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
     font-size: 14px;
 }
 
-.app-container {
+.dashboard-container {
     display: flex;
     min-height: 100vh;
 }
 
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Page Content Styles */
-.page-content {
+.content-body {
     padding: 32px;
 }
 
 .page-title {
     font-size: 24px;
     font-weight: 700;
-    color: var(--text-main);
+    color: var(--text-dark);
     margin-bottom: 24px;
 }
 
@@ -85,7 +90,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 16px 24px;
     border: 1px solid var(--border-color);
     border-top-left-radius: 12px;
@@ -101,19 +106,19 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: #ffffff;
+    background-color: var(--white);
     border: 1px solid var(--border-color);
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--text-main);
+    color: var(--text-dark);
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .btn-outline:hover {
-    background-color: #f8fafc;
+    background-color: var(--bg-light);
 }
 
 .results-count {
@@ -123,7 +128,7 @@ body {
 
 /* Table Styles */
 .table-container {
-    background-color: #ffffff;
+    background-color: var(--white);
     border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     overflow-x: auto;
@@ -136,7 +141,7 @@ body {
 }
 
 .data-table th {
-    background-color: #ffffff;
+    background-color: var(--white);
     color: var(--text-muted);
     font-size: 11px;
     font-weight: 600;
@@ -149,7 +154,7 @@ body {
     padding: 16px 24px;
     border-bottom: 1px solid var(--border-color);
     font-size: 14px;
-    color: var(--text-main);
+    color: var(--text-dark);
     vertical-align: middle;
 }
 
@@ -188,7 +193,7 @@ body {
 
 .user-name {
     font-weight: 600;
-    color: var(--text-main);
+    color: var(--text-dark);
 }
 
 .user-email {
@@ -200,19 +205,19 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: #fef9c3;
-    color: #a16207;
+    background-color: var(--status-pending-bg);
+    color: var(--status-pending-text);
     border: none;
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: filter 0.2s;
 }
 
 .status-btn:hover {
-    background-color: #fde047;
+    filter: brightness(0.95);
 }
 
 .status-btn i {
@@ -224,7 +229,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 16px 24px;
     border: 1px solid var(--border-color);
     border-bottom-left-radius: 12px;
@@ -258,7 +263,7 @@ body {
     border-radius: 6px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--text-main);
+    color: var(--text-dark);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -267,9 +272,9 @@ body {
 
 .page-num.active {
     background-color: var(--primary-blue);
-    color: #ffffff;
+    color: var(--white);
 }
 
 .page-num:hover:not(.active) {
-    background-color: #f1f5f9;
+    background-color: var(--bg-light);
 }

@@ -57,6 +57,7 @@ body {
     background-color: var(--bg-light);
     color: var(--text-dark);
 }
+
 .dashboard-container {
     display: flex;
     min-height: 100vh;
