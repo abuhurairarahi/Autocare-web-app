@@ -135,14 +135,10 @@
     flex-shrink: 0;
 }
 
-.icon svg {
-    width: 19px;
-    height: 19px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+/* Font Awesome Icon Styles */
+.icon i {
+    font-size: 16px;
+    color: currentColor;
 }
 
 .nav-item.active .icon {
@@ -174,14 +170,9 @@
     justify-content: center;
 }
 
-.logout svg {
-    width: 19px;
-    height: 19px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.logout i {
+    font-size: 16px;
+    color: currentColor;
 }
 
 /* topbar */
