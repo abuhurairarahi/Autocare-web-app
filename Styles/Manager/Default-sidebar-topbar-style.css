@@ -104,6 +104,7 @@
     font-weight: 500;
     position: relative;
     transition: 0.2s ease;
+    text-decoration: none;
 }
 
 .nav-item:hover {
