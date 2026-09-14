@@ -37,7 +37,7 @@ button {
   position: fixed;
   left: 0;
   top: 0;
-  width: 250px;
+  width: 280px;
   height: 100vh;
   background: #00288e;
   display: flex;
@@ -98,7 +98,7 @@ button {
   gap: 14px;
   color: #8da2e0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   position: relative;
   transition: 0.2s ease;
 }
@@ -179,8 +179,8 @@ button {
 
 /* MAIN */
 .main {
-  margin-left: 250px;
-  width: calc(100% - 250px);
+  margin-left: 280px;                  
+  width: calc(100% - 280px);           
   min-height: 100vh;
   background: #f4f6fa;
 }

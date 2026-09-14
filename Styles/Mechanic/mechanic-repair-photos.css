@@ -1,4 +1,3 @@
-
 :root {
     --rp-navy: #00175c;
     --rp-navy-bright: #00288e;
@@ -22,6 +21,8 @@ body {
     margin: 0;
     background: var(--rp-page-bg);
     color: var(--rp-text-dark);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
 }
 
 .app {

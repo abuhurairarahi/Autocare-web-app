@@ -1,9 +1,3 @@
-/* =====================================================
-   AutoCare - Mechanic Dashboard
-   Page-specific styles. Sidebar + top bar chrome comes
-   from /Styles/Shared/default-sidebar-topbar-style.css
-   ===================================================== */
-
 :root {
     --md-navy: #00175c;
     --md-navy-glow: #00288e;
@@ -23,7 +17,7 @@
 
 body {
     margin: 0;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--md-page-bg);
     color: var(--md-text-dark);
 }
@@ -476,6 +470,7 @@ body {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1200px) {
+
     .kpi-row,
     .bento-row,
     .charts-row {

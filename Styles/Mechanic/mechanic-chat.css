@@ -1,4 +1,3 @@
-
 :root {
     --ch-navy: #00175c;
     --ch-navy-bright: #00288e;
@@ -30,6 +29,8 @@ body {
     margin: 0;
     background: var(--ch-page-bg);
     color: var(--ch-text-dark);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
 }
 
 .app {

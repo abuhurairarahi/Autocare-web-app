@@ -1,9 +1,3 @@
-/* =====================================================
-   AutoCare - Mechanic / Progress (Workflow)
-   Page-specific styles. Sidebar + top bar chrome comes
-   from /Styles/Shared/default-sidebar-topbar-style.css
-   ===================================================== */
-
 :root {
     --wf-navy: #00175c;
     --wf-navy-bright: #00288e;
@@ -27,7 +21,7 @@
 
 body {
     margin: 0;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--wf-page-bg);
     color: var(--wf-text-dark);
 }
@@ -371,10 +365,6 @@ body {
     color: var(--wf-text-dark);
 }
 
-.wf-stage--done .wf-stage__name {
-    text-decoration: line-through;
-}
-
 .wf-stage__name--active {
     font-weight: 700;
     color: var(--wf-navy);
@@ -495,10 +485,6 @@ body {
     cursor: pointer;
 }
 
-.wf-task__label--done {
-    text-decoration: line-through;
-}
-
 .wf-task__title {
     font-weight: 500;
 }
@@ -529,7 +515,7 @@ body {
     box-shadow: var(--wf-shadow);
 }
 
-.wf-resources > .wf-card-eyebrow {
+.wf-resources>.wf-card-eyebrow {
     padding-bottom: 9px;
     border-bottom: 1px solid var(--wf-border);
 }

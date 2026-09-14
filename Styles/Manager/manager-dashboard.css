@@ -8,7 +8,7 @@ html,
 body {
     width: 100%;
     min-height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: #fbf8ff;
     color: #172033;
 }
@@ -256,7 +256,7 @@ p.one {
     font-weight: 700;
 }
 
-.panel-header > a {
+.panel-header>a {
     color: #1557d7;
     font-size: 12px;
     font-weight: 600;
@@ -320,22 +320,18 @@ p.one {
     right: 25px;
     bottom: 42px;
     top: 22px;
-    background: linear-gradient(
-        to top,
-        rgba(45, 99, 218, 0.17),
-        rgba(45, 99, 218, 0.02)
-    );
-    clip-path: polygon(
-        0 83%,
-        15% 60%,
-        30% 68%,
-        46% 37%,
-        61% 48%,
-        77% 17%,
-        100% 27%,
-        100% 100%,
-        0 100%
-    );
+    background: linear-gradient(to top,
+            rgba(45, 99, 218, 0.17),
+            rgba(45, 99, 218, 0.02));
+    clip-path: polygon(0 83%,
+            15% 60%,
+            30% 68%,
+            46% 37%,
+            61% 48%,
+            77% 17%,
+            100% 27%,
+            100% 100%,
+            0 100%);
 }
 
 .chart-line-svg {
@@ -381,7 +377,7 @@ p.one {
     margin-bottom: 0;
 }
 
-.mechanic > div:first-child {
+.mechanic>div:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -479,7 +475,7 @@ p.one {
     min-width: 0;
 }
 
-.activity-text > div {
+.activity-text>div {
     font-size: 12px;
     color: #3d4657;
     margin-bottom: 5px;

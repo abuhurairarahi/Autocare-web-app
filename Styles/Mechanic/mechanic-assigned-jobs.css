@@ -1,9 +1,3 @@
-/* =====================================================
-   AutoCare - Mechanic / Assigned Jobs
-   Page-specific styles. Sidebar + top bar chrome comes
-   from /Styles/Shared/default-sidebar-topbar-style.css
-   ===================================================== */
-
 :root {
     --aj-navy: #00175c;
     --aj-page-bg: #fbf8ff;
@@ -22,7 +16,7 @@
 
 body {
     margin: 0;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--aj-page-bg);
     color: var(--aj-text-dark);
 }

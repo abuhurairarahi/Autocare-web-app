@@ -1,4 +1,3 @@
-
 :root {
     --pl-navy: #00175c;
     --pl-navy-bright: #00288e;
@@ -22,7 +21,7 @@
 
 body {
     margin: 0;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--pl-page-bg);
     color: var(--pl-text-dark);
 }
@@ -232,7 +231,7 @@ body {
     vertical-align: middle;
 }
 
-.pl-table tbody tr + tr td {
+.pl-table tbody tr+tr td {
     border-top: 1px solid var(--pl-border);
 }
 
