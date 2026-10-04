@@ -243,6 +243,12 @@ function attachCardClickHandlers() {
               </div>
               <input type="range" id="kanban-modal-progress" min="0" max="100" value="${card.progress_percentage}" style="width: 100%;">
             </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; padding-top: 12px; border-top: 1px solid #e2e8f0;">
+              <a href="manager-jobCards.html" style="flex: 1; min-width: 120px; text-align: center; padding: 7px 10px; background: #f1f5f9; color: #1e293b; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600; border: 1px solid #cbd5e1;">📋 Job Card Details</a>
+              <a href="manager-chat.html" style="flex: 1; min-width: 120px; text-align: center; padding: 7px 10px; background: #f1f5f9; color: #1e293b; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600; border: 1px solid #cbd5e1;">💬 Bay Chat</a>
+              <a href="manager-cost-estimation.html" style="flex: 1; min-width: 120px; text-align: center; padding: 7px 10px; background: #f1f5f9; color: #1e293b; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600; border: 1px solid #cbd5e1;">💰 Cost Estimate</a>
+            </div>
           </div>
         `,
         confirmText: 'Save Progress',

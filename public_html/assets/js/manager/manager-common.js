@@ -101,7 +101,7 @@ function initTopbarSearch() {
       html += `<div style="padding: 8px 12px; font-size: 11px; font-weight: 700; color: #64748b; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">JOB CARDS</div>`;
       jobCards.slice(0, 3).forEach(j => {
         html += `
-          <a href="/pages/manager/manager-jobCards.html" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #1e293b;">
+          <a href="manager-jobCards.html" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #1e293b;">
             <div>
               <strong style="color: #2563eb;">${j.code}</strong> - <span>${j.customer_name}</span>
               <div style="font-size: 12px; color: #64748b;">${j.vehicle_title || j.vehicle_details}</div>
@@ -116,7 +116,7 @@ function initTopbarSearch() {
       html += `<div style="padding: 8px 12px; font-size: 11px; font-weight: 700; color: #64748b; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">MECHANICS</div>`;
       mechanics.slice(0, 3).forEach(m => {
         html += `
-          <a href="/pages/manager/manager-mechanics.html" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #1e293b;">
+          <a href="manager-mechanics.html" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #1e293b;">
             <div>
               <strong>${m.name}</strong>
               <div style="font-size: 12px; color: #64748b;">${m.specialty}</div>
@@ -131,7 +131,7 @@ function initTopbarSearch() {
       html += `<div style="padding: 8px 12px; font-size: 11px; font-weight: 700; color: #64748b; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">INVOICES</div>`;
       invoices.slice(0, 3).forEach(i => {
         html += `
-          <a href="/pages/manager/manager-invoice-management.html" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #1e293b;">
+          <a href="manager-invoice-management.html" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #1e293b;">
             <div>
               <strong style="color: #0f172a;">${i.invoice_number}</strong>
               <div style="font-size: 12px; color: #64748b;">${i.customer_name}</div>
@@ -240,7 +240,7 @@ function renderNotificationItems(container) {
   html += `
     </div>
     <div style="padding: 10px; text-align: center; background: #f8fafc; border-top: 1px solid #e2e8f0;">
-      <a href="/pages/manager/manager-dashboard.html" style="font-size: 12px; color: #2563eb; text-decoration: none; font-weight: 600;">View Activity Dashboard</a>
+      <a href="manager-dashboard.html" style="font-size: 12px; color: #2563eb; text-decoration: none; font-weight: 600;">View Activity Dashboard</a>
     </div>
   `;
 
@@ -456,7 +456,7 @@ function initLogoutHandler() {
       onConfirm: () => {
         showToast('Logging out...', 'info');
         setTimeout(() => {
-          window.location.href = '/pages/login.html';
+          window.location.href = '../login.html';
         }, 600);
       }
     });

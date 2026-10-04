@@ -142,7 +142,7 @@ function initMessageSending() {
     const imgAttachBtn = attachBtns[1];
     imgAttachBtn.addEventListener('click', () => {
       appendMessageToView("Attaching high-resolution engine diagnostics photos:", false, [
-        '/pages/manager/assets/engine.jpg'
+        'assets/engine.jpg'
       ]);
       scrollToBottom();
       showToast('Image attached to conversation!', 'success');

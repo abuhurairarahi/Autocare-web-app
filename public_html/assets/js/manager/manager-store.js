@@ -427,8 +427,8 @@
         time: '10:42 AM',
         is_incoming: true,
         attachments: [
-          '/pages/manager/assets/engine.jpg',
-          '/pages/manager/assets/shop.jpg'
+          'assets/engine.jpg',
+          'assets/shop.jpg'
         ]
       }
     ],

@@ -254,6 +254,15 @@ window.openJobCardMenu = function (event, cardId) {
           <button id="btn-menu-stage" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; text-align: left; cursor: pointer;">
             🔄 Update Repair Stage (Diagnosis / In Progress / Quality Control / Ready)
           </button>
+          <button id="btn-menu-tracker" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; text-align: left; cursor: pointer;">
+            📊 View in Process Tracker
+          </button>
+          <button id="btn-menu-cost" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; text-align: left; cursor: pointer;">
+            💰 Cost Estimation & Parts
+          </button>
+          <button id="btn-menu-chat" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; text-align: left; cursor: pointer;">
+            💬 Open Chat & Communications
+          </button>
           <button id="btn-menu-reassign" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; text-align: left; cursor: pointer;">
             👤 Assign / Reassign Mechanic
           </button>
@@ -271,8 +280,29 @@ window.openJobCardMenu = function (event, cardId) {
   // Attach sub-action listeners inside modal
   setTimeout(() => {
     const stageBtn = document.getElementById('btn-menu-stage');
+    const trackerBtn = document.getElementById('btn-menu-tracker');
+    const costBtn = document.getElementById('btn-menu-cost');
+    const chatBtn = document.getElementById('btn-menu-chat');
     const reassignBtn = document.getElementById('btn-menu-reassign');
     const invoiceBtn = document.getElementById('btn-menu-invoice');
+
+    if (trackerBtn) {
+      trackerBtn.addEventListener('click', () => {
+        window.location.href = 'manager-process-tracker.html';
+      });
+    }
+
+    if (costBtn) {
+      costBtn.addEventListener('click', () => {
+        window.location.href = 'manager-cost-estimation.html';
+      });
+    }
+
+    if (chatBtn) {
+      chatBtn.addEventListener('click', () => {
+        window.location.href = 'manager-chat.html';
+      });
+    }
 
     if (stageBtn) {
       stageBtn.addEventListener('click', () => {
@@ -345,7 +375,7 @@ window.openJobCardMenu = function (event, cardId) {
 
         showToast(`Invoice #${newInv.invoice_number} created!`, 'success');
         setTimeout(() => {
-          window.location.href = '/pages/manager/manager-invoice-management.html';
+          window.location.href = 'manager-invoice-management.html';
         }, 1200);
       });
     }

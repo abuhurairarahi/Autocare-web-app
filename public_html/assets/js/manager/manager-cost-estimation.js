@@ -259,6 +259,17 @@ function initEstimateBuilder() {
         AutoCareStore.saveEstimate(est);
         showToast(`Estimate ${est.code} sent to customer for approval!`, 'success');
         renderEstimatesTable();
+        setTimeout(() => {
+          openModal({
+            title: 'Estimate Sent to Customer',
+            content: `<p>Estimate <strong>${est.code}</strong> for <strong>${est.customer_name}</strong> has been transmitted.</p><p>Would you like to message the customer in chat?</p>`,
+            confirmText: 'Open Chat',
+            cancelText: 'Stay on Estimates',
+            onConfirm: () => {
+              window.location.href = 'manager-chat.html';
+            }
+          });
+        }, 300);
       }
     });
   }

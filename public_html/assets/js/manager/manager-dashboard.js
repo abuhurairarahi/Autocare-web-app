@@ -263,7 +263,7 @@ function renderMechanicsWorkload() {
     const isDanger = workloadPct >= 90;
 
     html += `
-      <div class="mechanic" style="cursor: pointer;" title="Click to view mechanic" onclick="window.location.href='/pages/manager/manager-mechanics.html'">
+      <div class="mechanic" style="cursor: pointer;" title="Click to view mechanic" onclick="window.location.href='manager-mechanics.html'">
         <div><span>${m.name}</span><b>${activeJobs} ${activeJobs === 1 ? 'Job' : 'Jobs'}</b></div>
         <div class="bar"><i class="${isDanger ? 'danger' : ''}" style="width: ${workloadPct}%;"></i></div>
       </div>

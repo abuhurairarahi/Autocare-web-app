@@ -93,7 +93,13 @@ function renderMechanicCards() {
             </div>
           </div>
 
-          ${btnHtml}
+          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px;">
+            ${btnHtml}
+            <button class="btn" onclick="window.location.href='manager-chat.html'" style="background: #f8fafc; color: #334155; border: 1px solid #cbd5e1; padding: 8px 12px; border-radius: 6px; font-weight: 600; font-size: 12.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+              <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              Chat with ${m.name.split(' ')[0]}
+            </button>
+          </div>
         </div>
       </article>
     `;
@@ -165,6 +171,17 @@ window.openAssignJobModal = function (mechanicId) {
         AutoCareStore.assignJobCardMechanic(jobId, mech.id);
         showToast(`Job assigned to ${mech.name}!`, 'success');
         renderMechanicCards();
+        setTimeout(() => {
+          openModal({
+            title: 'Job Assigned Successfully',
+            content: `<p>Job has been assigned to <strong>${mech.name}</strong>.</p>`,
+            confirmText: 'View in Process Tracker',
+            cancelText: 'Stay on Mechanics',
+            onConfirm: () => {
+              window.location.href = 'manager-process-tracker.html';
+            }
+          });
+        }, 300);
       }
     }
   });

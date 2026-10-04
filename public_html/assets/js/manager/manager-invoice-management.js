@@ -76,7 +76,7 @@ function renderInvoicesTable() {
 
     html += `
       <tr data-invoice-id="${inv.id}">
-        <td class="bold">${inv.invoice_number}</td>
+        <td class="bold"><a href="manager-jobCards.html" style="color: #2563eb; text-decoration: none; font-weight: 700;" title="View Job Card">${inv.invoice_number}</a></td>
         <td>
           <div class="customer-name">${inv.customer_name}</div>
           <div class="sub-email">${inv.customer_email || 'customer@gmail.com'}</div>
@@ -128,6 +128,12 @@ window.openInvoiceMenu = function (event, invoiceId) {
           <button id="btn-inv-preview" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; cursor: pointer; text-align: left;">
             🖨️ View & Print Official Invoice
           </button>
+          <button id="btn-inv-jobcard" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; cursor: pointer; text-align: left;">
+            📋 View Associated Job Card
+          </button>
+          <button id="btn-inv-chat" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; cursor: pointer; text-align: left;">
+            💬 Message Customer in Chat
+          </button>
           <button id="btn-inv-reminder" style="padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; cursor: pointer; text-align: left;">
             🔔 Send Customer Payment Reminder
           </button>
@@ -142,7 +148,21 @@ window.openInvoiceMenu = function (event, invoiceId) {
   setTimeout(() => {
     const markPaidBtn = document.getElementById('btn-inv-mark-paid');
     const previewBtn = document.getElementById('btn-inv-preview');
+    const jobcardBtn = document.getElementById('btn-inv-jobcard');
+    const chatBtn = document.getElementById('btn-inv-chat');
     const reminderBtn = document.getElementById('btn-inv-reminder');
+
+    if (jobcardBtn) {
+      jobcardBtn.addEventListener('click', () => {
+        window.location.href = 'manager-jobCards.html';
+      });
+    }
+
+    if (chatBtn) {
+      chatBtn.addEventListener('click', () => {
+        window.location.href = 'manager-chat.html';
+      });
+    }
 
     if (markPaidBtn) {
       markPaidBtn.addEventListener('click', () => {

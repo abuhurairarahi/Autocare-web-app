@@ -59,6 +59,34 @@ function renderPerformanceKpis(period = '30') {
     // 4. Parts Cost
     kpiCards[3].querySelector('.kpi-value').innerText = `৳${(partsCost / 1000).toFixed(1)}k`;
     kpiCards[3].querySelector('.kpi-trend span').innerText = periodLabel;
+
+    // Attach click navigation to cards
+    const kpiDestinations = [
+      'manager-invoice-management.html',
+      'manager-jobCards.html',
+      'manager-process-tracker.html',
+      'manager-payment-approval.html'
+    ];
+    kpiCards.forEach((card, idx) => {
+      card.style.cursor = 'pointer';
+      if (!card.hasAttribute('data-nav-wired')) {
+        card.setAttribute('data-nav-wired', 'true');
+        card.addEventListener('click', () => {
+          if (kpiDestinations[idx]) window.location.href = kpiDestinations[idx];
+        });
+      }
+    });
+
+    // Make table mechanic rows clickable to mechanics page
+    document.querySelectorAll('.table-card tbody tr').forEach(row => {
+      row.style.cursor = 'pointer';
+      if (!row.hasAttribute('data-nav-wired')) {
+        row.setAttribute('data-nav-wired', 'true');
+        row.addEventListener('click', () => {
+          window.location.href = 'manager-mechanics.html';
+        });
+      }
+    });
   }
 }
 
