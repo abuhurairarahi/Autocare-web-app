@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AutoCare - Job Progress Tracking</title>
-  <link rel="stylesheet" href="/Styles/Manager/manager-process-tracker.css">
-  <link rel="stylesheet" href="/Styles/Manager/Default-sidebar-topbar-style.css">
+  <link rel="stylesheet" href="../../assets/css/manager/Default-sidebar-topbar-style.css">
+  <link rel="stylesheet" href="../../assets/css/manager/manager-process-tracker.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -15,57 +15,57 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
 
-      <div class="brand">
+      <a class="brand" href="manager-dashboard.html" style="text-decoration: none;">
         <span class="brand-icon"><i class="fa-solid fa-car"></i></span>
         <span class="brand-name">
           <span style="color: #ffffff;">Auto</span><span style="color: #f97316;">Care</span>
         </span>
-      </div>
+      </a>
 
       <!-- Nav Bar -->
       <nav class="nav">
-        <a class="nav-item" href="/pages/manager/manager-dashboard.html">
+        <a class="nav-item" href="manager-dashboard.html">
           <span class="icon"><i class="fa-solid fa-border-all"></i></span>Dashboard
         </a>
 
-        <a class="nav-item" href="/pages/manager/manager-booking-request.html">
+        <a class="nav-item" href="manager-booking-request.html">
           <span class="icon"><i class="fa-regular fa-calendar-check"></i></span>Booking Requests
         </a>
 
-        <a class="nav-item" href="/pages/manager/manager-jobCards.html">
+        <a class="nav-item" href="manager-jobCards.html">
           <span class="icon"><i class="fa-regular fa-clipboard"></i></span>Job Cards
         </a>
 
-        <a class="nav-item" href="/pages/manager/manager-mechanics.html">
+        <a class="nav-item" href="manager-mechanics.html">
           <span class="icon"><i class="fa-solid fa-users-gear"></i></span>Mechanics
         </a>
 
-        <a class="nav-item active" href="/pages/manager/manager-process-tracker.html">
+        <a class="nav-item active" href="manager-process-tracker.html">
           <span class="icon"><i class="fa-solid fa-list-check"></i></span>Job Tracking
         </a>
 
-        <a class="nav-item" href="/pages/manager/manager-cost-estimation.html">
+        <a class="nav-item" href="manager-cost-estimation.html">
           <span class="icon"><i class="fa-solid fa-calculator"></i></span>Cost Estimates
         </a>
 
-        <a class="nav-item" href="/pages/manager/manager-invoice-management.html">
+        <a class="nav-item" href="manager-invoice-management.html">
           <span class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></span>Invoices
         </a>
 
-        <a class="nav-item" href="/pages/manager/manager-payment-approval.html">
+        <a class="nav-item" href="manager-payment-approval.html">
           <span class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></span>Spare Parts Approval
         </a>
 
-        <a class="nav-item" href="/pages/manager/manager-chat.html">
+        <a class="nav-item" href="manager-chat.html">
           <span class="icon"><i class="fa-regular fa-comments"></i></span>Chats
         </a>
 
-        <a class="nav-item" href="/pages/manager/manager-performance.html">
+        <a class="nav-item" href="manager-performance.html">
           <span class="icon"><i class="fa-solid fa-chart-line"></i></span>Report
         </a>
       </nav>
 
-      <a class="logout" href="/HTML/login.html">
+      <a class="logout" href="../login.html">
         <span><i class="fa-solid fa-right-from-bracket"></i></span>Logout
       </a>
 
@@ -237,5 +237,8 @@
 
   </div>
 
+  <script src="../../assets/js/manager/manager-store.js"></script>
+  <script src="../../assets/js/manager/manager-common.js"></script>
+  <script src="../../assets/js/manager/manager-process-tracker.js"></script>
 </body>
 </html>
