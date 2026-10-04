@@ -465,7 +465,12 @@
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
           const parsed = JSON.parse(stored);
-          return Object.assign({}, initialSeedData, parsed);
+          const data = Object.assign({}, initialSeedData, parsed);
+          // Ensure jobCardParts array exists and is populated with seed data if empty
+          if (!data.jobCardParts || !Array.isArray(data.jobCardParts) || data.jobCardParts.length === 0) {
+            data.jobCardParts = JSON.parse(JSON.stringify(initialSeedData.jobCardParts));
+          }
+          return data;
         }
       } catch (e) {
         console.warn('AutoCare Store: Failed to load from localStorage. Using defaults.', e);
@@ -609,10 +614,11 @@
       return req;
     }
 
-    rejectPartRequest(partRequestId) {
+    rejectPartRequest(partRequestId, reason) {
       const req = this.getJobCardPartById(partRequestId);
       if (req) {
         req.status = 'Rejected';
+        req.rejection_reason = reason || 'Declined by workshop manager';
         this.logActivity(`Spare part request rejected: <strong>${req.part_name}</strong> for ${req.work_order}.`, 'red');
         this.save();
       }
@@ -624,6 +630,38 @@
       pending.forEach(p => this.approvePartRequest(p.id));
       this.save();
       return pending.length;
+    }
+
+    createJobCardPart(partData) {
+      const id = Date.now();
+      const newPart = Object.assign({
+        id: id,
+        job_card_id: 1045,
+        work_order: '#WO-9921',
+        part_id: 1,
+        part_name: 'Brake Pad Set - Front',
+        part_number: 'PN: BP-2049-F',
+        quantity: 1,
+        unit: 'Units',
+        unit_price: 85.00,
+        total_price: 85.00,
+        mechanic_name: 'John Doe',
+        mechanic_initials: 'JD',
+        status: 'Pending Approval',
+        requested_at: new Date().toISOString().replace('T', ' ').substring(0, 19)
+      }, partData);
+
+      if (!this.data.jobCardParts) this.data.jobCardParts = [];
+      this.data.jobCardParts.unshift(newPart);
+      this.logActivity(`Spare part requested: <strong>${newPart.part_name}</strong> for ${newPart.work_order}.`, 'blue', `৳${newPart.total_price}`);
+      this.save();
+      return newPart;
+    }
+
+    resetJobCardParts() {
+      this.data.jobCardParts = JSON.parse(JSON.stringify(initialSeedData.jobCardParts));
+      this.save();
+      return this.data.jobCardParts;
     }
 
     // --- Estimates ---

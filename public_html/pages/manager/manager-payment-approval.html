@@ -161,21 +161,52 @@
 
           <div class="table-header">
             <div>
-              <h2>Pending Approvals</h2>
-              <p>Review and authorize mechanic part requests.</p>
+              <h2 id="approval-card-title">Pending Approvals</h2>
+              <p id="approval-card-sub">Review and authorize mechanic part requests.</p>
             </div>
 
             <div class="header-actions">
-              <button class="btn-secondary">
+              <div class="table-search-box">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="approval-search-input" placeholder="Search part, mechanic, job...">
+              </div>
+
+              <button class="btn-new-request" id="btn-open-request-modal">
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                + New Request
+              </button>
+
+              <button class="btn-secondary" id="btn-filter-modal">
                 <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
                 Filter
               </button>
 
-              <button class="btn-approve-all">
+              <button class="btn-approve-all" id="btn-approve-all-requests">
                 <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                 Approve All
               </button>
+
+              <button class="btn-reset-data" id="btn-reset-sample-data" title="Reset sample requests data">
+                <svg viewBox="0 0 24 24" style="width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2;"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                Reset
+              </button>
             </div>
+          </div>
+
+          <!-- Status Filter Tabs -->
+          <div class="approval-tabs" id="approval-status-tabs">
+            <button class="tab-btn active" data-status="Pending Approval">
+              Pending Approval <span class="tab-count" id="badge-count-pending">0</span>
+            </button>
+            <button class="tab-btn" data-status="Approved">
+              Approved <span class="tab-count" id="badge-count-approved">0</span>
+            </button>
+            <button class="tab-btn" data-status="Rejected">
+              Rejected <span class="tab-count" id="badge-count-rejected">0</span>
+            </button>
+            <button class="tab-btn" data-status="all">
+              All Requests <span class="tab-count" id="badge-count-all">0</span>
+            </button>
           </div>
 
           <div class="table-container">
@@ -187,113 +218,21 @@
                   <th>UNIT PRICE</th>
                   <th>TOTAL</th>
                   <th>MECHANIC / JOB</th>
+                  <th>STATUS</th>
                   <th class="actions-th">ACTIONS</th>
                 </tr>
               </thead>
-              <tbody>
-
-                <!-- Row 1 -->
-                <tr>
-                  <td>
-                    <div class="part-cell">
-                      <div class="part-icon">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                      </div>
-                      <div>
-                        <div class="part-name">Brake Pad Set - Front</div>
-                        <div class="part-pn">PN: BP-2049-F</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td><span class="qty-badge">2 Sets</span></td>
-                  <td class="dim-text">৳85.00</td>
-                  <td class="bold">৳170.00</td>
-                  <td>
-                    <div class="mechanic-cell">
-                      <div class="avatar-sm navy">JD</div>
-                      <div>
-                        <div class="mechanic-name">John Doe</div>
-                        <div class="job-id">Job: #WO-9921</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="actions-td">
-                    <button class="btn-action approve">✓ Approve</button>
-                    <button class="btn-action reject">✕ Reject</button>
-                  </td>
-                </tr>
-
-                <!-- Row 2 -->
-                <tr>
-                  <td>
-                    <div class="part-cell">
-                      <div class="part-icon">
-                        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                      </div>
-                      <div>
-                        <div class="part-name">Synthetic Motor Oil 5W-30</div>
-                        <div class="part-pn">PN: MO-5W30-SYN</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td><span class="qty-badge">6 Quarts</span></td>
-                  <td class="dim-text">৳9.50</td>
-                  <td class="bold">৳57.00</td>
-                  <td>
-                    <div class="mechanic-cell">
-                      <div class="avatar-sm dark-navy">SM</div>
-                      <div>
-                        <div class="mechanic-name">Sarah Miller</div>
-                        <div class="job-id">Job: #WO-9924</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="actions-td">
-                    <button class="btn-action approve">✓ Approve</button>
-                    <button class="btn-action reject">✕ Reject</button>
-                  </td>
-                </tr>
-
-                <!-- Row 3 -->
-                <tr>
-                  <td>
-                    <div class="part-cell">
-                      <div class="part-icon">
-                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                      </div>
-                      <div>
-                        <div class="part-name">Alternator Assembly - 130A</div>
-                        <div class="part-pn">PN: ALT-130-OEM</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td><span class="qty-badge">1 Unit</span></td>
-                  <td class="dim-text">৳345.00</td>
-                  <td class="bold">৳345.00</td>
-                  <td>
-                    <div class="mechanic-cell">
-                      <div class="avatar-sm navy">JD</div>
-                      <div>
-                        <div class="mechanic-name">John Doe</div>
-                        <div class="job-id">Job: #WO-9918</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="actions-td">
-                    <button class="btn-action approve">✓ Approve</button>
-                    <button class="btn-action reject">✕ Reject</button>
-                  </td>
-                </tr>
-
+              <tbody id="approval-table-body">
+                <!-- Dynamically populated by manager-payment-approval.js -->
               </tbody>
             </table>
           </div>
 
           <div class="table-footer">
-            <span class="showing-text">Showing 1-3 of 12 requests</span>
+            <span class="showing-text" id="approval-showing-text">Showing requests</span>
             <div class="pagination-arrows">
-              <button class="arrow-btn disabled">&lt;</button>
-              <button class="arrow-btn">&gt;</button>
+              <button class="arrow-btn" id="pagination-prev">&lt;</button>
+              <button class="arrow-btn" id="pagination-next">&gt;</button>
             </div>
           </div>
 
