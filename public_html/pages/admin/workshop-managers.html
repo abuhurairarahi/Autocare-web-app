@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AutoCare Admin - Workshop Managers</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/Styles/Admin/workshop-managers.css">
-  <link rel="stylesheet" href="/Styles/Admin/default-sidebar-topbar-style.css">
+  <link rel="stylesheet" href="../../assets/css/admin/workshop-managers.css">
+  <link rel="stylesheet" href="../../assets/css/admin/default-sidebar-topbar-style.css">
 </head>
 
 <body>
@@ -25,26 +25,26 @@
 
       <!-- Nav Bar -->
       <nav class="nav">
-        <a href="/pages/admin/dashboard.html" class="nav-item"><i class="fa-solid fa-border-all"></i>
+        <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-border-all"></i>
           Dashboard</a>
-        <a href="/pages/admin/workshop-managers.html" class="nav-item active"><i class="fa-solid fa-user-gear"></i> Workshop
+        <a href="workshop-managers.html" class="nav-item active"><i class="fa-solid fa-user-gear"></i> Workshop
           Managers</a>
-        <a href="/pages/admin/workshop-mechanics.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop
+        <a href="workshop-mechanics.html" class="nav-item"><i class="fa-solid fa-user-gear"></i> Workshop
           Mechanics</a>
-        <a href="/pages/admin/vehicle-owners.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle
+        <a href="vehicle-owners.html" class="nav-item"><i class="fa-solid fa-car-side"></i> Vehicle
           Owners</a>
-        <a href="/pages/admin/service-categories.html" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service
+        <a href="service-categories.html" class="nav-item"><i class="fa-solid fa-layer-group"></i> Service
           Categories</a>
-        <a href="/pages/admin/spare-parts-inventory.html" class="nav-item"><i class="fa-solid fa-boxes-stacked"></i> Spare
+        <a href="spare-parts-inventory.html" class="nav-item"><i class="fa-solid fa-boxes-stacked"></i> Spare
           Parts Inventory</a>
-        <a href="/pages/admin/analytics.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
-        <a href="/pages/admin/revenue-reports.html" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i>
+        <a href="analytics.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+        <a href="revenue-reports.html" class="nav-item"><i class="fa-solid fa-file-invoice-dollar"></i>
           Revenue Reports</a>
-        <a href="/pages/admin/service-offers.html" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
-                <a href="/pages/admin/service-broadcast.html" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
+        <a href="service-offers.html" class="nav-item"><i class="fa-solid fa-tags"></i> Service Offers</a>
+                <a href="service-broadcast.html" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Service Broadcast</a>
       </nav>
 
-      <a class="logout" href="/HTML/login.html">
+      <a class="logout" href="../login.html">
         <span><i class="fa-solid fa-right-from-bracket"></i></span>Logout
       </a>
 
@@ -94,7 +94,7 @@
             <h1>Workshop Managers</h1>
             <p class="subtitle">Manage and monitor workshop administrator accounts.</p>
           </div>
-          <button class="btn btn-primary">+ Add Manager</button>
+          <button class="btn btn-primary" id="add-manager-btn" data-wired="true">+ Add Manager</button>
         </div>
 
         <section class="card">
@@ -110,7 +110,7 @@
               <option value="Suspended">Suspended</option>
             </select>
             </div>
-            <button class="btn btn-outline toolbar-export">⭳ Export</button>
+            <button class="btn btn-outline toolbar-export" id="export-managers-btn" data-wired="true">⭳ Export</button>
           </div>
 
           <table class="managers-table">
@@ -146,7 +146,7 @@
                   </div>
                 </td>
                 <td>Oct 12, 2023</td>
-                <td class="col-actions"><button class="btn btn-update">✎ Update</button></td>
+                <td class="col-actions"><button class="btn btn-update" data-wired="true">✎ Update</button></td>
               </tr>
               <tr>
                 <td class="id-cell">#WM-1043</td>
@@ -170,7 +170,7 @@
                   </select>
                 </td>
                 <td>Nov 05, 2023</td>
-                <td class="col-actions"><button class="btn btn-update">✎ Update</button></td>
+                <td class="col-actions"><button class="btn btn-update" data-wired="true">✎ Update</button></td>
               </tr>
               <tr>
                 <td class="id-cell">#WM-1044</td>
@@ -193,7 +193,7 @@
                   </div>
                 </td>
                 <td>Jan 22, 2024</td>
-                <td class="col-actions"><button class="btn btn-update">✎ Update</button></td>
+                <td class="col-actions"><button class="btn btn-update" data-wired="true">✎ Update</button></td>
               </tr>
             </tbody>
           </table>
@@ -214,7 +214,106 @@
     </main>
   </div>
   </div>
-<script src="../../Scripts/Admin/admin.js"></script>
+
+  <!-- Add Manager Modal -->
+  <div class="modal-overlay" id="add-manager-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add Workshop Manager</h2>
+        <button class="modal-close" id="close-modal-btn">&times;</button>
+      </div>
+      <form id="add-manager-form">
+        <div class="form-group">
+          <label for="manager-name">Name</label>
+          <input type="text" id="manager-name" required placeholder="Enter full name">
+        </div>
+        <div class="form-group">
+          <label for="manager-email">Email</label>
+          <input type="email" id="manager-email" required placeholder="Enter email address">
+        </div>
+        <div class="form-group">
+          <label for="manager-phone">Phone</label>
+          <input type="tel" id="manager-phone" required placeholder="Enter phone number">
+        </div>
+        <div class="form-group">
+          <label for="manager-workshop">Assigned Workshop</label>
+          <select id="manager-workshop" required>
+            <option value="">Select a workshop...</option>
+            <option value="Central Hub">Central Hub</option>
+            <option value="Downtown Hub">Downtown Hub</option>
+            <option value="Uptown Hub">Uptown Hub</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="manager-status">Status</label>
+          <select id="manager-status" required>
+            <option value="Approved">Approved</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="manager-joining-date">Joining Date</label>
+          <input type="date" id="manager-joining-date" required readonly style="background: #f4f2fc;">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="cancel-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Update Manager Modal -->
+  <div class="modal-overlay" id="update-manager-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Update Workshop Manager</h2>
+        <button class="modal-close" id="close-update-modal-btn">&times;</button>
+      </div>
+      <form id="update-manager-form">
+        <input type="hidden" id="update-manager-row-index">
+        <div class="form-group">
+          <label for="update-manager-name">Name</label>
+          <input type="text" id="update-manager-name" required placeholder="Enter full name">
+        </div>
+        <div class="form-group">
+          <label for="update-manager-email">Email</label>
+          <input type="email" id="update-manager-email" required placeholder="Enter email address">
+        </div>
+        <div class="form-group">
+          <label for="update-manager-phone">Phone</label>
+          <input type="tel" id="update-manager-phone" required placeholder="Enter phone number">
+        </div>
+        <div class="form-group">
+          <label for="update-manager-workshop">Assigned Workshop</label>
+          <select id="update-manager-workshop" required>
+            <option value="">Select a workshop...</option>
+            <option value="Dhaka Branch">Dhaka Branch</option>
+            <option value="Central Hub">Central Hub</option>
+            <option value="Downtown Hub">Downtown Hub</option>
+            <option value="Uptown Hub">Uptown Hub</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="update-manager-status">Status</label>
+          <select id="update-manager-status" required>
+            <option value="Approved">Approved</option>
+            <option value="Pending">Pending</option>
+            <option value="Suspended">Suspended</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="update-manager-joining-date">Joining Date</label>
+          <input type="text" id="update-manager-joining-date" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="cancel-update-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 <script src="../../assets/js/admin/workshop-managers.js"></script>
 </body>
 

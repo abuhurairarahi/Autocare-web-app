@@ -6,22 +6,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("workshop-mechanics page loaded successfully.");
     initSpecificInteractions();
+    initAddMechanicModal();
 });
 
 function initSpecificInteractions() {
-    // 1. Add hover animations to all stat cards and panels
-    const cards = document.querySelectorAll('.stat-card, .metric-card, .card');
-    cards.forEach(card => {
-        card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-5px)';
-            card.style.boxShadow = '0 12px 24px rgba(0,0,0,0.15)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = 'var(--shadow, 0 4px 6px rgba(0,0,0,0.05))';
-        });
-    });
+
 
     // 2. Wire up specific page buttons
     const primaryBtns = document.querySelectorAll('.primary-btn, .btn-primary');
@@ -41,17 +30,7 @@ function initSpecificInteractions() {
         }
     });
 
-    // 3. Make charts interactive (if they exist)
-    const bars = document.querySelectorAll('.bar');
-    bars.forEach(bar => {
-        bar.style.cursor = 'pointer';
-        bar.addEventListener('mouseenter', (e) => {
-            e.target.style.opacity = '0.7';
-        });
-        bar.addEventListener('mouseleave', (e) => {
-            e.target.style.opacity = '1';
-        });
-    });
+
 
     // 4. Handle specific filters
     const selects = document.querySelectorAll('select');
@@ -62,4 +41,34 @@ function initSpecificInteractions() {
             }
         });
     });
+}
+
+function initAddMechanicModal() {
+    const addBtn = document.getElementById('add-mechanic-btn');
+    const modal = document.getElementById('add-mechanic-modal');
+    const closeBtn = document.getElementById('close-mechanic-modal-btn');
+    const cancelBtn = document.getElementById('cancel-mechanic-modal-btn');
+    const form = document.getElementById('add-mechanic-form');
+
+    if (!addBtn || !modal) return;
+
+    addBtn.addEventListener('click', () => { modal.classList.add('active'); });
+    const closeModal = () => { modal.classList.remove('active'); if(form) form.reset(); };
+
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    if(cancelBtn) cancelBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    if(form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (typeof showToast === 'function') {
+                showToast("Mechanic saved successfully!");
+            } else {
+                alert("Mechanic saved successfully!");
+            }
+            closeModal();
+        });
+    }
 }
