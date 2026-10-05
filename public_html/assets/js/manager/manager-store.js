@@ -458,6 +458,44 @@
   class Store {
     constructor() {
       this.data = this.load();
+      this.isSynced = false;
+      this.readyCallbacks = [];
+      this.syncWithBackend();
+    }
+
+    onReady(callback) {
+      if (this.isSynced) {
+        callback(this.data);
+      } else {
+        this.readyCallbacks.push(callback);
+      }
+    }
+
+    async syncWithBackend() {
+      try {
+        const response = await fetch('../../api/manager/store-sync.php');
+        if (response.ok) {
+          const res = await response.json();
+          if (res.success && res.data) {
+            this.data = Object.assign({}, this.data, res.data);
+            this.isSynced = true;
+            this.save();
+            this.readyCallbacks.forEach(cb => {
+              try { cb(this.data); } catch(e) { console.error(e); }
+            });
+            this.readyCallbacks = [];
+            if (typeof window !== 'undefined') {
+              window.dispatchEvent(new CustomEvent('autocare:store:synced', { detail: this.data }));
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('AutoCare Store: Backend sync skipped, using local store.', e);
+      }
+    }
+
+    refreshFromDB() {
+      return this.syncWithBackend();
     }
 
     load() {
@@ -518,6 +556,17 @@
         req.status = newStatus;
         this.logActivity(`Service Request <strong>${req.code}</strong> updated to <em>${newStatus}</em>.`, 'blue', req.code);
         this.save();
+        try {
+          fetch('../../api/manager/booking-requests.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: newStatus === 'Approved' ? 'approve' : 'reject',
+              appointment_id: req.id,
+              reason: newStatus === 'Rejected' ? 'Declined by manager' : ''
+            })
+          }).catch(e => console.warn('Could not persist booking request status to DB:', e));
+        } catch (e) {}
       }
       return req;
     }
@@ -527,9 +576,9 @@
     getJobCardById(id) { return this.getJobCards().find(j => j.id === Number(id) || j.code === id || j.work_order === id); }
     
     createJobCard(cardData) {
-      const id = Date.now();
-      const code = `JC-${Math.floor(1000 + Math.random() * 9000)}`;
-      const workOrder = `#WO-${Math.floor(2000 + Math.random() * 8000)}`;
+      const id = cardData.id || Date.now();
+      const code = cardData.code || `JC-${Math.floor(1000 + Math.random() * 9000)}`;
+      const workOrder = cardData.work_order || `#WO-${Math.floor(2000 + Math.random() * 8000)}`;
 
       const newCard = Object.assign({
         id: id,
@@ -556,6 +605,31 @@
       this.data.jobCards.unshift(newCard);
       this.logActivity(`New Job Card <strong>${newCard.code}</strong> (${newCard.work_order}) opened for ${newCard.customer_name}.`, 'blue', newCard.vehicle_title);
       this.save();
+
+      // Persist to MySQL
+      try {
+        fetch('../../api/manager/job-cards.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'create',
+            customer_name: newCard.customer_name,
+            vehicle_details: newCard.vehicle_details,
+            service_text: newCard.service_text,
+            estimated_cost: newCard.estimated_cost,
+            mechanic_id: newCard.mechanic_id,
+            delivery_date: newCard.delivery_date
+          })
+        }).then(r => r.json()).then(res => {
+          if (res.success && res.job_id) {
+            newCard.id = res.job_id;
+            newCard.code = res.code;
+            newCard.work_order = res.work_order;
+            this.save();
+          }
+        }).catch(e => console.warn('Could not persist job card to DB:', e));
+      } catch (e) {}
+
       return newCard;
     }
 
@@ -573,6 +647,21 @@
         this.addTimelineEntry(card.id, status || kanbanStage, 2);
         this.logActivity(`Job Card <strong>${card.code}</strong> updated to '${status || kanbanStage}'.`, 'blue', card.vehicle_title);
         this.save();
+
+        // Persist to MySQL
+        try {
+          fetch('../../api/manager/job-cards.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'update_status',
+              job_id: card.id,
+              status: status || card.status,
+              kanban_stage: kanbanStage || card.kanban_stage,
+              progress_percentage: card.progress_percentage
+            })
+          }).catch(e => console.warn('Could not persist job card status to DB:', e));
+        } catch (e) {}
       }
       return card;
     }
@@ -588,6 +677,19 @@
         mech.status = mech.workload >= 80 ? 'Busy' : 'Available';
         this.logActivity(`Job Card <strong>${card.code}</strong> assigned to ${mech.name}.`, 'blue', card.vehicle_title);
         this.save();
+
+        // Persist to MySQL
+        try {
+          fetch('../../api/manager/job-cards.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'assign_mechanic',
+              job_id: card.id,
+              mechanic_id: mech.id
+            })
+          }).catch(e => console.warn('Could not persist job assignment to DB:', e));
+        } catch (e) {}
       }
       return card;
     }
@@ -610,6 +712,15 @@
         }
         this.logActivity(`Spare part request approved: <strong>${req.part_name}</strong> for ${req.work_order}.`, 'blue', `৳${req.total_price}`);
         this.save();
+
+        // Persist to MySQL
+        try {
+          fetch('../../api/manager/payment-approval.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'approve', request_id: partRequestId })
+          }).catch(e => console.warn('Could not persist part approval to DB:', e));
+        } catch (e) {}
       }
       return req;
     }
@@ -621,6 +732,15 @@
         req.rejection_reason = reason || 'Declined by workshop manager';
         this.logActivity(`Spare part request rejected: <strong>${req.part_name}</strong> for ${req.work_order}.`, 'red');
         this.save();
+
+        // Persist to MySQL
+        try {
+          fetch('../../api/manager/payment-approval.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'reject', request_id: partRequestId, reason: reason })
+          }).catch(e => console.warn('Could not persist part rejection to DB:', e));
+        } catch (e) {}
       }
       return req;
     }
@@ -629,6 +749,15 @@
       const pending = this.getJobCardParts().filter(p => p.status === 'Pending Approval');
       pending.forEach(p => this.approvePartRequest(p.id));
       this.save();
+
+      try {
+        fetch('../../api/manager/payment-approval.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'approve_all' })
+        }).catch(e => console.warn('Could not persist approve all to DB:', e));
+      } catch (e) {}
+
       return pending.length;
     }
 
@@ -655,6 +784,26 @@
       this.data.jobCardParts.unshift(newPart);
       this.logActivity(`Spare part requested: <strong>${newPart.part_name}</strong> for ${newPart.work_order}.`, 'blue', `৳${newPart.total_price}`);
       this.save();
+
+      // Persist to MySQL
+      try {
+        fetch('../../api/manager/payment-approval.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'create_request',
+            job_card_id: newPart.job_card_id,
+            part_id: newPart.part_id,
+            quantity: newPart.quantity
+          })
+        }).then(r => r.json()).then(res => {
+          if (res.success && res.request_id) {
+            newPart.id = res.request_id;
+            this.save();
+          }
+        }).catch(e => console.warn('Could not persist part request to DB:', e));
+      } catch (e) {}
+
       return newPart;
     }
 
@@ -685,6 +834,22 @@
       }
       this.logActivity(`Cost Estimate <strong>${est.code}</strong> updated for ${est.customer_name}.`, 'blue', `৳${est.total_estimated_cost}`);
       this.save();
+
+      // Persist to MySQL
+      try {
+        fetch('../../api/manager/cost-estimation.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(est)
+        }).then(r => r.json()).then(res => {
+          if (res.success && res.estimate_id) {
+            est.id = res.estimate_id;
+            if (res.code) est.code = res.code;
+            this.save();
+          }
+        }).catch(e => console.warn('Could not persist estimate to DB:', e));
+      } catch (e) {}
+
       return est;
     }
 
@@ -695,7 +860,7 @@
     createInvoice(invoiceData) {
       const id = Date.now();
       const count = (this.data.invoices || []).length + 90;
-      const num = `INV-2023-${String(count).padStart(3, '0')}`;
+      const num = `INV-2026-${String(count).padStart(3, '0')}`;
       const newInv = Object.assign({
         id: id,
         invoice_number: num,
@@ -706,6 +871,27 @@
       this.data.invoices.unshift(newInv);
       this.logActivity(`Invoice <strong>#${newInv.invoice_number}</strong> generated for ${newInv.customer_name}.`, 'gray', `৳${newInv.total_amount}`);
       this.save();
+
+      // Persist to MySQL
+      try {
+        fetch('../../api/manager/invoice-management.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'create',
+            job_card_id: newInv.job_card_id,
+            total_amount: newInv.total_amount,
+            status: newInv.status
+          })
+        }).then(r => r.json()).then(res => {
+          if (res.success && res.invoice_id) {
+            newInv.id = res.invoice_id;
+            newInv.invoice_number = res.invoice_number;
+            this.save();
+          }
+        }).catch(e => console.warn('Could not persist invoice to DB:', e));
+      } catch (e) {}
+
       return newInv;
     }
 
@@ -715,6 +901,19 @@
         inv.status = newStatus;
         this.logActivity(`Invoice <strong>#${inv.invoice_number}</strong> marked as ${newStatus}.`, 'gray', `৳${inv.total_amount}`);
         this.save();
+
+        // Persist to MySQL
+        try {
+          fetch('../../api/manager/invoice-management.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'update_status',
+              invoice_id: inv.id,
+              status: newStatus
+            })
+          }).catch(e => console.warn('Could not persist invoice status to DB:', e));
+        } catch (e) {}
       }
       return inv;
     }
@@ -740,6 +939,26 @@
       };
       this.data.chatMessages.push(newMsg);
       this.save();
+
+      // Persist to MySQL
+      try {
+        fetch('../../api/manager/chat.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            receiver_id: receiverId,
+            message_text: messageText,
+            job_tag: newMsg.job_tag,
+            attachments: attachments
+          })
+        }).then(r => r.json()).then(res => {
+          if (res.success && res.data && res.data.id) {
+            newMsg.id = res.data.id;
+            this.save();
+          }
+        }).catch(e => console.warn('Could not persist chat message to DB:', e));
+      } catch (e) {}
+
       return newMsg;
     }
 

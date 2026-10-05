@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initMessageSending();
   initNewChatButton();
   scrollToBottom();
+  loadChatMessagesFromDB(activeThreadId);
+});
+
+window.addEventListener('autocare:store:synced', () => {
+  loadChatMessagesFromDB(activeThreadId);
 });
 
 /**
@@ -79,6 +84,10 @@ function initThreadSelection() {
 
       const input = document.querySelector('.composer-box input');
       if (input) input.placeholder = `Type a message to ${name}...`;
+
+      const threadUserId = item.getAttribute('data-user-id') || (index === 0 ? 8 : (index === 1 ? 4 : (index === 2 ? 101 : 3)));
+      activeThreadId = Number(threadUserId);
+      loadChatMessagesFromDB(activeThreadId);
 
       showToast(`Switched conversation to ${name}`, 'info');
     });
@@ -238,9 +247,25 @@ function initNewChatButton() {
         if (user && msg) {
           appendMessageToView(msg, false);
           scrollToBottom();
+          if (typeof AutoCareStore !== 'undefined') {
+            AutoCareStore.sendChatMessage(msg, [], user.id);
+          }
           showToast(`Started conversation with ${user.name || user.username}!`, 'success');
         }
       }
     });
   });
+}
+
+async function loadChatMessagesFromDB(userId = 8) {
+  if (!window.managerApi) return;
+  const res = await window.managerApi.getChat(userId);
+  if (!res || !res.messages) return;
+  const container = document.querySelector('.chat-messages');
+  if (!container) return;
+  container.innerHTML = '';
+  res.messages.forEach(m => {
+    appendMessageToView(m.message, m.is_incoming, m.attachments || []);
+  });
+  scrollToBottom();
 }

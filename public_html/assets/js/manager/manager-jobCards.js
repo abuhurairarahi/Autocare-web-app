@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initPagination();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderJobCardsStats();
+  renderJobCardsTable();
+});
+
 /**
  * 1. Render Stat Cards
  */

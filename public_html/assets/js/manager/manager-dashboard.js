@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   renderRecentActivity();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderDashboardStats();
+  renderMechanicsWorkload();
+  renderRecentActivity();
+});
+
 /**
  * 1. Calculate and update dashboard stat cards from the live database store
  */

@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initInvoiceActions();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderInvoiceStats();
+  renderInvoicesTable();
+});
+
 /**
  * 1. Render Invoice Stats Cards
  */

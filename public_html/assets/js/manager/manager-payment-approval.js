@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initApprovalButtons();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderApprovalStats();
+  updateTabBadges();
+  renderApprovalTable();
+});
+
 /**
  * Ensure initial requests exist so the table is never empty on clean load
  */

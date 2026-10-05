@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initKanbanDragAndDrop();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderKanbanBoard();
+});
+
 /**
  * 1. Render Kanban Board Cards from AutoCareStore
  */

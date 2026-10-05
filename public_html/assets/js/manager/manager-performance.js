@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initExportAnalytics();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderPerformanceKpis('30');
+});
+
 /**
  * 1. Calculate & Render KPI Cards
  */

@@ -508,3 +508,79 @@ function initLogoutHandler() {
     });
   });
 }
+
+// Global API helper for Manager Pages
+window.managerApi = {
+  request: async function(endpoint, method = 'GET', data = null) {
+    try {
+      const options = { method };
+      if (data) {
+        options.headers = { 'Content-Type': 'application/json' };
+        options.body = JSON.stringify(data);
+      }
+      const response = await fetch(`../../api/manager/${endpoint}`, options);
+      const result = await response.json();
+      if (!result.success) {
+        console.error('Manager API Error:', result.error || 'Unknown error');
+        return null;
+      }
+      return result.data !== undefined ? result.data : result;
+    } catch (err) {
+      console.error('Manager Network Error:', err);
+      return null;
+    }
+  },
+  getDashboard: () => window.managerApi.request('dashboard.php', 'GET'),
+  createJobCard: (data) => window.managerApi.request('job-cards.php', 'POST', Object.assign({ action: 'create' }, data)),
+  updateJobCardStatus: (jobId, status, kanbanStage, progress) => window.managerApi.request('job-cards.php', 'POST', { action: 'update_status', job_id: jobId, status: status, kanban_stage: kanbanStage, progress_percentage: progress }),
+  assignJobCardMechanic: (jobId, mechanicId) => window.managerApi.request('job-cards.php', 'POST', { action: 'assign_mechanic', job_id: jobId, mechanic_id: mechanicId }),
+  getBookingRequests: (status, priority) => window.managerApi.request(`booking-requests.php?status=${status || 'all'}&priority=${priority || 'all'}`),
+  approveBookingRequest: (appointmentId, mechanicId, estimatedCost, scope) => window.managerApi.request('booking-requests.php', 'POST', { action: 'approve', appointment_id: appointmentId, mechanic_id: mechanicId, estimated_cost: estimatedCost, service_scope: scope }),
+  rejectBookingRequest: (appointmentId, reason) => window.managerApi.request('booking-requests.php', 'POST', { action: 'reject', appointment_id: appointmentId, reason: reason }),
+  getJobCards: (filter) => window.managerApi.request(`job-cards.php?filter=${filter || 'all'}`),
+  getMechanics: (specialty, status) => window.managerApi.request(`mechanics.php?specialty=${specialty || 'all'}&status=${status || 'all'}`),
+  getProcessTracker: () => window.managerApi.request('process-tracker.php'),
+  updateKanbanStage: (cardId, targetStage, status) => window.managerApi.request('process-tracker.php', 'POST', { card_id: cardId, target_stage: targetStage, status: status }),
+  getEstimates: (id) => window.managerApi.request(`cost-estimation.php${id ? '?id=' + id : ''}`),
+  saveEstimate: (data) => window.managerApi.request('cost-estimation.php', 'POST', data),
+  getInvoices: (filter) => window.managerApi.request(`invoice-management.php?filter=${filter || 'all'}`),
+  createInvoice: (data) => window.managerApi.request('invoice-management.php', 'POST', Object.assign({ action: 'create' }, data)),
+  updateInvoiceStatus: (invoiceId, status) => window.managerApi.request('invoice-management.php', 'POST', { action: 'update_status', invoice_id: invoiceId, status: status }),
+  getSparePartsRequests: (status, search) => window.managerApi.request(`payment-approval.php?status=${status || 'All'}&search=${encodeURIComponent(search || '')}`),
+  approveSparePart: (reqId) => window.managerApi.request('payment-approval.php', 'POST', { action: 'approve', request_id: reqId }),
+  rejectSparePart: (reqId, reason) => window.managerApi.request('payment-approval.php', 'POST', { action: 'reject', request_id: reqId, reason: reason }),
+  approveAllSpareParts: () => window.managerApi.request('payment-approval.php', 'POST', { action: 'approve_all' }),
+  createSparePartRequest: (data) => window.managerApi.request('payment-approval.php', 'POST', Object.assign({ action: 'create_request' }, data)),
+  getChat: (userId) => window.managerApi.request(`chat.php?user_id=${userId || 8}`),
+  sendChat: (data) => window.managerApi.request('chat.php', 'POST', data),
+  getPerformance: (period) => window.managerApi.request(`performance.php?period=${period || '30'}`),
+  getStoreSync: () => window.managerApi.request('store-sync.php')
+};
+
+// Seamless Navigation Helper: Ensures links stay consistent between .html and .php
+(function() {
+  const isPhpPage = window.location.pathname.endsWith('.php');
+  if (isPhpPage) {
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href*="manager-"]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.endsWith('.html')) {
+          link.setAttribute('href', href.replace(/\.html$/, '.php'));
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      const anchor = e.target.closest('a');
+      if (anchor) {
+        const href = anchor.getAttribute('href');
+        if (href && href.includes('manager-') && href.endsWith('.html')) {
+          e.preventDefault();
+          window.location.href = href.replace(/\.html$/, '.php');
+        }
+      }
+    }, true);
+  }
+})();
+
+

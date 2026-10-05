@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initMechanicFilters();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderMechanicCards();
+});
+
 /**
  * 1. Render Mechanic Cards from AutoCareStore
  */

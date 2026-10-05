@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewEstimateButton();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderEstimatesTable();
+});
+
 /**
  * 1. Render Estimates Table
  */

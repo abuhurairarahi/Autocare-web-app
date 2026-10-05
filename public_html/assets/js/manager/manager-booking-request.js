@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initTopActionControls();
 });
 
+window.addEventListener('autocare:store:synced', () => {
+  renderBookingRequestsTable();
+});
+
 /**
  * 1. Render Requests Table from store
  */
