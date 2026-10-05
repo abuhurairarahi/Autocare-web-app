@@ -8,7 +8,49 @@ document.addEventListener("DOMContentLoaded", () => {
     initSpecificInteractions();
     initAddOwnerModal();
     initUpdateOwnerModal();
+    loadOwnersFromDB();
 });
+
+async function loadOwnersFromDB() {
+    const tbody = document.getElementById('owner-tbody');
+    if (!tbody || !window.adminApi) return;
+    
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Loading data...</td></tr>';
+    const owners = await window.adminApi.request('vehicle-owners.php', 'GET');
+    
+    if (owners && owners.length > 0) {
+        tbody.innerHTML = '';
+        owners.forEach((o, idx) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>CUS-${3000 + o.user_id}</td>
+                <td>
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: hsl(${(idx * 70) % 360}, 50%, 60%);">${o.name.charAt(0)}</div>
+                        <div class="user-details">
+                            <span class="user-name">${o.name}</span>
+                            <span class="user-email">${o.email}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>${o.phone || 'N/A'}</td>
+                <td>1 Active</td>
+                <td><span class="status-badge active">Verified</span></td>
+                <td>${new Date(o.created_at).toLocaleDateString()}</td>
+                <td>
+                    <div class="action-btns">
+                        <button class="action-btn edit" title="Edit Owner"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="action-btn delete" title="Suspend"><i class="fa-solid fa-ban"></i></button>
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+        initUpdateOwnerModal();
+    } else {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No vehicle owners found.</td></tr>';
+    }
+}
 
 function initSpecificInteractions() {
 

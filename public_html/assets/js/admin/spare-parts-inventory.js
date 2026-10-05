@@ -8,7 +8,43 @@ document.addEventListener("DOMContentLoaded", () => {
     initSpecificInteractions();
     initExportParts();
     initAddPartModal();
+    loadInventoryFromDB();
 });
+
+async function loadInventoryFromDB() {
+    const tbody = document.getElementById('inventory-tbody');
+    if (!tbody || !window.adminApi) return;
+    
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">Loading data...</td></tr>';
+    const parts = await window.adminApi.request('spare-parts-inventory.php', 'GET');
+    
+    if (parts && parts.length > 0) {
+        tbody.innerHTML = '';
+        parts.forEach(p => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><span class="part-sku">${p.sku}</span></td>
+                <td>
+                    <div style="font-weight: 600; color: #1e293b;">${p.name}</div>
+                    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">${p.category || 'General'}</div>
+                </td>
+                <td>All Workshops</td>
+                <td><span class="stock-badge ${p.stock_quantity < p.reorder_level ? 'low-stock' : 'in-stock'}">${p.stock_quantity}</span></td>
+                <td>৳${p.price}</td>
+                <td><span class="status-badge ${p.stock_quantity < p.reorder_level ? 'draft' : 'active'}">${p.stock_quantity < p.reorder_level ? 'Low Stock' : 'In Stock'}</span></td>
+                <td>${p.supplier || 'AutoCare Suppliers'}</td>
+                <td>
+                    <div class="action-btns">
+                        <button class="action-btn edit" title="Edit Part"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } else {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">No parts found in inventory.</td></tr>';
+    }
+}
 
 function initSpecificInteractions() {
 

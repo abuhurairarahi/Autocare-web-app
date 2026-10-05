@@ -8,7 +8,41 @@ document.addEventListener("DOMContentLoaded", () => {
     initSpecificInteractions();
     initOfferModal();
     initTableActions();
+    loadOffersFromDB();
 });
+
+async function loadOffersFromDB() {
+    const tbody = document.getElementById('offers-tbody');
+    if (!tbody || !window.adminApi) return;
+    
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Loading data...</td></tr>';
+    const offers = await window.adminApi.request('service-offers.php', 'GET');
+    
+    if (offers && offers.length > 0) {
+        tbody.innerHTML = '';
+        offers.forEach(o => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><span class="offer-title">${o.title}</span></td>
+                <td>${o.description}</td>
+                <td><span class="discount-badge">${o.discount_percentage}% OFF</span></td>
+                <td>All Customers</td>
+                <td>${new Date(o.valid_until).toLocaleDateString()}</td>
+                <td>${calculateStatus(o.created_at, o.valid_until)}</td>
+                <td>
+                    <div class="action-btns">
+                        <button class="action-btn edit" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="action-btn delete" title="Deactivate"><i class="fa-solid fa-ban"></i></button>
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+        initTableActions();
+    } else {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No offers found.</td></tr>';
+    }
+}
 
 function initSpecificInteractions() {
     // Handle specific filters
@@ -111,27 +145,18 @@ function initOfferModal() {
                 showToast("Offer updated successfully!");
             }
         } else {
-            // Create new row
-            const tbody = document.getElementById('offers-tbody');
-            if(tbody) {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="fw-semibold">${title}</td>
-                    <td>${audience}</td>
-                    <td data-iso="${startDate}">${shortStart}</td>
-                    <td data-iso="${expiryDate}">${shortExpiry}</td>
-                    <td>${statusHtml}</td>
-                    <td class="text-right">
-                        <div class="action-icons">
-                            <button class="action-icon-btn edit-btn"><i class="fa-solid fa-pen"></i></button>
-                            <button class="action-icon-btn delete delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                        </div>
-                    </td>
-                `;
-                tbody.prepend(tr);
-            }
             if (typeof showToast === 'function') {
-                showToast("Offer added successfully!");
+                showToast("Saving offer to database...", "info");
+            }
+            if (window.adminApi) {
+                window.adminApi.request('service-offers.php', 'POST', {
+                    title, description: 'Created from admin panel', discount_percentage: 10, valid_until: expiryDate, status: 'Active'
+                }).then(() => {
+                    loadOffersFromDB();
+                    if (typeof showToast === 'function') {
+                        showToast("Offer added successfully!");
+                    }
+                });
             }
         }
 

@@ -7,7 +7,46 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("service-categories page loaded successfully.");
     initSpecificInteractions();
     initAddCategoryModal();
+    loadCategoriesFromDB();
 });
+
+async function loadCategoriesFromDB() {
+    const grid = document.querySelector('.cards-grid');
+    if (!grid || !window.adminApi) return;
+    
+    grid.innerHTML = '<p style="text-align:center; width: 100%;">Loading categories...</p>';
+    const categories = await window.adminApi.request('service-categories.php', 'GET');
+    
+    if (categories && categories.length > 0) {
+        grid.innerHTML = '';
+        categories.forEach(c => {
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            card.innerHTML = `
+                <div class="card-top">
+                    <div class="service-icon-box blue-tint">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <button class="badge active">ACTIVE</button>
+                </div>
+                <div class="card-body">
+                    <h3>${c.name}</h3>
+                    <p>${c.description}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="price-info">
+                        <span class="price-label">EST. BASE PRICE</span>
+                        <span class="price-value">&#2547;${c.base_price || '5,000'}</span>
+                    </div>
+                    <span class="item-count">0</span>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    } else {
+        grid.innerHTML = '<p style="text-align:center; width: 100%;">No categories found.</p>';
+    }
+}
 
 function initSpecificInteractions() {
 

@@ -7,7 +7,47 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("workshop-mechanics page loaded successfully.");
     initSpecificInteractions();
     initAddMechanicModal();
+    loadMechanicsFromDB();
 });
+
+async function loadMechanicsFromDB() {
+    const tbody = document.getElementById('mechanic-tbody');
+    if (!tbody || !window.adminApi) return;
+    
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Loading data...</td></tr>';
+    const mechanics = await window.adminApi.request('workshop-mechanics.php', 'GET');
+    
+    if (mechanics && mechanics.length > 0) {
+        tbody.innerHTML = '';
+        mechanics.forEach((m, idx) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>MEC-${2000 + m.user_id}</td>
+                <td>
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: hsl(${(idx * 60) % 360}, 60%, 50%);">${m.name.charAt(0)}</div>
+                        <div class="user-details">
+                            <span class="user-name">${m.name}</span>
+                            <span class="user-email">${m.email}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>${m.phone || 'N/A'}</td>
+                <td>Default Workshop</td>
+                <td><span class="status-badge active">Active</span></td>
+                <td>${new Date(m.created_at).toLocaleDateString()}</td>
+                <td>
+                    <div class="action-btns">
+                        <button class="action-btn edit" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } else {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No mechanics found.</td></tr>';
+    }
+}
 
 function initSpecificInteractions() {
 

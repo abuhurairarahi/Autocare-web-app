@@ -3,12 +3,33 @@
  * Specific interactions and dynamic functionality for the service-broadcast page.
  */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     console.log("service-broadcast page loaded successfully.");
     initSpecificInteractions();
     initNoticeForm();
     initTableInteractionsAndModal();
+    await loadBroadcastsFromDB();
 });
+
+async function loadBroadcastsFromDB() {
+    const tbody = document.getElementById('notice-tbody');
+    if (!tbody || !window.adminApi) return;
+    
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Loading data...</td></tr>';
+    const broadcasts = await window.adminApi.request('service-broadcast.php', 'GET');
+    
+    if (broadcasts && broadcasts.length > 0) {
+        tbody.innerHTML = '';
+        broadcasts.forEach(b => {
+            // Reusing existing createNoticeRow logic
+            const tr = createNoticeRow(b.title, 'Announcement', b.audience, b.priority, b.status);
+            tbody.appendChild(tr);
+        });
+        initTableInteractionsAndModal(); // Re-bind click events for edit
+    } else {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No broadcasts found.</td></tr>';
+    }
+}
 
 function initSpecificInteractions() {
     // 4. Handle specific filters
@@ -100,11 +121,20 @@ function initNoticeForm() {
         if (clickedDraft) status = 'Draft';
         else if (isScheduled) status = 'Scheduled';
 
-        const tr = createNoticeRow(title, typeStr, audience, priority, status);
-        tbody.prepend(tr);
-
         if (typeof showToast === 'function') {
-            showToast("Notice " + status + " successfully!");
+            showToast('Saving notice to database...', 'info');
+        }
+
+        // Save to DB via API
+        if (window.adminApi) {
+            window.adminApi.request('service-broadcast.php', 'POST', {
+                title, content: 'Content generated from UI.', audience, priority, status
+            }).then(() => {
+                loadBroadcastsFromDB();
+                if (typeof showToast === 'function') {
+                    showToast("Notice " + status + " successfully!");
+                }
+            });
         }
 
         form.reset();

@@ -37,7 +37,7 @@ function initReportLogic() {
     if(btnCsv) btnCsv.setAttribute('data-wired', 'true');
     if(btnPdf) btnPdf.setAttribute('data-wired', 'true');
 
-    applyBtn.addEventListener('click', () => {
+    applyBtn.addEventListener('click', async () => {
         const month = document.getElementById('month-select').value;
         const year = document.getElementById('year-select').value;
         const location = document.getElementById('location-select').value;
@@ -46,8 +46,21 @@ function initReportLogic() {
             showToast('Generating report...', 'info');
         }
 
-        // Mock data generation based on location
-        currentReportData = generateMockReportData(month, year, location);
+        // Fetch data from DB
+        let fetchedData = [];
+        if (window.adminApi) {
+            fetchedData = await window.adminApi.request('revenue-reports.php', 'GET');
+        }
+
+        // Map DB fields to what the UI expects, handle empty arrays if nothing returned
+        currentReportData = (fetchedData && fetchedData.length > 0) ? fetchedData.map(dbItem => ({
+            date: new Date(dbItem.issued_date).toLocaleDateString(),
+            txId: 'INV-' + dbItem.invoice_id,
+            category: 'Auto Repair', // Could be dynamic if we joined categories
+            customer: 'Customer ' + dbItem.customer_id,
+            amount: parseFloat(dbItem.total_amount),
+            status: dbItem.status === 'Paid' ? 'Completed' : (dbItem.status === 'Unpaid' ? 'Pending' : 'Failed')
+        })) : [];
 
         // Update UI
         reportTitle.innerText = `Revenue Report - ${month} ${year} (${location})`;

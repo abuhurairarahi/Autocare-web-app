@@ -1,5 +1,4 @@
 -- AutoCare Database Schema
-CREATE DATABASE autocare;
 
 -- 1. Users Table (Handles Admin, Manager, Mechanic, VehicleOwner)
 CREATE TABLE Users (

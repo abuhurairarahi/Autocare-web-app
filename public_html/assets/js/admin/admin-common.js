@@ -26,6 +26,29 @@ if (document.readyState === 'loading') {
   initAdminCommon();
 }
 
+// Global API helper for Admin Pages
+window.adminApi = {
+  request: async function(endpoint, method = 'GET', data = null) {
+    try {
+      const options = { method };
+      if (data) {
+        options.headers = { 'Content-Type': 'application/json' };
+        options.body = JSON.stringify(data);
+      }
+      const response = await fetch(`../../api/admin/${endpoint}`, options);
+      const result = await response.json();
+      if (!result.success) {
+        console.error('API Error:', result.error || 'Unknown error');
+        return null;
+      }
+      return result.data || result;
+    } catch (err) {
+      console.error('Network Error:', err);
+      return null;
+    }
+  }
+};
+
 window.showToast = function (message, type = 'success', duration = 3500) {
   let toastContainer = document.getElementById('autocare-toast-container');
   if (!toastContainer) {

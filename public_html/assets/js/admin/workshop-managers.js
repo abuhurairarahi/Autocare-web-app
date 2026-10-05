@@ -9,7 +9,49 @@ document.addEventListener("DOMContentLoaded", () => {
     initAddManagerModal();
     initExportToExcel();
     initUpdateManagerModal();
+    loadManagersFromDB();
 });
+
+async function loadManagersFromDB() {
+    const tbody = document.getElementById('manager-tbody');
+    if (!tbody || !window.adminApi) return;
+    
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Loading data...</td></tr>';
+    const managers = await window.adminApi.request('workshop-managers.php', 'GET');
+    
+    if (managers && managers.length > 0) {
+        tbody.innerHTML = '';
+        managers.forEach((m, idx) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>MGR-${1000 + m.user_id}</td>
+                <td>
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: hsl(${(idx * 50) % 360}, 70%, 50%);">${m.name.charAt(0)}</div>
+                        <div class="user-details">
+                            <span class="user-name">${m.name}</span>
+                            <span class="user-email">${m.email}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>${m.phone || 'N/A'}</td>
+                <td>Default Workshop</td>
+                <td><span class="status-badge active">Active</span></td>
+                <td>${new Date(m.created_at).toLocaleDateString()}</td>
+                <td>
+                    <div class="action-btns">
+                        <button class="action-btn edit" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="action-btn delete" title="Deactivate"><i class="fa-solid fa-ban"></i></button>
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+        initUpdateManagerModal();
+    } else {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No managers found.</td></tr>';
+    }
+}
 
 function initSpecificInteractions() {
 
@@ -92,12 +134,13 @@ function initAddManagerModal() {
                 joiningDate: dateInput.value
             };
             
-            console.log("Saving new manager:", data);
-            
-            if (typeof showToast === 'function') {
-                showToast("Manager saved successfully!");
-            } else {
-                alert("Manager saved successfully!");
+            if (window.adminApi) {
+                window.adminApi.request('workshop-managers.php', 'POST', data).then(() => {
+                    loadManagersFromDB();
+                    if (typeof showToast === 'function') {
+                        showToast("Manager saved to database successfully!");
+                    }
+                });
             }
             
             closeModal();

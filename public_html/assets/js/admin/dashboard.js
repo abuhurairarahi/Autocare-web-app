@@ -6,8 +6,27 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("dashboard page loaded successfully.");
     initSpecificInteractions();
-    initVisualizations();
+    loadDashboardStats();
 });
+
+async function loadDashboardStats() {
+    if (!window.adminApi) return;
+    const stats = await window.adminApi.request('dashboard.php', 'GET');
+    if (stats) {
+        const statValues = document.querySelectorAll('.stat-value');
+        if (statValues.length >= 4) {
+            statValues[0].innerText = stats.active_workshops || 0; // Or Total Workshop Managers depending on HTML layout
+            statValues[1].innerText = stats.active_mechanics || 0;
+            statValues[2].innerText = '৳' + (stats.total_revenue ? stats.total_revenue.toLocaleString('en-IN') : '0');
+            statValues[3].innerText = stats.total_customers || 0;
+        }
+        generateRevenueTrend(stats.revenue_trend);
+        generateServicesByCategory(stats.services_by_category);
+        generateTopWorkshops(stats.top_workshops);
+        generateServiceDistribution(stats.services_by_category);
+        generateRecentActivity(stats.recent_activity);
+    }
+}
 
 function initSpecificInteractions() {
     // 2. Wire up specific page buttons
@@ -40,21 +59,18 @@ function initSpecificInteractions() {
 }
 
 function initVisualizations() {
-    generateRevenueTrend();
-    generateServicesByCategory();
-    generateTopWorkshops();
-    generateServiceDistribution();
+    // Replaced by loadDashboardStats
 }
 
-function generateRevenueTrend() {
+function generateRevenueTrend(trendData) {
     const ctx = document.getElementById('revenueChart');
-    if (!ctx) return;
+    if (!ctx || !trendData) return;
 
     const data = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [{
             label: 'Revenue (৳)',
-            data: [120000, 190000, 150000, 220000, 300000, 280000, 350000, 400000, 420000, 380000, 450000, 500000],
+            data: trendData,
             borderColor: '#f97316',
             backgroundColor: 'rgba(249, 115, 22, 0.1)',
             borderWidth: 3,
@@ -117,18 +133,22 @@ function generateRevenueTrend() {
     new Chart(ctx, config);
 }
 
-function generateServicesByCategory() {
+function generateServicesByCategory(catData) {
     const container = document.getElementById('servicesCategoryChart');
-    if (!container) return;
+    if (!container || !catData || !catData.labels) return;
 
-    // Data in percentage
-    const categories = [
-        { label: 'Maintenance', height: 60, color: '#3D4F91' },
-        { label: 'Engine', height: 42, color: '#6E7FBE' },
-        { label: 'Electrical', height: 75, color: '#8C9AD3' },
-        { label: 'Body Shop', height: 34, color: '#A9B5E5' },
-        { label: 'HVAC', height: 50, color: '#c4c4c4' }
-    ];
+    const colors = ['#3D4F91', '#6E7FBE', '#8C9AD3', '#A9B5E5', '#c4c4c4'];
+    let categories = [];
+    
+    // Normalize data to percentages (assuming max height 100%)
+    let maxVal = Math.max(...catData.data, 1);
+    catData.labels.forEach((label, idx) => {
+        categories.push({
+            label: label,
+            height: Math.round((catData.data[idx] / maxVal) * 100),
+            color: colors[idx % colors.length]
+        });
+    });
 
     container.innerHTML = '';
     categories.forEach(cat => {
@@ -166,17 +186,19 @@ function generateServicesByCategory() {
     });
 }
 
-function generateTopWorkshops() {
+function generateTopWorkshops(wsData) {
     const list = document.getElementById('topWorkshopsList');
-    if (!list) return;
+    if (!list || !wsData || !wsData.labels) return;
 
-    const topWorkshops = [
-        { name: 'Dhaka Central AutoCare', jobs: 342, progress: 95 },
-        { name: 'Rajshahi Motors', jobs: 289, progress: 80 },
-        { name: 'Chittagong Auto Center', jobs: 210, progress: 58 },
-        { name: 'Khulna Car Point', jobs: 195, progress: 54 },
-        { name: 'Sylhet Elite Garage', jobs: 150, progress: 42 }
-    ];
+    let topWorkshops = [];
+    let maxVal = Math.max(...wsData.data, 1);
+    wsData.labels.forEach((label, idx) => {
+        topWorkshops.push({
+            name: label,
+            jobs: wsData.data[idx],
+            progress: Math.round((wsData.data[idx] / maxVal) * 100)
+        });
+    });
 
     list.innerHTML = '';
     topWorkshops.forEach(ws => {
@@ -194,16 +216,22 @@ function generateTopWorkshops() {
     });
 }
 
-function generateServiceDistribution() {
+function generateServiceDistribution(catData) {
     const donut = document.getElementById('serviceDistributionDonut');
     const legend = document.getElementById('serviceDistributionLegend');
-    if (!donut || !legend) return;
+    if (!donut || !legend || !catData || !catData.labels) return;
 
-    const data = [
-        { label: 'Maintenance', percentage: 45, color: '#00288E' },
-        { label: 'Engine', percentage: 30, color: '#4C63B6' },
-        { label: 'Electrical', percentage: 25, color: '#A9B5E5' }
-    ];
+    const colors = ['#00288E', '#4C63B6', '#A9B5E5', '#e2e8f0', '#94a3b8'];
+    let total = catData.data.reduce((a, b) => a + b, 0) || 1;
+    let data = [];
+    
+    catData.labels.forEach((label, idx) => {
+        data.push({
+            label: label,
+            percentage: Math.round((catData.data[idx] / total) * 100),
+            color: colors[idx % colors.length]
+        });
+    });
 
     let gradientString = '';
     let currentDegree = 0;
@@ -229,4 +257,27 @@ function generateServiceDistribution() {
     });
 
     donut.style.background = `conic-gradient(${gradientString})`;
+}
+
+function generateRecentActivity(activities) {
+    const ul = document.querySelector('.activity-list');
+    if (!ul || !activities) return;
+    ul.innerHTML = '';
+    
+    if (activities.length === 0) {
+        ul.innerHTML = '<li><div style="text-align:center;width:100%;color:#64748b;font-size:13px;padding:15px;">No recent activity found.</div></li>';
+        return;
+    }
+    
+    activities.forEach(act => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <span class="activity-icon icon-purple-soft"><i class="fa-solid fa-wrench"></i></span>
+            <div>
+                <p class="activity-title">${act.type}: ${act.desc}</p>
+                <p class="activity-time">${act.time}</p>
+            </div>
+        `;
+        ul.appendChild(li);
+    });
 }
