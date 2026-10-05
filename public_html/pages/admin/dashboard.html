@@ -144,9 +144,8 @@
                             <h2>Revenue Trend</h2>
                             <button class="dots-btn" aria-label="More options">⋯</button>
                         </div>
-                        <div class="chart-placeholder">
-                            <span class="chart-placeholder-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></span>
-                            <span>Revenue Line Chart Visualization Area</span>
+                        <div class="chart-container" style="position: relative; height:250px; width:100%;">
+                            <canvas id="revenueChart"></canvas>
                         </div>
                     </section>
 
@@ -194,11 +193,8 @@
                         <div class="panel-header">
                             <h2>Services by Category</h2>
                         </div>
-                        <div class="bar-chart">
-                            <div class="bar" style="height:60%; background:#3D4F91;"></div>
-                            <div class="bar" style="height:42%; background:#6E7FBE;"></div>
-                            <div class="bar" style="height:75%; background:#8C9AD3;"></div>
-                            <div class="bar" style="height:34%; background:#A9B5E5;"></div>
+                        <div class="bar-chart" id="servicesCategoryChart">
+                            <!-- Populated by JS -->
                         </div>
                     </section>
 
@@ -206,43 +202,8 @@
                         <div class="panel-header">
                             <h2>Top 5 Workshops</h2>
                         </div>
-                        <ul class="workshop-list">
-                            <li>
-                                <div class="workshop-row">
-                                    <span>Dhaka Branch</span>
-                                    <span>342 jobs</span>
-                                </div>
-                                <div class="progress-track">
-                                    <div class="progress-fill" style="width:95%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="workshop-row">
-                                    <span>Rajshahi Branch</span>
-                                    <span>289 jobs</span>
-                                </div>
-                                <div class="progress-track">
-                                    <div class="progress-fill" style="width:80%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="workshop-row">
-                                    <span>Chittagong Branch</span>
-                                    <span>210 jobs</span>
-                                </div>
-                                <div class="progress-track">
-                                    <div class="progress-fill" style="width:58%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="workshop-row">
-                                    <span>Khulna Branch</span>
-                                    <span>195 jobs</span>
-                                </div>
-                                <div class="progress-track">
-                                    <div class="progress-fill" style="width:54%"></div>
-                                </div>
-                            </li>
+                        <ul class="workshop-list" id="topWorkshopsList">
+                            <!-- Populated by JS -->
                         </ul>
                     </section>
 
@@ -251,15 +212,12 @@
                             <h2>Service Distribution</h2>
                         </div>
                         <div class="donut-wrap">
-                            <div class="donut"
-                                style="background: conic-gradient(#00288E 0% 45%, #4C63B6 45% 75%, #A9B5E5 75% 100%);">
+                            <div class="donut" id="serviceDistributionDonut">
                                 <div class="donut-hole"></div>
                             </div>
                         </div>
-                        <div class="legend">
-                            <span class="legend-item"><i style="background:#00288E"></i> Maint.</span>
-                            <span class="legend-item"><i style="background:#4C63B6"></i> Engine</span>
-                            <span class="legend-item"><i style="background:#A9B5E5"></i> Elec.</span>
+                        <div class="legend" id="serviceDistributionLegend">
+                            <!-- Populated by JS -->
                         </div>
                     </section>
                 </div>
@@ -268,6 +226,7 @@
     </div>
     </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../../assets/js/admin/dashboard.js"></script>
 <script src="../../assets/js/admin/admin-common.js"></script>
 </body>

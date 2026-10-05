@@ -96,8 +96,8 @@
                         <p class="subtitle">Monthly financial overview and transaction details.</p>
                     </div>
                     <div class="action-filters">
-                        <button class="secondary-btn"><i class="fa-regular fa-file-pdf"></i> Generate PDF</button>
-                        <button class="primary-btn"><i class="fa-solid fa-download"></i> Download CSV</button>
+                        <button class="secondary-btn" id="btn-generate-pdf"><i class="fa-regular fa-file-pdf"></i> Generate PDF</button>
+                        <button class="primary-btn" id="btn-download-csv"><i class="fa-solid fa-download"></i> Download CSV</button>
                     </div>
                 </div>
 
@@ -152,7 +152,34 @@
                         </div>
 
                         <div class="filter-action">
-                            <button class="apply-btn">Apply Filters</button>
+                            <button class="apply-btn" id="apply-filters-btn">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report Container (Hidden by default) -->
+                <div id="report-container" style="display: none; margin-top: 24px;">
+                    <div class="card panel">
+                        <div class="panel-header">
+                            <h2 id="report-title">Revenue Report</h2>
+                            <span class="stat-badge badge-green" id="total-revenue-badge" style="font-size: 14px; padding: 4px 10px;">Total: ৳0</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table" id="revenue-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Transaction ID</th>
+                                        <th>Service Category</th>
+                                        <th>Customer</th>
+                                        <th>Amount (৳)</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="report-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -161,6 +188,7 @@
         </main>
     </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="../../assets/js/admin/revenue-reports.js"></script>
 <script src="../../assets/js/admin/admin-common.js"></script>
 </body>

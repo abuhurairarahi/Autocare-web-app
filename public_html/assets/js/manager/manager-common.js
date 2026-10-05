@@ -240,11 +240,57 @@ function renderNotificationItems(container) {
   html += `
     </div>
     <div style="padding: 10px; text-align: center; background: #f8fafc; border-top: 1px solid #e2e8f0;">
-      <a href="manager-dashboard.html" style="font-size: 12px; color: #2563eb; text-decoration: none; font-weight: 600;">View Activity Dashboard</a>
+      <a href="#" id="view-all-activities-link" style="font-size: 12px; color: #2563eb; text-decoration: none; font-weight: 600;">View Activity Dashboard</a>
     </div>
   `;
 
   container.innerHTML = html;
+
+  const viewAllBtn = container.querySelector('#view-all-activities-link');
+  if (viewAllBtn) {
+    viewAllBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      container.style.display = 'none';
+      
+      const allNotices = typeof AutoCareStore !== 'undefined' ? AutoCareStore.getNotices() : [];
+      const allActivities = typeof AutoCareStore !== 'undefined' ? AutoCareStore.getRecentActivity() : [];
+
+      let fullContent = '<div style="max-height: 400px; overflow-y: auto; padding-right: 8px;">';
+      
+      fullContent += '<h4 style="margin-top:0; color:#334155;">Alerts & Notices</h4>';
+      if(allNotices.length === 0) fullContent += '<p style="color:#64748b; font-size:13px;">No new alerts.</p>';
+      allNotices.forEach(n => {
+        fullContent += `
+          <div style="padding: 12px 16px; border: 1px solid #f1f5f9; border-left: 4px solid #f59e0b; background: #fffbeb; border-radius: 6px; margin-bottom: 8px;">
+            <div style="font-size: 14px; font-weight: 700; color: #92400e;">⚠️ ${n.title}</div>
+            <div style="font-size: 13px; color: #b45309; margin-top: 4px;">${n.content}</div>
+            <div style="font-size: 11px; color: #d97706; margin-top: 6px;">${n.created_at}</div>
+          </div>
+        `;
+      });
+
+      fullContent += '<h4 style="margin-top:20px; color:#334155;">Recent Activities</h4>';
+      if(allActivities.length === 0) fullContent += '<p style="color:#64748b; font-size:13px;">No recent activities.</p>';
+      allActivities.forEach(a => {
+        fullContent += `
+          <div style="padding: 12px 16px; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; background: #f8fafc; border-radius: 6px; margin-bottom: 8px;">
+            <div style="font-size: 13px; color: #334155; font-weight: 500;">${a.text}</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 6px;">${a.time} ${a.subtext ? '• ' + a.subtext : ''}</div>
+          </div>
+        `;
+      });
+      fullContent += '</div>';
+      
+      if(typeof openModal === 'function') {
+          openModal({
+            title: 'Activity Dashboard',
+            content: fullContent,
+            confirmText: 'Done',
+            cancelText: 'Close'
+          });
+      }
+    });
+  }
 }
 
 /**

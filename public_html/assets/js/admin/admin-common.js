@@ -6,6 +6,18 @@
 
 function initAdminCommon() {
   initLogoutHandler();
+  initNotificationsDropdown();
+  initMailIcon();
+}
+
+function initMailIcon() {
+  const mailIcon = document.querySelector('.topbar .mail');
+  if (mailIcon) {
+    mailIcon.style.cursor = 'pointer';
+    mailIcon.addEventListener('click', () => {
+      window.location.href = 'service-broadcast.html';
+    });
+  }
 }
 
 if (document.readyState === 'loading') {
@@ -182,4 +194,136 @@ function initLogoutHandler() {
       }
     });
   });
+}
+
+function initNotificationsDropdown() {
+  const notifBtn = document.querySelector('.topbar .notification');
+  if (!notifBtn) return;
+
+  notifBtn.style.cursor = 'pointer';
+  notifBtn.style.position = 'relative';
+
+  const menu = document.createElement('div');
+  menu.className = 'notif-dropdown-menu';
+  menu.style.cssText = `
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 320px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    border: 1px solid #e2e8f0;
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+  `;
+
+  notifBtn.appendChild(menu);
+
+  notifBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isVisible = menu.style.display === 'block';
+    
+    // Close other dropdowns
+    document.querySelectorAll('.notif-dropdown-menu').forEach(m => m.style.display = 'none');
+
+    if (!isVisible) {
+      renderNotificationItems(menu);
+      menu.style.display = 'block';
+    } else {
+      menu.style.display = 'none';
+    }
+  });
+
+  document.addEventListener('click', () => {
+    menu.style.display = 'none';
+  });
+}
+
+function renderNotificationItems(container) {
+  // Use generic mock data for admin notifications if no store is present
+  const notices = [
+    { title: 'System Update', content: 'Scheduled maintenance this weekend.', created_at: '2 hours ago' },
+    { title: 'New Registration', content: '5 new mechanics joined today.', created_at: '5 hours ago' }
+  ];
+  const activities = [
+    { text: 'Invoice #INV-290 paid by customer.', time: '1 hour ago', subtext: '৳1,240.00' },
+    { text: 'Workshop Elite Auto Care approved.', time: 'Yesterday', subtext: 'By Admin' }
+  ];
+
+  let html = `
+    <div style="padding: 12px 16px; background: #0f172a; color: #ffffff; font-weight: 700; font-size: 14px; display: flex; justify-content: space-between; align-items: center;">
+      <span>Notifications & Alerts</span>
+      <span style="font-size: 11px; background: #ef4444; color: #fff; padding: 2px 6px; border-radius: 999px;">${notices.length + activities.length}</span>
+    </div>
+    <div style="max-height: 280px; overflow-y: auto;">
+  `;
+
+  notices.forEach(n => {
+    html += `
+      <div style="padding: 12px 16px; border-bottom: 1px solid #f1f5f9; background: #fffbeb;">
+        <div style="font-size: 13px; font-weight: 700; color: #92400e;">⚠️ ${n.title}</div>
+        <div style="font-size: 12px; color: #b45309; margin-top: 2px;">${n.content}</div>
+        <div style="font-size: 10px; color: #d97706; margin-top: 4px;">${n.created_at}</div>
+      </div>
+    `;
+  });
+
+  activities.forEach(a => {
+    html += `
+      <div style="padding: 12px 16px; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 12px; color: #334155;">${a.text}</div>
+        <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">${a.time} ${a.subtext ? '• ' + a.subtext : ''}</div>
+      </div>
+    `;
+  });
+
+  html += `
+    </div>
+    <div style="padding: 10px; text-align: center; background: #f8fafc; border-top: 1px solid #e2e8f0;">
+      <a href="#" id="view-all-activities-link" style="font-size: 12px; color: #2563eb; text-decoration: none; font-weight: 600;">View Activity Dashboard</a>
+    </div>
+  `;
+
+  container.innerHTML = html;
+
+  const viewAllBtn = container.querySelector('#view-all-activities-link');
+  if (viewAllBtn) {
+    viewAllBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      container.style.display = 'none'; // hide dropdown
+      
+      let fullContent = '<div style="max-height: 400px; overflow-y: auto; padding-right: 8px;">';
+      
+      fullContent += '<h4 style="margin-top:0; color:#334155;">Alerts & Notices</h4>';
+      notices.forEach(n => {
+        fullContent += `
+          <div style="padding: 12px 16px; border: 1px solid #f1f5f9; border-left: 4px solid #f59e0b; background: #fffbeb; border-radius: 6px; margin-bottom: 8px;">
+            <div style="font-size: 14px; font-weight: 700; color: #92400e;">⚠️ ${n.title}</div>
+            <div style="font-size: 13px; color: #b45309; margin-top: 4px;">${n.content}</div>
+            <div style="font-size: 11px; color: #d97706; margin-top: 6px;">${n.created_at}</div>
+          </div>
+        `;
+      });
+
+      fullContent += '<h4 style="margin-top:20px; color:#334155;">Recent Activities</h4>';
+      activities.forEach(a => {
+        fullContent += `
+          <div style="padding: 12px 16px; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; background: #f8fafc; border-radius: 6px; margin-bottom: 8px;">
+            <div style="font-size: 13px; color: #334155; font-weight: 500;">${a.text}</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 6px;">${a.time} ${a.subtext ? '• ' + a.subtext : ''}</div>
+          </div>
+        `;
+      });
+      fullContent += '</div>';
+      
+      openModal({
+        title: 'Activity Dashboard',
+        content: fullContent,
+        confirmText: 'Done',
+        cancelText: 'Close'
+      });
+    });
+  }
 }
