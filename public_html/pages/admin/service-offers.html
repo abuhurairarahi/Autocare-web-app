@@ -96,7 +96,7 @@
                         <p class="subtitle">Manage promotional discounts and campaigns.</p>
                     </div>
                     <div class="action-filters">
-                        <button class="primary-btn"><i class="fa-solid fa-plus"></i> Create New Offer</button>
+                        <button class="primary-btn" id="add-offer-btn"><i class="fa-solid fa-plus"></i> Create New Offer</button>
                     </div>
                 </div>
 
@@ -136,7 +136,7 @@
                                     <th class="text-right">ACTIONS</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="offers-tbody">
                                 <tr>
                                     <td class="fw-semibold">Summer Tire Swap - 20% Off</td>
                                     <td>All Customers</td>
@@ -189,30 +189,45 @@
     </div>
 
 
-  <!-- Add Offer Modal -->
-  <div class="modal-overlay" id="add-offer-modal">
+  <!-- Add/Edit Offer Modal -->
+  <div class="modal-overlay" id="offer-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Add Offer</h2>
+        <h2 id="modal-title">Add Offer</h2>
         <button class="modal-close" id="close-offer-modal-btn">&times;</button>
       </div>
-      <form id="add-offer-form">
+      <form id="offer-form">
         <div class="form-group">
-          <label>Offer Name</label>
-          <input type="text" required placeholder="e.g. Summer Special">
+          <label>Title</label>
+          <input type="text" id="offer-title" required placeholder="e.g. Summer Special">
         </div>
         <div class="form-group">
-          <label>Discount</label>
-          <input type="text" required placeholder="e.g. 20%">
+          <label>Target Audience</label>
+          <select id="offer-audience" required>
+            <option value="" disabled selected>Select an audience</option>
+            <option value="All Customers">All Customers</option>
+            <option value="New Customers">New Customers</option>
+            <option value="Returning Customers">Returning Customers</option>
+            <option value="Fleet Accounts">Fleet Accounts</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="date" id="offer-start-date" required>
+        </div>
+        <div class="form-group">
+          <label>Expiry Date</label>
+          <input type="date" id="offer-expiry-date" required>
         </div>
         <div class="modal-actions">
           <button type="button" class="btn btn-outline" id="cancel-offer-modal-btn">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary" id="submit-offer-btn">Create Event</button>
         </div>
       </form>
     </div>
   </div>
-\n<script src="../../assets/js/admin/service-offers.js"></script>
+<script src="../../assets/js/admin/service-offers.js"></script>
+<script src="../../assets/js/admin/admin-common.js"></script>
 </body>
 
 </html>

@@ -6,33 +6,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("service-offers page loaded successfully.");
     initSpecificInteractions();
-    initAddOfferModal();
+    initOfferModal();
+    initTableActions();
 });
 
 function initSpecificInteractions() {
-
-
-    // 2. Wire up specific page buttons
-    const primaryBtns = document.querySelectorAll('.primary-btn, .btn-primary');
-    primaryBtns.forEach(btn => {
-        // Only attach if it doesn't already have an action from global admin.js
-        if(!btn.hasAttribute('data-wired')) {
-            btn.setAttribute('data-wired', 'true');
-            btn.addEventListener('click', (e) => {
-                const actionText = e.target.innerText.trim();
-                // We use the global showToast if available, otherwise alert
-                if (typeof showToast === 'function') {
-                    showToast(actionText + " action triggered successfully!");
-                } else {
-                    alert(actionText + " action triggered successfully!");
-                }
-            });
-        }
-    });
-
-
-
-    // 4. Handle specific filters
+    // Handle specific filters
     const selects = document.querySelectorAll('select');
     selects.forEach(select => {
         select.addEventListener('change', (e) => {
@@ -43,32 +22,171 @@ function initSpecificInteractions() {
     });
 }
 
-function initAddOfferModal() {
+function calculateStatus(startDateStr, expiryDateStr) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const startDate = new Date(startDateStr);
+    const expiryDate = new Date(expiryDateStr);
+
+    if (startDate > today) {
+        return `<span class="status-badge scheduled">Scheduled</span>`;
+    } else if (expiryDate < today) {
+        return `<span class="status-badge expired">Expired</span>`;
+    } else {
+        return `<span class="status-badge active">Active</span>`;
+    }
+}
+
+function formatDateToShort(dateStr) {
+    const options = { year: 'numeric', month: 'short', day: '2-digit' };
+    return new Date(dateStr).toLocaleDateString('en-US', options);
+}
+
+function initOfferModal() {
     const addBtn = document.getElementById('add-offer-btn');
-    const modal = document.getElementById('add-offer-modal');
+    const modal = document.getElementById('offer-modal');
     const closeBtn = document.getElementById('close-offer-modal-btn');
     const cancelBtn = document.getElementById('cancel-offer-modal-btn');
-    const form = document.getElementById('add-offer-form');
+    const form = document.getElementById('offer-form');
+    
+    if (!modal || !form) return;
 
-    if (!addBtn || !modal) return;
+    const titleEl = document.getElementById('offer-title');
+    const audienceEl = document.getElementById('offer-audience');
+    const startDateEl = document.getElementById('offer-start-date');
+    const expiryDateEl = document.getElementById('offer-expiry-date');
+    const modalTitle = document.getElementById('modal-title');
+    const submitBtn = document.getElementById('submit-offer-btn');
 
-    addBtn.addEventListener('click', () => { modal.classList.add('active'); });
-    const closeModal = () => { modal.classList.remove('active'); if(form) form.reset(); };
+    let currentEditingRow = null;
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        form.reset();
+        currentEditingRow = null;
+    };
 
     if(closeBtn) closeBtn.addEventListener('click', closeModal);
     if(cancelBtn) cancelBtn.addEventListener('click', closeModal);
-
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-    if(form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (typeof showToast === 'function') {
-                showToast("Offer added successfully!");
-            } else {
-                alert("Offer added successfully!");
-            }
-            closeModal();
+    if(addBtn) {
+        addBtn.addEventListener('click', () => {
+            modalTitle.innerText = "Add Offer";
+            submitBtn.innerText = "Create Event";
+            
+            // Auto-fill start date with today
+            const today = new Date().toISOString().split('T')[0];
+            startDateEl.value = today;
+            // startDateEl.readOnly = true; // Optional based on requirements
+            
+            modal.classList.add('active');
         });
     }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const title = titleEl.value;
+        const audience = audienceEl.value;
+        const startDate = startDateEl.value;
+        const expiryDate = expiryDateEl.value;
+        const statusHtml = calculateStatus(startDate, expiryDate);
+
+        const shortStart = formatDateToShort(startDate);
+        const shortExpiry = formatDateToShort(expiryDate);
+
+        if (currentEditingRow) {
+            // Update existing row
+            currentEditingRow.cells[0].innerText = title;
+            currentEditingRow.cells[0].classList.add('fw-semibold');
+            currentEditingRow.cells[1].innerText = audience;
+            currentEditingRow.cells[2].innerText = shortStart;
+            currentEditingRow.cells[2].dataset.iso = startDate;
+            currentEditingRow.cells[3].innerText = shortExpiry;
+            currentEditingRow.cells[3].dataset.iso = expiryDate;
+            currentEditingRow.cells[4].innerHTML = statusHtml;
+
+            if (typeof showToast === 'function') {
+                showToast("Offer updated successfully!");
+            }
+        } else {
+            // Create new row
+            const tbody = document.getElementById('offers-tbody');
+            if(tbody) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="fw-semibold">${title}</td>
+                    <td>${audience}</td>
+                    <td data-iso="${startDate}">${shortStart}</td>
+                    <td data-iso="${expiryDate}">${shortExpiry}</td>
+                    <td>${statusHtml}</td>
+                    <td class="text-right">
+                        <div class="action-icons">
+                            <button class="action-icon-btn edit-btn"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon-btn delete delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                        </div>
+                    </td>
+                `;
+                tbody.prepend(tr);
+            }
+            if (typeof showToast === 'function') {
+                showToast("Offer added successfully!");
+            }
+        }
+
+        closeModal();
+    });
+
+    // Expose edit function to global scope to allow table delegated events to trigger it
+    window.openEditOfferModal = function(row) {
+        currentEditingRow = row;
+        modalTitle.innerText = "Edit Offer";
+        submitBtn.innerText = "Update";
+
+        titleEl.value = row.cells[0].innerText;
+        audienceEl.value = row.cells[1].innerText;
+
+        // Try to get ISO from dataset, else parse short date
+        let startIso = row.cells[2].dataset.iso;
+        if (!startIso) {
+            startIso = new Date(row.cells[2].innerText).toISOString().split('T')[0];
+        }
+        let expiryIso = row.cells[3].dataset.iso;
+        if (!expiryIso) {
+            expiryIso = new Date(row.cells[3].innerText).toISOString().split('T')[0];
+        }
+
+        startDateEl.value = startIso;
+        expiryDateEl.value = expiryIso;
+        
+        modal.classList.add('active');
+    };
+}
+
+function initTableActions() {
+    const tbody = document.getElementById('offers-tbody');
+    if (!tbody) return;
+
+    tbody.addEventListener('click', (e) => {
+        const btn = e.target.closest('.action-icon-btn');
+        if (!btn) return;
+
+        const row = btn.closest('tr');
+        
+        if (btn.classList.contains('delete') || btn.classList.contains('delete-btn')) {
+            // Task 2: Delete
+            if (confirm("Are you sure you want to delete this offer?")) {
+                row.remove();
+                if (typeof showToast === 'function') {
+                    showToast("Offer deleted successfully!");
+                }
+            }
+        } else if (btn.classList.contains('edit-btn') || btn.querySelector('.fa-pen')) {
+            // Task 2: Edit
+            if (window.openEditOfferModal) {
+                window.openEditOfferModal(row);
+            }
+        }
+    });
 }

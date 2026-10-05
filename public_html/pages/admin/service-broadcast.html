@@ -112,7 +112,7 @@
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="notice-tbody">
                                     <tr>
                                         <td><span class="notice-title">Scheduled Server Reboot</span></td>
                                         <td><span class="type-tag type-maintenance">Maintenance</span></td>
@@ -169,16 +169,16 @@
                     <div class="form-card">
                         <h2 class="card-title"><i class="fa-solid fa-circle-plus"></i> Create New Notice</h2>
 
-                        <form class="notice-form">
+                        <form id="notice-form" class="notice-form">
                             <div class="form-group">
                                 <label>Notice Title</label>
-                                <input type="text" class="form-control" placeholder="e.g., Scheduled Maintenance">
+                                <input type="text" id="notice-title" class="form-control" placeholder="e.g., Scheduled Maintenance">
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Type</label>
-                                    <select class="form-control">
+                                    <select id="notice-type" class="form-control">
                                         <option>Maintenance</option>
                                         <option>Update</option>
                                         <option>Alert</option>
@@ -187,7 +187,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Priority</label>
-                                    <select class="form-control">
+                                    <select id="notice-priority" class="form-control">
                                         <option>Low</option>
                                         <option>Medium</option>
                                         <option>High</option>
@@ -197,7 +197,7 @@
 
                             <div class="form-group">
                                 <label>Target Audience</label>
-                                <select class="form-control">
+                                <select id="notice-audience" class="form-control">
                                     <option>All Workshops</option>
                                     <option>Premium Subscribers</option>
                                     <option>Developers Only</option>
@@ -217,8 +217,8 @@
                             </div>
 
                             <div class="form-actions">
-                                <button type="button" class="btn-draft">Save Draft</button>
-                                <button type="submit" class="btn-primary">Publish Notice</button>
+                                <button type="button" id="btn-draft" class="btn-draft">Save Draft</button>
+                                <button type="submit" id="btn-publish" class="btn-primary">Publish Notice</button>
                             </div>
                         </form>
                     </div>
@@ -227,7 +227,60 @@
         </main>
     </div>
 
+    <!-- Edit Notice Modal -->
+    <div class="modal-overlay" id="edit-notice-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Notice</h2>
+                <button class="modal-close" id="close-modal-btn">&times;</button>
+            </div>
+            <form id="edit-notice-form" class="notice-form">
+                <div class="form-group">
+                    <label>Notice Title</label>
+                    <input type="text" id="edit-notice-title" class="form-control" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="edit-notice-type" class="form-control">
+                            <option>Maintenance</option>
+                            <option>Update</option>
+                            <option>Alert</option>
+                            <option>Announcement</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select id="edit-notice-priority" class="form-control">
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Target Audience</label>
+                    <select id="edit-notice-audience" class="form-control">
+                        <option>All Workshops</option>
+                        <option>Premium Subscribers</option>
+                        <option>Developers Only</option>
+                        <option>All Users</option>
+                    </select>
+                </div>
+                <div class="checkbox-group" style="margin-bottom: 16px;">
+                    <input type="checkbox" id="edit-schedule-later">
+                    <label for="edit-schedule-later">Schedule for later</label>
+                </div>
+                <div class="form-actions" style="margin-top: 0;">
+                    <button type="button" id="edit-btn-draft" class="btn-draft">Save Draft</button>
+                    <button type="submit" id="edit-btn-publish" class="btn-primary">Publish Notice</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 <script src="../../assets/js/admin/service-broadcast.js"></script>
+<script src="../../assets/js/admin/admin-common.js"></script>
 </body>
 
 </html>
