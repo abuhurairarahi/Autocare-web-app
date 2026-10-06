@@ -291,3 +291,26 @@ body {
         align-items: center;
     }
 }
+
+/* Custom Additions */
+.btn-update {
+    background: lightblue;
+    color: var(--text-dark);
+    border: 1px solid skyblue;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    flex-shrink: 0;
+}

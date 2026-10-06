@@ -35,12 +35,11 @@ async function loadOwnersFromDB() {
                 </td>
                 <td>${o.phone || 'N/A'}</td>
                 <td>1 Active</td>
-                <td><span class="status-badge active">Verified</span></td>
                 <td>${new Date(o.created_at).toLocaleDateString()}</td>
+                <td><span class="status-badge active">Verified</span></td>
                 <td>
                     <div class="action-btns">
-                        <button class="action-btn edit" title="Edit Owner"><i class="fa-solid fa-pen-to-square"></i></button>
-                        <button class="action-btn delete" title="Suspend"><i class="fa-solid fa-ban"></i></button>
+                        <button class="btn-update" title="Update">Update</button>
                     </div>
                 </td>
             `;
@@ -134,11 +133,11 @@ function initUpdateOwnerModal() {
 
             const name = currentRow.querySelector('.user-name').innerText.trim();
             const email = currentRow.querySelector('.user-email').innerText.trim();
-            const phone = currentRow.children[1].innerText.trim();
-            const vnumber = currentRow.children[2].innerText.trim();
-            const vtype = currentRow.children[3].innerText.trim();
+            const phone = currentRow.children[2].innerText.trim();
+            const vnumber = currentRow.children[3].innerText.trim();
+            const vtype = '';
             const date = currentRow.children[4].innerText.trim();
-            const status = currentRow.querySelector('select.status').value;
+            const status = currentRow.children[5].innerText.trim();
 
             document.getElementById('update-owner-name').value = name;
             document.getElementById('update-owner-email').value = email;
@@ -181,11 +180,10 @@ function initUpdateOwnerModal() {
         currentRow.querySelector('.avatar').innerText = initials.toUpperCase();
 
         currentRow.querySelector('.user-email').innerText = newEmail;
-        currentRow.children[1].innerText = newPhone;
-        currentRow.children[2].innerText = newVnumber;
-        currentRow.children[3].innerText = newVtype;
+        currentRow.children[2].innerText = newPhone;
+        currentRow.children[3].innerText = newVnumber;
         currentRow.children[4].innerText = newDate;
-        currentRow.querySelector('select.status').value = newStatus;
+        currentRow.children[5].innerHTML = `<span class="status-badge active">${newStatus}</span>`;
 
         if (typeof showToast === 'function') {
             showToast("Owner updated successfully!");

@@ -15,10 +15,10 @@ async function loadDashboardStats() {
     if (stats) {
         const statValues = document.querySelectorAll('.stat-value');
         if (statValues.length >= 4) {
-            statValues[0].innerText = stats.active_workshops || 0; // Or Total Workshop Managers depending on HTML layout
+            statValues[0].innerText = stats.total_managers || 0;
             statValues[1].innerText = stats.active_mechanics || 0;
-            statValues[2].innerText = '৳' + (stats.total_revenue ? stats.total_revenue.toLocaleString('en-IN') : '0');
-            statValues[3].innerText = stats.total_customers || 0;
+            statValues[2].innerText = stats.active_workshops || 0;
+            statValues[3].innerText = '৳' + (stats.total_revenue ? stats.total_revenue.toLocaleString('en-IN') : '0');
         }
         generateRevenueTrend(stats.revenue_trend);
         generateServicesByCategory(stats.services_by_category);

@@ -24,18 +24,16 @@ async function loadInventoryFromDB() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><span class="part-sku">${p.sku}</span></td>
-                <td>
-                    <div style="font-weight: 600; color: #1e293b;">${p.name}</div>
-                    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">${p.category || 'General'}</div>
-                </td>
-                <td>All Workshops</td>
+                <td><div style="font-weight: 600; color: #1e293b;">${p.name}</div></td>
+                <td>${p.category || 'General'}</td>
+                <td>OEM</td>
                 <td><span class="stock-badge ${p.stock_quantity < p.reorder_level ? 'low-stock' : 'in-stock'}">${p.stock_quantity}</span></td>
                 <td>৳${p.price}</td>
-                <td><span class="status-badge ${p.stock_quantity < p.reorder_level ? 'draft' : 'active'}">${p.stock_quantity < p.reorder_level ? 'Low Stock' : 'In Stock'}</span></td>
                 <td>${p.supplier || 'AutoCare Suppliers'}</td>
+                <td><span class="status-badge ${p.stock_quantity < p.reorder_level ? 'draft' : 'active'}">${p.stock_quantity < p.reorder_level ? 'Low Stock' : 'In Stock'}</span></td>
                 <td>
                     <div class="action-btns">
-                        <button class="action-btn edit" title="Edit Part"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn-update" title="Restock">Restock</button>
                     </div>
                 </td>
             `;
@@ -102,19 +100,23 @@ function initAddPartModal() {
         });
     }
 
-    rowBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            currentRow = e.target.closest('tr');
-            if (currentRow) {
-                let partNameCell = currentRow.querySelector('td strong');
-                if(!partNameCell) partNameCell = currentRow.children[1];
-                const partName = partNameCell.innerText.trim();
-                document.getElementById('part-name-input').value = partName;
-                document.getElementById('part-quantity-input').value = '';
+    const tbody = document.getElementById('inventory-tbody');
+    if (tbody) {
+        tbody.addEventListener('click', (e) => {
+            const btn = e.target.closest('.btn-update');
+            if (btn) {
+                currentRow = e.target.closest('tr');
+                if (currentRow) {
+                    let partNameCell = currentRow.querySelector('td strong');
+                    if(!partNameCell) partNameCell = currentRow.children[1];
+                    const partName = partNameCell.innerText.trim();
+                    document.getElementById('part-name-input').value = partName;
+                    document.getElementById('part-quantity-input').value = '';
+                }
+                modal.classList.add('active');
             }
-            modal.classList.add('active');
         });
-    });
+    }
 
     const closeModal = () => { 
         modal.classList.remove('active'); 

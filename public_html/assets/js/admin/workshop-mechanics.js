@@ -1,8 +1,3 @@
-/**
- * workshop-mechanics.js
- * Specific interactions and dynamic functionality for the workshop-mechanics page.
- */
-
 document.addEventListener("DOMContentLoaded", () => {
     console.log("workshop-mechanics page loaded successfully.");
     initSpecificInteractions();
@@ -13,10 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 async function loadMechanicsFromDB() {
     const tbody = document.getElementById('mechanic-tbody');
     if (!tbody || !window.adminApi) return;
-    
+
     tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Loading data...</td></tr>';
     const mechanics = await window.adminApi.request('workshop-mechanics.php', 'GET');
-    
+
     if (mechanics && mechanics.length > 0) {
         tbody.innerHTML = '';
         mechanics.forEach((m, idx) => {
@@ -27,18 +22,18 @@ async function loadMechanicsFromDB() {
                     <div class="user-info">
                         <div class="user-avatar" style="background: hsl(${(idx * 60) % 360}, 60%, 50%);">${m.name.charAt(0)}</div>
                         <div class="user-details">
-                            <span class="user-name">${m.name}</span>
+                            <span class="user-name" style="font-weight: bold">${m.name}</span><br>
                             <span class="user-email">${m.email}</span>
                         </div>
                     </div>
                 </td>
                 <td>${m.phone || 'N/A'}</td>
                 <td>Default Workshop</td>
-                <td><span class="status-badge active">Active</span></td>
                 <td>${new Date(m.created_at).toLocaleDateString()}</td>
+                <td><span class="status-badge active" style="font-weight: bold">Active</span></td>
                 <td>
                     <div class="action-btns">
-                        <button class="action-btn edit" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn-update" title="Update">Update</button>
                     </div>
                 </td>
             `;
@@ -56,7 +51,7 @@ function initSpecificInteractions() {
     const primaryBtns = document.querySelectorAll('.primary-btn, .btn-primary');
     primaryBtns.forEach(btn => {
         // Only attach if it doesn't already have an action from global admin.js
-        if(!btn.hasAttribute('data-wired')) {
+        if (!btn.hasAttribute('data-wired')) {
             btn.setAttribute('data-wired', 'true');
             btn.addEventListener('click', (e) => {
                 const actionText = e.target.innerText.trim();
@@ -93,14 +88,14 @@ function initAddMechanicModal() {
     if (!addBtn || !modal) return;
 
     addBtn.addEventListener('click', () => { modal.classList.add('active'); });
-    const closeModal = () => { modal.classList.remove('active'); if(form) form.reset(); };
+    const closeModal = () => { modal.classList.remove('active'); if (form) form.reset(); };
 
-    if(closeBtn) closeBtn.addEventListener('click', closeModal);
-    if(cancelBtn) cancelBtn.addEventListener('click', closeModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
 
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-    if(form) {
+    if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             if (typeof showToast === 'function') {

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("analytics page loaded successfully.");
     initSpecificInteractions();
     initExportAnalytics();
+    loadAnalyticsFromDB();
 });
 
 function initSpecificInteractions() {
@@ -71,4 +72,83 @@ function initExportAnalytics() {
             }
         });
     });
+}
+
+async function loadAnalyticsFromDB() {
+    if (!window.adminApi) return;
+    
+    try {
+        const response = await window.adminApi.request('analytics.php', 'GET');
+        if (!response) return;
+
+        // 1. Top Metrics
+        document.getElementById('metric-avg-time').innerText = response.avg_service_time;
+        document.getElementById('metric-satisfaction').innerText = response.customer_satisfaction;
+        document.getElementById('metric-total-services').innerText = response.total_services;
+        document.getElementById('metric-rework-rate').innerText = response.rework_rate;
+
+        // 2. Trends
+        const trendsContainer = document.getElementById('trends-bars-area');
+        trendsContainer.innerHTML = '';
+        response.trends.forEach(t => {
+            trendsContainer.innerHTML += `
+                <div class="bar-col">
+                    <div class="bar" style="height: ${t.height}%;"></div><span>${t.day}</span>
+                </div>
+            `;
+        });
+
+        // 3. Top Workshops
+        const workshopsContainer = document.getElementById('top-workshops-list');
+        workshopsContainer.innerHTML = '';
+        const ranks = ['gold', 'silver', 'bronze'];
+        response.top_workshops.forEach((ws, idx) => {
+            const rankClass = ranks[idx] || '';
+            workshopsContainer.innerHTML += `
+                <div class="ranking-item">
+                    <span class="rank ${rankClass}">${idx + 1}</span>
+                    <div class="workshop-info">
+                        <span class="workshop-name">${ws.name}</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: ${ws.progress}%;"></div>
+                        </div>
+                    </div>
+                    <span class="workshop-score">${ws.progress}%</span>
+                </div>
+            `;
+        });
+
+        // 4. Mechanics
+        const mechanicsTbody = document.getElementById('mechanics-tbody');
+        mechanicsTbody.innerHTML = '';
+        const colors = ['blue-bg', 'peach-bg', 'green-bg', 'purple-bg', 'orange-bg'];
+        response.mechanics.forEach((m, idx) => {
+            const initials = m.name.substring(0, 2).toUpperCase();
+            const bgClass = colors[idx % colors.length];
+            mechanicsTbody.innerHTML += `
+                <tr>
+                    <td>
+                        <div class="user-cell">
+                            <span class="avatar ${bgClass}">${initials}</span>
+                            <span>${m.name}</span>
+                        </div>
+                    </td>
+                    <td>${m.workshop_name}</td>
+                    <td>${m.jobs_completed}</td>
+                    <td>${m.avg_time_str}</td>
+                    <td>
+                        <div class="score-cell">
+                            <div class="progress-bar mini">
+                                <div class="progress green" style="width: ${m.efficiency}%;"></div>
+                            </div>
+                            <span>${m.efficiency}</span>
+                        </div>
+                    </td>
+                    <td><span class="status-badge active"><i class="fa-solid fa-circle"></i> Active</span></td>
+                </tr>
+            `;
+        });
+    } catch (e) {
+        console.error("Failed to load analytics data", e);
+    }
 }

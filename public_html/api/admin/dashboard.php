@@ -5,6 +5,10 @@ require_once '../db.php';
 try {
     $stats = [];
     
+    // Total Workshop Managers
+    $stmt = $pdo->query("SELECT COUNT(*) FROM Users WHERE role = 'Manager'");
+    $stats['total_managers'] = (int) $stmt->fetchColumn();
+    
     // Active Workshops
     $stmt = $pdo->query("SELECT COUNT(*) FROM Workshops");
     $stats['active_workshops'] = (int) $stmt->fetchColumn();

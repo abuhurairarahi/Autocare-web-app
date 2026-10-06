@@ -121,7 +121,7 @@
                     <div class="metric-card">
                         <span class="metric-title">AVG SERVICE TIME</span>
                         <div class="metric-main">
-                            <h2>2h 45m</h2>
+                            <h2 id="metric-avg-time">--h --m</h2>
                             <div class="metric-icon blue"><i class="fa-regular fa-clock"></i></div>
                         </div>
                         <div class="metric-footer positive">
@@ -132,7 +132,7 @@
                     <div class="metric-card">
                         <span class="metric-title">CUSTOMER SATISFACTION</span>
                         <div class="metric-main">
-                            <h2>4.8/5.0</h2>
+                            <h2 id="metric-satisfaction">-.-/5.0</h2>
                             <div class="metric-icon orange"><i class="fa-regular fa-face-smile"></i></div>
                         </div>
                         <div class="metric-footer positive">
@@ -143,7 +143,7 @@
                     <div class="metric-card">
                         <span class="metric-title">TOTAL SERVICES COMPLETED</span>
                         <div class="metric-main">
-                            <h2>1,248</h2>
+                            <h2 id="metric-total-services">--</h2>
                             <div class="metric-icon purple"><i class="fa-solid fa-check-to-slot"></i></div>
                         </div>
                         <div class="metric-footer positive">
@@ -154,7 +154,7 @@
                     <div class="metric-card">
                         <span class="metric-title">REWORK RATE</span>
                         <div class="metric-main">
-                            <h2>2.1%</h2>
+                            <h2 id="metric-rework-rate">-.-%</h2>
                             <div class="metric-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
                         </div>
                         <div class="metric-footer negative">
@@ -183,28 +183,8 @@
                                 <span>25</span>
                                 <span>0</span>
                             </div>
-                            <div class="bars-area">
-                                <div class="bar-col">
-                                    <div class="bar" style="height: 35%;"></div><span>Mon</span>
-                                </div>
-                                <div class="bar-col">
-                                    <div class="bar" style="height: 52%;"></div><span>Tue</span>
-                                </div>
-                                <div class="bar-col">
-                                    <div class="bar" style="height: 48%;"></div><span>Wed</span>
-                                </div>
-                                <div class="bar-col">
-                                    <div class="bar" style="height: 65%;"></div><span>Thu</span>
-                                </div>
-                                <div class="bar-col">
-                                    <div class="bar" style="height: 58%;"></div><span>Fri</span>
-                                </div>
-                                <div class="bar-col">
-                                    <div class="bar" style="height: 80%;"></div><span>Sat</span>
-                                </div>
-                                <div class="bar-col">
-                                    <div class="bar" style="height: 60%;"></div><span>Sun</span>
-                                </div>
+                            <div class="bars-area" id="trends-bars-area">
+                                <!-- Bars will be injected here -->
                             </div>
                         </div>
                     </div>
@@ -216,37 +196,8 @@
                                 <h3>Top Workshops</h3>
                                 <i class="fa-solid fa-trophy trophy-icon"></i>
                             </div>
-                            <div class="ranking-list">
-                                <div class="ranking-item">
-                                    <span class="rank gold">1</span>
-                                    <div class="workshop-info">
-                                        <span class="workshop-name">Dhaka Branch</span>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 98%;"></div>
-                                        </div>
-                                    </div>
-                                    <span class="workshop-score">98%</span>
-                                </div>
-                                <div class="ranking-item">
-                                    <span class="rank silver">2</span>
-                                    <div class="workshop-info">
-                                        <span class="workshop-name">Rajshahi Branch</span>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 82%;"></div>
-                                        </div>
-                                    </div>
-                                    <span class="workshop-score">82%</span>
-                                </div>
-                                <div class="ranking-item">
-                                    <span class="rank bronze">3</span>
-                                    <div class="workshop-info">
-                                        <span class="workshop-name">Chittagong Branch</span>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 76%;"></div>
-                                        </div>
-                                    </div>
-                                    <span class="workshop-score">76%</span>
-                                </div>
+                            <div class="ranking-list" id="top-workshops-list">
+                                <!-- Workshops will be injected here -->
                             </div>
                         </div>
                         <a href="#" class="view-all-link">View Full Ranking</a>
@@ -281,70 +232,8 @@
                                     <th>STATUS</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <span class="avatar blue-bg">MR</span>
-                                            <span>Mr. Ben</span>
-                                        </div>
-                                    </td>
-                                    <td>Downtown Garage</td>
-                                    <td>142</td>
-                                    <td>1h 15m</td>
-                                    <td>
-                                        <div class="score-cell">
-                                            <div class="progress-bar mini">
-                                                <div class="progress green" style="width: 96%;"></div>
-                                            </div>
-                                            <span>96</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="status-badge active"><i class="fa-solid fa-circle"></i>
-                                            Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <span class="avatar peach-bg">SJ</span>
-                                            <span>Shinchan</span>
-                                        </div>
-                                    </td>
-                                    <td>Northside Auto</td>
-                                    <td>128</td>
-                                    <td>1h 30m</td>
-                                    <td>
-                                        <div class="score-cell">
-                                            <div class="progress-bar mini">
-                                                <div class="progress green" style="width: 88%;"></div>
-                                            </div>
-                                            <span>88</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="status-badge active"><i class="fa-solid fa-circle"></i>
-                                            Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <span class="avatar blue-bg">TC</span>
-                                            <span>Devid Chui</span>
-                                        </div>
-                                    </td>
-                                    <td>Downtown Garage</td>
-                                    <td>115</td>
-                                    <td>1h 45m</td>
-                                    <td>
-                                        <div class="score-cell">
-                                            <div class="progress-bar mini">
-                                                <div class="progress green" style="width: 82%;"></div>
-                                            </div>
-                                            <span>82</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="status-badge break"><i class="fa-solid fa-circle"></i> On
-                                            Break</span></td>
-                                </tr>
+                            <tbody id="mechanics-tbody">
+                                <!-- Mechanics will be injected here -->
                             </tbody>
                         </table>
                     </div>

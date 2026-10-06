@@ -279,3 +279,14 @@ tr:last-child td {
         justify-content: space-between;
     }
 }
+
+/* Custom Additions */
+.btn-update {
+    background: lightblue;
+    color: var(--text-main);
+    border: 1px solid skyblue;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+}

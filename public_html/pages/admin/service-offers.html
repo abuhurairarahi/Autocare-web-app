@@ -129,8 +129,9 @@
                             <thead>
                                 <tr>
                                     <th>OFFER TITLE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>DISCOUNT</th>
                                     <th>TARGET AUDIENCE</th>
-                                    <th>START DATE</th>
                                     <th>EXPIRY DATE</th>
                                     <th>STATUS</th>
                                     <th class="text-right">ACTIONS</th>
@@ -200,6 +201,10 @@
         <div class="form-group">
           <label>Title</label>
           <input type="text" id="offer-title" required placeholder="e.g. Summer Special">
+        </div>
+        <div class="form-group">
+          <label>Total Discount (%)</label>
+          <input type="number" id="offer-discount" required placeholder="e.g. 20" min="0" max="100">
         </div>
         <div class="form-group">
           <label>Target Audience</label>

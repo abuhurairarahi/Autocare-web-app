@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
 async function loadManagersFromDB() {
     const tbody = document.getElementById('manager-tbody');
     if (!tbody || !window.adminApi) return;
-    
+
     tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Loading data...</td></tr>';
     const managers = await window.adminApi.request('workshop-managers.php', 'GET');
-    
+
     if (managers && managers.length > 0) {
         tbody.innerHTML = '';
         managers.forEach((m, idx) => {
@@ -27,21 +27,20 @@ async function loadManagersFromDB() {
                 <td>MGR-${1000 + m.user_id}</td>
                 <td>
                     <div class="user-info">
-                        <div class="user-avatar" style="background: hsl(${(idx * 50) % 360}, 70%, 50%);">${m.name.charAt(0)}</div>
-                        <div class="user-details">
-                            <span class="user-name">${m.name}</span>
-                            <span class="user-email">${m.email}</span>
-                        </div>
+                        <span class="user-avatar" style="background: hsl(${(idx * 50) % 360}, 70%, 50%);">${m.name.charAt(0)}</span>
+                        <span class="user-details">
+                            <div class="user-name" style="font-weight: bold">${m.name}</div>
+                            <div class="user-email">${m.email}</div>
+                        </span>
                     </div>
                 </td>
                 <td>${m.phone || 'N/A'}</td>
                 <td>Default Workshop</td>
-                <td><span class="status-badge active">Active</span></td>
+                <td style="font-weight: bold;"><span class="status-badge active">Active</span></td>
                 <td>${new Date(m.created_at).toLocaleDateString()}</td>
                 <td>
                     <div class="action-btns">
-                        <button class="action-btn edit" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                        <button class="action-btn delete" title="Deactivate"><i class="fa-solid fa-ban"></i></button>
+                        <button class="btn-update" title="Update">Update</button>
                     </div>
                 </td>
             `;
@@ -60,7 +59,7 @@ function initSpecificInteractions() {
     const primaryBtns = document.querySelectorAll('.primary-btn, .btn-primary');
     primaryBtns.forEach(btn => {
         // Only attach if it doesn't already have an action from global admin.js
-        if(!btn.hasAttribute('data-wired')) {
+        if (!btn.hasAttribute('data-wired')) {
             btn.setAttribute('data-wired', 'true');
             btn.addEventListener('click', (e) => {
                 const actionText = e.target.innerText.trim();
@@ -101,17 +100,17 @@ function initAddManagerModal() {
     addBtn.addEventListener('click', () => {
         // Auto-fill today's date in YYYY-MM-DD format
         const today = new Date().toISOString().split('T')[0];
-        if(dateInput) dateInput.value = today;
+        if (dateInput) dateInput.value = today;
         modal.classList.add('active');
     });
 
     const closeModal = () => {
         modal.classList.remove('active');
-        if(form) form.reset();
+        if (form) form.reset();
     };
 
-    if(closeBtn) closeBtn.addEventListener('click', closeModal);
-    if(cancelBtn) cancelBtn.addEventListener('click', closeModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
 
     // Close when clicking outside content
     modal.addEventListener('click', (e) => {
@@ -121,10 +120,10 @@ function initAddManagerModal() {
     });
 
     // Form submit
-    if(form) {
+    if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const data = {
                 name: document.getElementById('manager-name').value,
                 email: document.getElementById('manager-email').value,
@@ -133,7 +132,7 @@ function initAddManagerModal() {
                 status: document.getElementById('manager-status').value,
                 joiningDate: dateInput.value
             };
-            
+
             if (window.adminApi) {
                 window.adminApi.request('workshop-managers.php', 'POST', data).then(() => {
                     loadManagersFromDB();
@@ -142,7 +141,7 @@ function initAddManagerModal() {
                     }
                 });
             }
-            
+
             closeModal();
         });
     }
@@ -215,11 +214,11 @@ function initUpdateManagerModal() {
             if (!currentRow) return;
 
             // Extract data from row
-            const name = currentRow.querySelector('.name-text').innerText.trim();
-            const email = currentRow.querySelector('.contact-cell span:first-child').innerText.trim();
-            const phone = currentRow.querySelector('.contact-cell .muted').innerText.trim();
+            const name = currentRow.querySelector('.user-name').innerText.trim();
+            const email = currentRow.querySelector('.user-email').innerText.trim();
+            const phone = currentRow.children[2].innerText.trim();
             const workshop = currentRow.children[3].innerText.trim();
-            const status = currentRow.querySelector('.status-pill').innerText.trim();
+            const status = currentRow.querySelector('.status-badge').innerText.trim();
             const date = currentRow.children[5].innerText.trim();
 
             // Populate form
@@ -240,8 +239,8 @@ function initUpdateManagerModal() {
         currentRow = null;
     };
 
-    if(closeBtn) closeBtn.addEventListener('click', closeModal);
-    if(cancelBtn) cancelBtn.addEventListener('click', closeModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
 
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -263,20 +262,17 @@ function initUpdateManagerModal() {
         const newDate = document.getElementById('update-manager-joining-date').value;
 
         // Update DOM row
-        currentRow.querySelector('.name-text').innerText = newName;
-        
-        // Update avatar initials
-        const nameParts = newName.split(' ');
-        const initials = nameParts.length > 1 ? nameParts[0][0] + nameParts[nameParts.length - 1][0] : newName.substring(0, 2);
-        currentRow.querySelector('.avatar-sm').innerText = initials.toUpperCase();
+        currentRow.querySelector('.user-name').innerText = newName;
 
-        currentRow.querySelector('.contact-cell span:first-child').innerText = newEmail;
-        currentRow.querySelector('.contact-cell .muted').innerText = newPhone;
+        // Update avatar initials
+        currentRow.querySelector('.user-avatar').innerText = newName.charAt(0).toUpperCase();
+
+        currentRow.querySelector('.user-email').innerText = newEmail;
+        currentRow.children[2].innerText = newPhone;
         currentRow.children[3].innerText = newWorkshop;
-        
-        const statusPill = currentRow.querySelector('.status-pill');
+
+        const statusPill = currentRow.querySelector('.status-badge');
         statusPill.innerText = newStatus;
-        statusPill.className = 'status-pill status-' + newStatus.toLowerCase();
 
         currentRow.children[5].innerText = newDate;
 
