@@ -420,8 +420,8 @@ window.openModal = function (options = {}) {
       ${content}
     </div>
     <div style="padding: 16px 24px; background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 12px;">
-      <button id="modal-cancel-btn" style="padding: 9px 18px; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; font-weight: 600; cursor: pointer;">${cancelText}</button>
-      <button id="modal-confirm-btn" style="padding: 9px 20px; border-radius: 8px; border: none; background: #2563eb; color: #ffffff; font-weight: 600; cursor: pointer;">${confirmText}</button>
+      <button id="modal-cancel-btn" style="padding: 9px 18px; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; font-weight: 600; cursor: pointer; display: ${cancelText ? 'inline-block' : 'none'};">${cancelText}</button>
+      <button id="modal-confirm-btn" style="padding: 9px 20px; border-radius: 8px; border: none; background: #2563eb; color: #ffffff; font-weight: 600; cursor: pointer; display: ${confirmText ? 'inline-block' : 'none'};">${confirmText}</button>
     </div>
   `;
 

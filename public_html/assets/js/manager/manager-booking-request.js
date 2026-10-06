@@ -164,8 +164,8 @@ function clearDetailsPanel() {
  * 3. Detail Action Buttons (Approve, Reject, View History)
  */
 function initDetailActionButtons() {
-  const approveBtn = document.querySelector('.details-panel .btn-approve');
-  const rejectBtn = document.querySelector('.details-panel .btn-danger');
+  const approveBtn = document.querySelector('.details-panel .btn-approve') || document.querySelector('#btn-approve-request');
+  const rejectBtn = document.querySelector('.details-panel .btn-reject') || document.querySelector('#btn-reject-request');
   const historyBtn = document.querySelector('.details-panel .btn-secondary');
 
   // Approve & Create Job Card

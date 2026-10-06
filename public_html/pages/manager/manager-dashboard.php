@@ -236,44 +236,66 @@ $recentActivities = $activitiesStmt->fetchAll();
           </article>
 
         </div>
+        
+        <!-- DASH GRID -->
+        <div class="dashboard-grid">
 
-
-        <!-- MECHANICS WORKLOAD -->
-        <section class="panel mechanics-panel">
-          <div class="panel-header">
-            <h2>Workshop Mechanics Workload</h2>
-            <a class="view-all" href="manager-mechanics.php">View All</a>
-          </div>
-
-          <div class="mechanics-grid">
-            <?php foreach ($mechanicsList as $m): 
-              $activeJobs = (int)$m['active_jobs'];
-              $workload = min(100, $activeJobs * 25);
-              $isOffShift = ($m['status'] === 'Off Shift');
-              $badgeClass = $isOffShift ? 'off-shift' : (($workload >= 80 || $m['status'] === 'Busy') ? 'busy' : 'available');
-              $badgeText = strtoupper($m['status']);
-              $fillClass = ($workload >= 80) ? 'high' : 'low';
-            ?>
-            <div class="mechanic-card">
-              <div class="mechanic-top">
-                <img class="mechanic-avatar" src="<?= htmlspecialchars($m['avatar'] ?: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=150') ?>" alt="<?= htmlspecialchars($m['name']) ?>">
-                <div>
-                  <div class="mechanic-name"><?= htmlspecialchars($m['name']) ?></div>
-                  <div class="mechanic-role"><?= htmlspecialchars($m['specialty'] ?: 'Senior Mechanic') ?></div>
-                </div>
-                <span class="status-badge <?= $badgeClass ?>"><?= $badgeText ?></span>
-              </div>
-              <div class="workload-info">
-                <span>Active Jobs: <strong><?= $activeJobs ?></strong></span>
-                <span>Workload: <strong><?= $workload ?>%</strong></span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill <?= $fillClass ?>" style="width: <?= $workload ?>%"></div>
+          <!-- Revenue Trend Panel -->
+          <section class="panel revenue-panel">
+            <div class="panel-header">
+              <h2>Revenue Trend</h2>
+              <div class="period">
+                <button>Weekly</button>
+                <button class="selected">Monthly</button>
               </div>
             </div>
-            <?php endforeach; ?>
-          </div>
-        </section>
+
+            <div class="chart">
+              <div class="chart-grid">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="area"></div>
+              <svg class="chart-line-svg" preserveAspectRatio="none" viewBox="0 0 600 200">
+                <polyline points="0,166 90,120 180,136 276,74 366,96 462,34 600,54"></polyline>
+              </svg>
+              <div class="months">
+                <span>Jan</span>
+                <span>Feb</span>
+                <span>Mar</span>
+                <span>Apr</span>
+                <span>May</span>
+                <span>Jun</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- MECHANICS WORKLOAD -->
+          <section class="panel workload mechanics-panel">
+            <div class="panel-header">
+              <h2>Workshop Mechanics Workload</h2>
+              <a class="view-all" href="manager-mechanics.php">View All</a>
+            </div>
+
+            <div class="mechanics-grid workload-body">
+              <?php foreach ($mechanicsList as $m): 
+                $activeJobs = (int)$m['active_jobs'];
+                $workload = min(100, $activeJobs * 25);
+                $isOffShift = ($m['status'] === 'Off Shift');
+                $badgeClass = $isOffShift ? 'off-shift' : (($workload >= 80 || $m['status'] === 'Busy') ? 'busy' : 'available');
+                $badgeText = strtoupper($m['status']);
+                $fillClass = ($workload >= 80) ? 'high' : 'low';
+              ?>
+              <div class="mechanic-card mechanic" style="cursor: pointer;" onclick="window.location.href='manager-mechanics.php'">
+                <div class="mechanic-top" style="display:flex; justify-content:space-between; width: 100%;">
+                  <div><span><?= htmlspecialchars($m['name']) ?></span> <b><?= $activeJobs ?> <?= $activeJobs === 1 ? 'Job' : 'Jobs' ?></b></div>
+                </div>
+                <div class="bar progress-bar"><i class="<?= $fillClass === 'high' ? 'danger' : '' ?>" style="width: <?= $workload ?>%"></i></div>
+              </div>
+              <?php endforeach; ?>
+            </div>
+          </section>
+          
+        </div>
 
 
         <!-- RECENT ACTIVITY -->

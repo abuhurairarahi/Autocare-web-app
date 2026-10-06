@@ -1,5 +1,3 @@
--- AutoCare Database Seed Data
-
 -- 1. Insert Users (Admin, Managers, Mechanics, VehicleOwners)
 -- Passwords should be hashed in a real scenario. For demonstration, we use plain text or mock hashes.
 INSERT INTO Users (name, email, password_hash, role, phone) VALUES 

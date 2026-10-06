@@ -295,8 +295,8 @@ $firstReq = !empty($pendingRequests) ? $pendingRequests[0] : null;
 
             <!-- Action Buttons Footer -->
             <div class="details-actions">
-              <button class="btn btn-outline" id="btn-reject-request">Decline Request</button>
-              <button class="btn btn-primary" id="btn-approve-request">Approve & Open Job Card</button>
+              <button class="btn btn-outline btn-reject" id="btn-reject-request">Decline Request</button>
+              <button class="btn btn-primary btn-approve" id="btn-approve-request" style="background-color: blue; color: white; font-weight: bold; padding: 4px 8px;">Approve & create job card</button>
             </div>
 
           </div>

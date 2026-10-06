@@ -1,20 +1,3 @@
--- AutoCare extra seed data for the Mechanic and Vehicle Owner panels.
---
--- Run AFTER database/setup_db.php has created and seeded the schema; it relies on these
--- seeded rows: Users 2 (Manager), 3 and 8 (Mechanics), 101 and 102 (VehicleOwners),
--- Vehicles 1, 2, 9, Workshops 1-2, ServiceCategories 1-5 and SpareParts 1-6.
---
---   mysql -u root autocare < database/autocare-seed-extra.sql
---
--- Demo logins (passwords set by setup_db.php):
---   Vehicle owner: ops@apexlogistics.com / owner123
---   Mechanic:      david.c@autocare.com  / mechanic123
---
--- The seeded JobCards from setup_db.php have no appointment_id, so they cannot be traced
--- back to an owner. The rows below are linked end to end: Appointment -> JobCard ->
--- parts / labor / estimate / invoice / photos / timeline.
--- INSERT IGNORE with fixed ids keeps this script safe to re-run.
-
 -- 1. Appointments (owner 101: Ford Transit = vehicle 1, Ford F-150 = vehicle 9; owner 102: Camry = vehicle 2)
 INSERT IGNORE INTO Appointments (appointment_id, code, owner_id, vehicle_id, workshop_id, service_category_id, preferred_date, issue_description, priority, status, created_at) VALUES
 (201, 'BRQ-2026-201', 101, 9, 1, 1, '2026-10-02 09:00:00', 'Check engine light on, rough idle. Scanner shows misfire on cylinder 4.', 'High', 'Approved', '2026-09-30 18:20:00'),

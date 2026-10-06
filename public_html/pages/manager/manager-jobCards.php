@@ -262,7 +262,7 @@ $jobCards = $stmt->fetchAll();
                   </td>
                   <td><span class="delivery"><?= htmlspecialchars($card['delivery_date']) ?></span></td>
                   <td class="action-cell">
-                    <button class="action-btn" title="View Options">
+                    <button class="action-btn" title="View Options" onclick="openJobCardMenu(event, <?= $card['id'] ?>, this)">
                       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="12" cy="5" r="1.5"></circle><circle cx="12" cy="19" r="1.5"></circle></svg>
                     </button>
                   </td>

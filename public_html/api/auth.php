@@ -57,7 +57,7 @@ function now_ts(): int
 // Landing page per role, relative to public_html/pages/
 const ROLE_HOME = [
     'Admin' => 'admin/dashboard.html',
-    'Manager' => 'manager/manager-dashboard.php',
+    'Manager' => 'manager/manager-dashboard.html',
     'Mechanic' => 'mechanic/mechanic-dashboard.php',
     'VehicleOwner' => 'vehicleowner/vehicleowner-dashboard.php',
 ];

@@ -1,5 +1,4 @@
 <?php
-// setup_db.php - Initializes and seeds the autocare database
 $host = 'localhost';
 $dbname = 'autocare';
 $username = 'root';

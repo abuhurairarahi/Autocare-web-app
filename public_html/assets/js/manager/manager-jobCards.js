@@ -239,9 +239,30 @@ function initCreateJobCardButton() {
 /**
  * 5. Job Card Row Actions Context Menu
  */
-window.openJobCardMenu = function (event, cardId) {
+window.openJobCardMenu = function (event, cardId, btnElement) {
   event.stopPropagation();
-  const card = AutoCareStore.getJobCardById(cardId);
+  let card = AutoCareStore.getJobCardById(cardId);
+
+  if (!card && btnElement) {
+    const tr = btnElement.closest('tr');
+    if (tr) {
+      card = {
+        id: cardId,
+        code: tr.querySelector('.job-id') ? tr.querySelector('.job-id').innerText : `JC-${cardId}`,
+        customer_name: tr.querySelector('.customer strong') ? tr.querySelector('.customer strong').innerText : 'Customer',
+        vehicle_details: tr.querySelector('.customer span') ? tr.querySelector('.customer span').innerText : 'Vehicle',
+        mechanic_name: tr.querySelector('.mechanic span') ? tr.querySelector('.mechanic span').innerText : 'Unassigned',
+        status: tr.querySelector('.status') ? tr.querySelector('.status').innerText : 'Unknown',
+        progress_percentage: tr.querySelector('.percentage') ? tr.querySelector('.percentage').innerText.replace('%', '') : 0
+      };
+      
+      // Inject into the local store so actions (like status update) can find and persist it
+      if (typeof AutoCareStore !== 'undefined' && AutoCareStore.data.jobCards) {
+          AutoCareStore.data.jobCards.push(card);
+      }
+    }
+  }
+
   if (!card) return;
 
   openModal({

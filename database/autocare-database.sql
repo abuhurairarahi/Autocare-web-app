@@ -1,5 +1,3 @@
--- AutoCare Database Schema (Enhanced for full manager and admin connectivity)
-
 -- 1. Users Table (Handles Admin, Manager, Mechanic, VehicleOwner)
 CREATE TABLE IF NOT EXISTS Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
